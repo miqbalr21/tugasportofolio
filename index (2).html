@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Muhammad Iqbal — Portofolio</title>
+  <meta name="description" content="Portofolio Muhammad Iqbal — web developer, designer, dan pembuat solusi front-end." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero">Muhammad Iqbal</a>
+      <nav class="nav" id="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Halo, saya <span class="accent">Muhammad Iqbal</span></h1>
+          <p class="lead">Web Developer & UI/UX enthusiast — membangun antarmuka yang cepat, ramah pengguna, dan responsif.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#projects">Lihat Proyek</a>
+            <a class="btn outline" href="#contact">Kontak Saya</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="https://via.placeholder.com/360x360.png?text=Profile" alt="Foto Muhammad Iqbal">
+          <ul class="hero-stats">
+            <li><strong>5+</strong><span>Proyek</span></li>
+            <li><strong>3+</strong><span>Tahun pengalaman</span></li>
+            <li><strong>Ryou</strong><span>Kota, Negara</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container">
+        <h2>About</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Saya adalah developer front-end yang suka memadukan desain dan performa. Fokus saya pada HTML, CSS modern (Flexbox & Grid), dan JavaScript vanilla. Saya terbiasa bekerja dengan tim lintas fungsi untuk menghasilkan pengalaman pengguna yang baik.</p>
+            <ul>
+              <li>Berpengalaman membangun landing page, SPA, dan portofolio interaktif.</li>
+              <li>Terbiasa menggunakan tools: Git, npm, VS Code.</li>
+            </ul>
+            <a class="btn" href="#contact">Ayo Bicarakan Proyek</a>
+          </div>
+          <div class="about-list">
+            <div class="card">
+              <h3>Pendidikan</h3>
+              <p>Ilmu Komputer — Universitas Contoh</p>
+            </div>
+            <div class="card">
+              <h3>Hobi</h3>
+              <p>Design, Fotografi, dan Coding malam hari</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill">
+            <h4>HTML &sem; Semantik</h4>
+            <div class="bar"><div style="width:95%"></div></div>
+          </div>
+          <div class="skill">
+            <h4>CSS (Flex, Grid, Animations)</h4>
+            <div class="bar"><div style="width:90%"></div></div>
+          </div>
+          <div class="skill">
+            <h4>JavaScript (ES6+)</h4>
+            <div class="bar"><div style="width:85%"></div></div>
+          </div>
+          <div class="skill">
+            <h4>Responsiveness</h4>
+            <div class="bar"><div style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <img src="https://via.placeholder.com/600x360.png?text=Project+1" alt="Project 1">
+            <div class="project-content">
+              <h3>Project Satu</h3>
+              <p>Landing page responsif dengan animasi halus dan optimasi performa.</p>
+              <div class="project-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://via.placeholder.com/600x360.png?text=Project+2" alt="Project 2">
+            <div class="project-content">
+              <h3>Project Dua</h3>
+              <p>Single Page App sederhana dengan routing client-side dan state management ringan.</p>
+              <div class="project-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://via.placeholder.com/600x360.png?text=Project+3" alt="Project 3">
+            <div class="project-content">
+              <h3>Project Tiga</h3>
+              <p>Integrasi API publik untuk menampilkan data real-time dan chart sederhana.</p>
+              <div class="project-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="testimonials-grid">
+          <blockquote>
+            "Bekerja dengan Iqbal sangat mudah—kode rapi dan tepat waktu." <cite>— Jane Doe, Product Manager</cite>
+          </blockquote>
+          <blockquote>
+            "Desain yang dihasilkan fokus pada pengguna dan sangat efektif." <cite>— John Smith, Founder</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <form id="contact-form" class="contact-form" novalidate>
+            <label for="name">Nama</label>
+            <input id="name" name="name" type="text" required placeholder="Nama lengkap">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="contoh@domain.com">
+
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Jelaskan proyek atau pesan Anda..."></textarea>
+
+            <button class="btn" type="submit">Kirim Pesan</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-info">
+            <h3>Info Kontak</h3>
+            <p>Email: <a href="mailto:iqbal@example.com">iqbal@example.com</a></p>
+            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">linkedin.com/in/iqbal</a></p>
+            <p>Lokasi: Kota, Negara</p>
+            <div class="small-note">Atau kirim pesan lewat form — saya akan membalas secepatnya.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Muhammad Iqbal — All rights reserved.</p>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
