@@ -5,115 +5,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio M. Iqbal Ramadhani</title>
     
-    <link rel="stylesheet" href="styles.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body {
+            background-color: #020617;
+            color: #ffffff;
+            background: radial-gradient(circle at top right, #064e3b, #020617 70%),
+                        radial-gradient(circle at bottom left, #1e3a8a, #020617 70%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            animation: fadeInPage 1s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.1); }
+
+        /* --- HERO & TYPING EFFECT --- */
+        .hero { text-align: center; }
+        
+        .profile-circle {
+            width: 130px; height: 130px; margin: 0 auto 20px;
+            border-radius: 50%; border: 3px solid #00f2ff; overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
+            animation: floatingProfile 4s ease-in-out infinite;
+        }
+        @keyframes floatingProfile {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        h1 { 
+            font-size: 2.3rem; 
+            background: linear-gradient(to right, #00f2ff, #00ff88); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .typing-container { color: #94a3b8; font-size: 1rem; min-height: 24px; }
+        .typing-text { color: #00ff88; font-weight: bold; border-right: 2px solid #00f2ff; padding-right: 5px; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        /* --- PROGRESS BAR --- */
+        .progress-container { background: rgba(255,255,255,0.1); border-radius: 10px; height: 8px; margin-top: 10px; overflow: hidden; }
+        .progress-bar { background: linear-gradient(to right, #00f2ff, #00ff88); height: 100%; border-radius: 10px; transition: width 1s ease; }
+
+        /* --- PROYEK ITEM --- */
+        .proyek-item {
+            background: rgba(255,255,255,0.03); border-radius: 20px;
+            padding: 20px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer; transition: 0.3s;
+        }
+        .proyek-item:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); }
+        .proyek-title { color: #00f2ff; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9); backdrop-filter: blur(12px);
+        }
+        .modal-content {
+            background: #0f172a; border: 1px solid #1e293b;
+            margin: 10% auto; padding: 30px; border-radius: 25px;
+            width: 90%; max-width: 500px; position: relative;
+            animation: popIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close { position: absolute; right: 20px; top: 10px; color: #ff4444; font-size: 35px; cursor: pointer; }
+
+        .btn-wa {
+            display: block; width: 100%; background: #25d366; color: white;
+            text-align: center; padding: 16px; border-radius: 50px;
+            text-decoration: none; font-weight: 800; margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <header class="card hero">
         <div class="profile-circle">
-            <img src="https://via.placeholder.com/150" alt="Iqbal">
+            <img src="profil.jpg" alt="Iqbal">
         </div>
         <h1>M. Iqbal Ramadhani</h1>
-        <p style="color: #94a3b8; margin-top: 5px;">Mahasiswa Sistem Informasi | Universitas Komputama</p>
+        <div class="typing-container">
+            I am a <span id="typing" class="typing-text"></span>
+        </div>
     </header>
 
     <section class="card">
-        <h2><i class="fas fa-user"></i> Tentang Saya</h2>
-        <p style="color: #cbd5e1; line-height: 1.6;">
-            Saya adalah mahasiswa Sistem Informasi yang memiliki semangat tinggi dalam merintis bisnis di bidang teknologi dan pertanian. Fokus saya adalah menciptakan lapangan kerja melalui inovasi digital dan sistem pertanian modern.
+        <h2><i class="fas fa-bullseye" style="color: #00ff88;"></i> Visi & Fokus</h2>
+        <p style="color: #cbd5e1; line-height: 1.6; margin-top: 10px; font-size: 0.95rem;">
+            Mengintegrasikan Sistem Informasi untuk efisiensi dunia nyata. Fokus pada digitalisasi manajemen ritel dan pengembangan <b>Smart Farming</b> berskala 300 polybag.
         </p>
     </section>
 
     <section class="card">
-        <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
-        <div style="margin-bottom: 12px;">
-            <p><strong>Universitas Komputama Cilacap</strong></p>
-            <p style="font-size: 0.85rem; color: #00f2ff;">S1 Sistem Informasi — Aktif</p>
+        <h2><i class="fas fa-code-branch" style="color: #00f2ff;"></i> Portfolio Proyek</h2>
+        
+        <div class="proyek-item" onclick="openModal('cabai')">
+            <div class="proyek-title"><i class="fas fa-seedling"></i> Manajemen Budidaya Cabai</div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 33.3%;"></div>
+            </div>
+            <p style="font-size: 0.7rem; color: #00f2ff; margin-top: 5px;">Status: 100/300 Polybag Terkelola</p>
         </div>
-        <div>
-            <p><strong>SMK Ma'arif NU 1 Sumpiuh</strong></p>
-            <p style="font-size: 0.85rem; color: #94a3b8;">Alumni Pendidikan Menengah</p>
+
+        <div class="proyek-item" onclick="openModal('kasir')">
+            <div class="proyek-title"><i class="fas fa-cash-register"></i> Sistem Kasir Ritel</div>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-top:5px;">Digitalisasi stok barang & transaksi otomatis.</p>
+        </div>
+
+        <div class="proyek-item" onclick="openModal('absensi')">
+            <div class="proyek-title"><i class="fas fa-user-check"></i> Absensi Digital Pondok</div>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-top:5px;">Database kehadiran santri praktis & aman.</p>
         </div>
     </section>
 
-    <section class="card">
-        <h2><i class="fas fa-heart"></i> Hobi & Minat</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-            <span style="background: rgba(0, 242, 255, 0.1); color: #00f2ff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Olahraga Lari</span>
-            <span style="background: rgba(0, 255, 136, 0.1); color: #00ff88; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Coding (C++, HTML)</span>
-            <span style="background: rgba(255, 170, 0, 0.1); color: #ffaa00; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Budidaya Pertanian</span>
-            <span style="background: rgba(170, 0, 255, 0.1); color: #aa00ff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Desain UI/UX</span>
-        </div>
-    </section>
-
-    <section class="card">
-        <h2><i class="fas fa-chart-line"></i> Statistik Proyek</h2>
-        <div style="display: flex; justify-content: space-around; text-align: center; margin-top: 10px;">
-            <div>
-                <h3 style="color: #00f2ff; font-size: 1.5rem;">4</h3>
-                <p style="font-size: 0.8rem; color: #94a3b8;">Total Proyek</p>
-            </div>
-            <div>
-                <h3 style="color: #00ff88; font-size: 1.5rem;">4</h3>
-                <p style="font-size: 0.8rem; color: #94a3b8;">Selesai</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="card">
-        <h2><i class="fas fa-project-diagram"></i> Proyek Saya</h2>
-        <div class="proyek-grid">
-            <div class="proyek-item">
-                <h4>Smart Farming</h4>
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Sistem monitoring budidaya cabai terintegrasi IoT.</p>
-                <span style="font-size: 0.7rem; color: #00ff88;"><i class="fas fa-check-circle"></i> Selesai</span>
-            </div>
-            <div class="proyek-item">
-                <h4>Kasir Digital</h4>
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Manajemen stok & keuangan Minimarket Jaya.</p>
-                <span style="font-size: 0.7rem; color: #00ff88;"><i class="fas fa-check-circle"></i> Selesai</span>
-            </div>
-            <div class="proyek-item">
-                <h4>Absensi Pondok</h4>
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Sistem rekap kehadiran digital untuk santri.</p>
-                <span style="font-size: 0.7rem; color: #00ff88;"><i class="fas fa-check-circle"></i> Selesai</span>
-            </div>
-            <div class="proyek-item">
-                <h4>Sistem Perpus</h4>
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Manajemen peminjaman buku perpustakaan.</p>
-                <span style="font-size: 0.7rem; color: #00ff88;"><i class="fas fa-check-circle"></i> Selesai</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="card">
-        <h2><i class="fas fa-comment-dots"></i> Ulasan Klien</h2>
-        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; border-left: 4px solid #00ff88;">
-            <p style="font-style: italic; font-size: 0.85rem; line-height: 1.5;">"Sistem kasirnya membantu pencatatan keuangan toko saya jadi rapi."</p>
-            <div style="margin-top: 15px; display: flex; align-items: center; gap: 10px;">
-                <div style="width: 30px; height: 30px; background: #00ff88; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #020617; font-weight: bold; font-size: 0.7rem;">IS</div>
-                <div>
-                    <p style="font-size: 0.8rem; font-weight: bold; color: #00f2ff;">Ibu Sri</p>
-                    <p style="font-size: 0.65rem; color: #94a3b8;">Pemilik Toko Jaya</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="card" style="text-align: center;">
-        <h2>Mari Terhubung</h2>
-        <div class="btn-group">
-            <a href="https://wa.me/628816627097" target="_blank" class="btn wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:miqbalr25@gmail.com" class="btn email"><i class="fas fa-envelope"></i> Email</a>
-        </div>
+    <footer class="card">
+        <h2 style="text-align: center; margin-bottom: 15px;">Hubungi Saya</h2>
+        <a href="https://wa.me/628816627097" target="_blank" class="btn-wa">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
     </footer>
 </div>
 
-<script src="script.js"></script>
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    /* --- LOGIKA TYPING EFFECT --- */
+    const words = ["Information Systems Student", "Future Tech-Farmer", "C++ Enthusiast"];
+    let i = 0, j = 0, currentWord = "", isDeleting = false;
+
+    function type() {
+        currentWord = words[i];
+        if (isDeleting) {
+            document.getElementById("typing").textContent = currentWord.substring(0, j - 1);
+            j--;
+            if (j == 0) { isDeleting = false; i = (i + 1) % words.length; }
+        } else {
+            document.getElementById("typing").textContent = currentWord.substring(0, j + 1);
+            j++;
+            if (j == currentWord.length) { isDeleting = true; setTimeout(type, 1500); return; }
+        }
+        setTimeout(type, isDeleting ? 100 : 200);
+    }
+    type();
+
+    /* --- DATA MODAL --- */
+    const dataProyek = {
+        cabai: {
+            title: "Manajemen Budidaya Cabai",
+            masalah: "Pencatatan manual sering terlewat, nutrisi tidak terukur.",
+            solusi: "Penjadwalan nutrisi digital untuk 300 polybag.",
+            hasil: "Target 300 polybag berjalan dengan pantauan data yang akurat."
+        },
+        kasir: {
+            title: "Sistem Kasir Ritel",
+            masalah: "Sering terjadi selisih stok barang dan laba tidak terhitung.",
+            solusi: "Aplikasi kasir berbasis database untuk update stok real-time.",
+            hasil: "Manajemen keuangan toko lebih rapi dan transparan."
+        },
+        absensi: {
+            title: "Digitalisasi Absensi Pondok",
+            masalah: "Kertas absensi sering hilang, rekap bulanan butuh waktu lama.",
+            solusi: "Sistem absensi berbasis digital dengan input instan.",
+            hasil: "Data kehadiran aman dan laporan rekap selesai otomatis."
+        }
+    };
+
+    function openModal(id) {
+        const p = dataProyek[id];
+        document.getElementById("modalBody").innerHTML = `
+            <h2 style="color:#00f2ff; margin-bottom:15px;">${p.title}</h2>
+            <p style="margin-bottom:10px;"><strong style="color:#00ff88;">MASALAH:</strong><br><small>${p.masalah}</small></p>
+            <p style="margin-bottom:10px;"><strong style="color:#00ff88;">SOLUSI:</strong><br><small>${p.solusi}</small></p>
+            <p><strong style="color:#00ff88;">HASIL:</strong><br><small>${p.hasil}</small></p>
+        `;
+        document.getElementById("projectModal").style.display = "block";
+    }
+
+    function closeModal() { document.getElementById("projectModal").style.display = "none"; }
+    window.onclick = function(e) { if(e.target == document.getElementById("projectModal")) closeModal(); }
+</script>
 
 </body>
 </html>
