@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio M. Iqbal Ramadhani</title>
+    <title>Portfolio | M. Iqbal Ramadhani</title>
     
     <link rel="stylesheet" href="styles.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,16 +21,25 @@
         <div class="typing-container">I am a <span id="typing" class="typing-text"></span></div>
         
         <div class="stats-grid">
-            <div class="stat-box"><span class="stat-number">7+</span><span class="stat-label">Project IT</span></div>
-            <div class="stat-box"><span class="stat-number">Smart</span><span class="stat-label">Farming</span></div>
-            <div class="stat-box"><span class="stat-number">SI</span><span class="stat-label">Student</span></div>
+            <div class="stat-box">
+                <span class="stat-number">7+</span>
+                <span class="stat-label">Project IT</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">Digital</span>
+                <span class="stat-label">Farming</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">SI</span>
+                <span class="stat-label">Student</span>
+            </div>
         </div>
     </header>
 
     <section class="card reveal">
         <h2 class="section-title"><i class="fas fa-user-circle"></i> Tentang Saya</h2>
         <p class="text-content">
-            Halo! Saya adalah mahasiswa <b>Sistem Informasi di Universitas Komputama Cilacap</b>. Fokus utama saya adalah menggabungkan teknologi modern seperti IoT dan pemrograman untuk memodernisasi sektor pertanian dan membangun sistem administrasi digital yang efisien.
+            Halo! Saya adalah mahasiswa <b>Sistem Informasi di Universitas Komputama Cilacap</b>. Saya memiliki dedikasi tinggi dalam mengembangkan solusi digital, terutama dalam mengintegrasikan teknologi modern dengan dunia pertanian untuk menciptakan efisiensi sistem yang berkelanjutan.
         </p>
     </section>
 
@@ -52,7 +61,7 @@
                 <ul class="vm-list">
                     <li>Otomasi sistem administrasi digital.</li>
                     <li>Digitalisasi manajemen pertanian modern.</li>
-                    <li>Menciptakan solusi IT yang solutif & efisien.</li>
+                    <li>Membangun solusi IT yang solutif & efisien.</li>
                 </ul>
             </div>
         </div>
@@ -64,7 +73,7 @@
             <div class="timeline-item">
                 <span class="timeline-tag">Sekarang</span>
                 <h4>Universitas Komputama Cilacap</h4>
-                <p>S1 Sistem Informasi (Sedang Berjalan)</p>
+                <p>S1 Sistem Informasi — Fokus pada Analisis Sistem & Pertanian Modern</p>
             </div>
             <div class="timeline-item">
                 <span class="timeline-tag">SMK</span>
@@ -85,16 +94,25 @@
         <h2 class="section-title"><i class="fas fa-tasks"></i> Proyek Utama</h2>
         <div class="proyek-list">
             <div class="proyek-item" onclick="openModal('absensi')">
-                <h4>Sistem Absensi Pesantren</h4>
-                <p>Otomasi kehadiran santri berbasis database digital.</p>
+                <div class="proyek-header">
+                    <h4>Sistem Absensi Pesantren</h4>
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <p>Digitalisasi kehadiran santri untuk mempermudah pemantauan administrasi.</p>
             </div>
             <div class="proyek-item" onclick="openModal('perpus')">
-                <h4>Sistem Perpustakaan</h4>
-                <p>Manajemen peminjaman buku digital yang teratur.</p>
+                <div class="proyek-header">
+                    <h4>Sistem Perpustakaan</h4>
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <p>Manajemen database buku dan peminjaman secara digital.</p>
             </div>
             <div class="proyek-item" onclick="openModal('smartfarm')">
-                <h4>Sistem Manajemen Pertanian</h4>
-                <p>Pencatatan riwayat budidaya tanaman secara terukur.</p>
+                <div class="proyek-header">
+                    <h4>Smart Farming Management</h4>
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <p>Sistem pencatatan dan pemantauan budidaya tanaman cabai di polybag.</p>
             </div>
         </div>
     </section>
@@ -102,25 +120,27 @@
     <section class="card reveal">
         <h2 class="section-title"><i class="fas fa-heart"></i> Hobi & Karakter</h2>
         <div class="hobi-flex">
-            <span class="tag">Running (5K & Marathon)</span>
-            <span class="tag">Coding (C++ & HTML)</span>
-            <span class="tag">UI Design (Figma)</span>
-            <span class="tag">Integrated Farming</span>
+            <span class="tag"><i class="fas fa-running"></i> Running (5K & Marathon)</span>
+            <span class="tag"><i class="fas fa-code"></i> C++ & HTML Enthusiast</span>
+            <span class="tag"><i class="fas fa-pen-nib"></i> UI Design (Figma)</span>
+            <span class="tag"><i class="fas fa-leaf"></i> Integrated Farming</span>
         </div>
     </section>
 
     <footer class="card hero reveal">
-        <h2>Ayo Berkolaborasi!</h2>
-        <p style="color: #94a3b8; margin-bottom: 20px;">Tertarik dengan proyek saya atau ingin berdiskusi?</p>
+        <h2>Hubungi Saya</h2>
+        <p style="color: #94a3b8; margin-bottom: 25px;">Tertarik untuk berdiskusi atau berkolaborasi?</p>
         <div class="contact-links">
             <a href="https://wa.me/628816627097" target="_blank" class="btn btn-wa">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
             <a href="mailto:miqbalr25@gmail.com" class="btn btn-mail">
-                <i class="fas fa-envelope"></i> Email Saya
+                <i class="fas fa-envelope"></i> Kirim Email
             </a>
         </div>
-        <p style="margin-top: 30px; font-size: 0.7rem; color: #475569;">&copy; 2026 M. Iqbal Ramadhani. All Rights Reserved.</p>
+        <div class="footer-copy">
+            &copy; 2026 M. Iqbal Ramadhani. Built with <i class="fas fa-heart" style="color: #ff4444;"></i>
+        </div>
     </footer>
 </div>
 
