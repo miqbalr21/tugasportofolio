@@ -24,7 +24,6 @@
 
         .container { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
-        /* ANIMASI REPEATABLE (3D REVEAL) */
         .reveal { 
             opacity: 0; 
             transform: translate3d(0, 50px, -100px) rotateX(-15deg) scale(0.9); 
@@ -63,7 +62,6 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; }
 
-        /* PENDIDIKAN STYLES */
         .timeline { border-left: 3px solid rgba(0, 255, 136, 0.3); padding-left: 20px; margin-left: 5px; }
         .timeline-item { position: relative; margin-bottom: 25px; }
         .timeline-item::before { 
@@ -80,6 +78,11 @@
         }
         .p-card:active { transform: scale(0.92); background: rgba(0, 242, 255, 0.1); }
         .p-card i { font-size: 2rem; color: #00ff88; margin-bottom: 12px; display: block; }
+
+        .info-block { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+        .info-block:last-child { border-bottom: none; margin-bottom: 0; }
+        .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
 
         .modal { 
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
@@ -117,14 +120,24 @@
     </header>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-user"></i> Tentang Saya</h2>
-        <p style="font-size:0.95rem; line-height:1.6; color:#cbd5e1; margin-bottom:15px;">
-            Mahasiswa Sistem Informasi di Universitas Komputama Cilacap yang berfokus pada integrasi teknologi untuk masa depan.
-        </p>
-        <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 20px; border: 1px solid rgba(0,255,136,0.1);">
-            <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Visi:</strong> Menggabungkan dunia teknologi informasi dengan sektor pertanian modern.</p>
-            <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Misi:</strong> Menciptakan sistem otomasi yang cerdas, efisien, dan berdampak bagi UMKM.</p>
-            <p style="font-size:0.85rem; color:#00ff88; font-style:italic;">"Moto: Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
+        <div class="info-block">
+            <h3><i class="fas fa-user-circle"></i> Tentang Saya</h3>
+            <p>Mahasiswa Sistem Informasi di Universitas Komputama Cilacap. Saya berfokus pada pengembangan solusi digital untuk efisiensi operasional di berbagai bidang.</p>
+        </div>
+
+        <div class="info-block">
+            <h3><i class="fas fa-eye"></i> Visi</h3>
+            <p>Menjadi ahli sistem informasi yang mampu menjembatani kebutuhan dunia pertanian dengan kemajuan teknologi digital terkini.</p>
+        </div>
+
+        <div class="info-block">
+            <h3><i class="fas fa-bullseye"></i> Misi</h3>
+            <p>Menyusun sistem otomasi dan manajemen data yang praktis untuk mendukung kemajuan agrikultur dan pelaku bisnis lokal.</p>
+        </div>
+
+        <div class="info-block" style="border-bottom:none; margin-bottom: 0;">
+            <h3><i class="fas fa-quote-left"></i> Moto Hidup</h3>
+            <p style="color: #00ff88; font-style: italic; font-weight: 600;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
         </div>
     </section>
 
@@ -155,24 +168,23 @@
     <section class="card reveal">
         <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-running"></i> Hobi & Aktivitas</h2>
         <p style="font-size:0.95rem; line-height:1.6; color:#cbd5e1;">
-            Pelari marathon (5K Runner) dan aktif mengelola budidaya cabai rawit organik di polibag dengan sistem nutrisi mandiri.
+            Seorang pelari marathon (5K Runner) dan aktif mengelola pertanian cabai rawit organik dengan sistem nutrisi mandiri.
         </p>
     </section>
 
     <section class="card reveal">
         <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;"><i class="fas fa-star"></i> Ulasan Proyek</h2>
-        <div class="testi-item" style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: 20px; margin-bottom: 15px; border-left: 4px solid #00f2ff;">
-            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Sistem kasirnya membantu toko saya di Majenang, stok jadi terpantau otomatis."</p>
+        <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: 20px; margin-bottom: 15px; border-left: 4px solid #00f2ff;">
+            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Sistem kasirnya sangat membantu toko saya, stok terpantau akurat."</p>
             <p style="font-size:0.85rem; font-weight:700; color:#00ff88; margin-top:8px;">- Toko Jaya</p>
         </div>
-        <div class="testi-item" style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: 20px; border-left: 4px solid #00f2ff;">
-            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Rekap absensi santri jadi jauh lebih cepat dan transparan bagi wali santri."</p>
+        <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: 20px; border-left: 4px solid #00f2ff;">
+            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Rekap absensi santri jadi jauh lebih cepat dan transparan."</p>
             <p style="font-size:0.85rem; font-weight:700; color:#00ff88; margin-top:8px;">- Pesantren Rawalo</p>
         </div>
     </section>
 
     <footer class="card reveal" style="text-align: center;">
-        <h2 style="color:#00f2ff; margin-bottom: 15px; font-size: 1.2rem;">Mari Berkolaborasi!</h2>
         <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
     </footer>
 </div>
@@ -185,8 +197,7 @@
 </div>
 
 <script>
-    // 1. TYPING ANIMATION
-    const words = ["Information Systems Student", "Agripreneur", "Developer", "Runner"];
+    const words = ["Information Systems Student", "Young Agripreneur", "Developer", "Runner"];
     let i=0, j=0, isDel=false;
     function type(){
         let cur=words[i], disp=isDel?cur.substring(0,j--):cur.substring(0,j++);
@@ -196,35 +207,59 @@
         else setTimeout(type,isDel?60:130);
     }
 
-    // 2. REPEATABLE SCROLL ANIMATION (GPU OPTIMIZED)
     function reveal(){
         document.querySelectorAll(".reveal:not(.hero-section)").forEach(r => {
             let windowHeight = window.innerHeight;
             let elementTop = r.getBoundingClientRect().top;
-            if(elementTop < windowHeight - 100) {
-                r.classList.add("active");
-            } else {
-                r.classList.remove("active"); // Ini yang bikin animasi muncul berulang kali saat scroll
-            }
+            if(elementTop < windowHeight - 100) { r.classList.add("active"); }
+            else { r.classList.remove("active"); }
         });
     }
     window.addEventListener("scroll", reveal);
 
-    // 3. PROJECT MODAL LOGIC
     const projectData = {
-        tani: { t: "Smart Tani", lb: "Petani sering telat siram pupuk.", sl: "Sistem IoT penyiraman otomatis ESP32.", mf: "Cabai tumbuh seragam & panen naik 30%." },
-        absensi: { t: "Sistem Absensi", lb: "Absensi santri sering dicurangi.", sl: "Sistem absensi berbasis web cloud.", mf: "Data akurat & wali santri tenang." },
-        kasir: { t: "Sistem Kasir", lb: "Stok barang toko sering selisih.", sl: "Software kasir stok otomatis.", mf: "Keuangan terpantau rapi setiap hari." },
-        perpus: { t: "E-Perpus", lb: "Manajemen pinjam buku berantakan.", sl: "Database inventaris digital.", mf: "Buku terpantau & tertib admin." }
+        tani: { 
+            t: "Smart Tani System", 
+            lb: "Manajemen pemupukan tanaman yang tidak teratur menurunkan kualitas panen.", 
+            sl: "Sistem otomasi jadwal nutrisi cair berbasis pemrograman digital.", 
+            mf: "Pertumbuhan tanaman lebih stabil dan mengefisiensi waktu pengerjaan." 
+        },
+        absensi: { 
+            t: "Sistem Absensi Cloud", 
+            lb: "Absensi manual sering mengalami kehilangan data dan manipulasi.", 
+            sl: "Sistem pendataan kehadiran digital dengan database terpusat.", 
+            mf: "Data akurat 100% dan mempermudah pemantauan kedisiplinan." 
+        },
+        kasir: { 
+            t: "Sistem Kasir (POS)", 
+            lb: "Sulitnya sinkronisasi antara stok fisik dan laporan penjualan harian.", 
+            sl: "Software manajemen stok barang dan transaksi otomatis.", 
+            mf: "Keuangan terpantau rapi dan meminimalisir kesalahan manusia." 
+        },
+        perpus: { 
+            t: "E-Perpus Digital", 
+            lb: "Peminjaman buku yang tidak terorganisir menyebabkan aset sulit dilacak.", 
+            sl: "Sistem inventarisasi dan manajemen sirkulasi buku digital.", 
+            mf: "Aset perpustakaan terjaga dan proses administrasi lebih tertib." 
+        }
     };
 
     function openModal(id){
         const d = projectData[id];
         document.getElementById("modalContent").innerHTML = `
             <h3 style="color:#00f2ff; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">${d.t}</h3>
-            <div style="margin-bottom:12px;"><strong>Masalah:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.lb}</p></div>
-            <div style="margin-bottom:12px;"><strong>Solusi:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.sl}</p></div>
-            <div><strong>Manfaat:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.mf}</p></div>
+            <div style="margin-bottom:15px;">
+                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">LATAR BELAKANG:</strong>
+                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.lb}</p>
+            </div>
+            <div style="margin-bottom:15px;">
+                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">SOLUSI SISTEM:</strong>
+                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.sl}</p>
+            </div>
+            <div>
+                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">MANFAAT:</strong>
+                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.mf}</p>
+            </div>
         `;
         const m = document.getElementById("projectModal");
         m.style.display = "flex";
