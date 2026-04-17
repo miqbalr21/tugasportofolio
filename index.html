@@ -23,15 +23,13 @@
 
         .container { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
-        /* Animasi Reveal: Sekarang bisa berulang */
         .reveal { 
             opacity: 0; 
             transform: translateY(50px) scale(0.9);
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efek membal/spring */
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             will-change: opacity, transform;
         }
 
-        /* Saat masuk layar */
         .reveal.active { 
             opacity: 1; 
             transform: translateY(0) scale(1);
@@ -62,7 +60,7 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; min-height: 1.2em; }
 
-        .info-block { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+        .info-block { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
         .info-block:last-child { border-bottom: none; }
         .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
@@ -76,22 +74,16 @@
         .p-card:active { transform: scale(0.9); background: rgba(0,242,255,0.1); }
         .p-card i { font-size: 1.8rem; color: #00ff88; margin-bottom: 10px; display: block; }
 
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .stat-item { text-align: center; background: rgba(255,255,255,0.03); padding: 15px 5px; border-radius: 20px; }
-        .stat-number { display: block; font-size: 1.4rem; font-weight: 800; color: #00ff88; }
-        .stat-label { font-size: 0.65rem; color: #94a3b8; }
-
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(1, 4, 9, 0.95); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
         .modal.show { display: flex; }
         .modal-box { background: #0d1117; padding: 30px; border-radius: 30px; width: 100%; max-width: 400px; border: 1px solid #00f2ff; position: relative; animation: modalIn 0.4s ease; }
         @keyframes modalIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .close-btn { position: absolute; right: 20px; top: 15px; cursor: pointer; color: #ff4444; font-size: 28px; font-weight: bold; }
-        
-        .modal-body h3 { color: #00f2ff; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; font-size: 1.2rem; }
-        .modal-body .section-title { color: #00ff88; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-top: 15px; display: block; }
-        .modal-body p { font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin-top: 5px; }
+        .modal-body h3 { color: #00f2ff; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .modal-body .section-title { color: #00ff88; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; margin-top: 15px; display: block; }
+        .modal-body p { font-size: 0.9rem; margin-top: 5px; color: #cbd5e1; line-height: 1.4; }
 
-        .btn { display: flex; padding: 16px; border-radius: 18px; text-decoration: none; font-weight: 800; justify-content: center; gap: 10px; color: #fff; background: #16a34a; box-shadow: 0 5px 15px rgba(22,163,74,0.3); }
+        .btn { display: flex; padding: 16px; border-radius: 18px; text-decoration: none; font-weight: 800; justify-content: center; gap: 10px; color: #fff; background: #16a34a; }
     </style>
 </head>
 <body>
@@ -109,17 +101,13 @@
             <p>Mahasiswa SI UNIKMA dengan dasar TKR. Berfokus pada integrasi TI untuk modernisasi sektor pertanian lokal.</p>
         </div>
         <div class="info-block">
-            <h3><i class="fas fa-eye"></i> Visi</h3>
-            <p>Mendorong inovasi digital melalui penerapan Smart Farming di Indonesia.</p>
-        </div>
-        <div class="info-block">
             <h3><i class="fas fa-quote-left"></i> Moto Hidup</h3>
             <p style="color: #00ff88; font-style: italic;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
         </div>
     </section>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;">Pendidikan</h2>
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <h4 style="font-size:1rem;">Universitas Komputama Cilacap</h4>
@@ -133,12 +121,19 @@
     </section>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;">Hobi & Aktivitas</h2>
-        <p style="font-size:0.9rem; color:#cbd5e1; line-height:1.6;">Lari (5K), budidaya cabai rawit organik sistem polybag, serta manajemen ternak kelinci dan ayam.</p>
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:15px;"><i class="fas fa-star"></i> Hobi & Aktivitas</h2>
+        <div class="info-block">
+            <h3><i class="fas fa-leaf"></i> Budidaya Cabai Organik</h3>
+            <p>Penanaman cabai rawit sistem polybag dengan pupuk organik (Maggot BSF & pupuk kandang).</p>
+        </div>
+        <div class="info-block">
+            <h3><i class="fas fa-running"></i> Olahraga Lari</h3>
+            <p>Aktif lari rutin (5K) dan memantau progres melalui aplikasi Strava.</p>
+        </div>
     </section>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;">Proyek Unggulan</h2>
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-code"></i> Proyek Unggulan</h2>
         <div class="project-grid">
             <div class="p-card" onclick="openModal('tani')"><i class="fas fa-leaf"></i><span>Tani Cerdas</span></div>
             <div class="p-card" onclick="openModal('absensi')"><i class="fas fa-fingerprint"></i><span>Absensi</span></div>
@@ -148,16 +143,7 @@
     </section>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;">Statistik Kerja</h2>
-        <div class="stats-grid">
-            <div class="stat-item"><span class="stat-number">12+</span><span class="stat-label">PROYEK</span></div>
-            <div class="stat-item"><span class="stat-number">9</span><span class="stat-label">SELESAI</span></div>
-            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">PUAS</span></div>
-        </div>
-    </section>
-
-    <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;">Ulasan</h2>
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;"><i class="fas fa-comment-dots"></i> Ulasan</h2>
         <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; border-left: 3px solid #00ff88;">
             <p style="font-size:0.85rem; font-style: italic;">"Sistem kasirnya sangat akurat, stok barang jadi mudah dipantau."</p>
             <p style="font-size:0.8rem; color:#00ff88; margin-top:5px;">- Toko Jaya</p>
@@ -165,7 +151,7 @@
     </section>
 
     <footer class="card reveal" style="text-align: center;">
-        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Saya</a>
     </footer>
 </div>
 
@@ -177,7 +163,6 @@
 </div>
 
 <script>
-    // Typing Effect
     const words = ["Mahasiswa SI", "Fokus Teknologi & Pertanian", "Pelari"];
     let i=0, j=0, isDel=false;
     function type(){
@@ -188,65 +173,35 @@
         else setTimeout(type,isDel?50:100);
     }
 
-    // MULTI-SCROLL REVEAL: Muncul setiap kali masuk layar
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             } else {
-                // Menghapus class saat keluar layar agar animasi bisa berulang
                 entry.target.classList.remove('active');
             }
         });
-    }, { 
-        threshold: 0.15, // Muncul saat 15% bagian kartu terlihat
-        rootMargin: "0px 0px -50px 0px" 
-    });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Data Proyek Lengkap (Latar Belakang, Solusi, Manfaat)
     const projectData = {
-        tani: { 
-            t: "Sistem Tani Cerdas", 
-            lb: "Pemberian nutrisi tanaman secara manual sering tidak terukur, tidak teratur, dan memakan banyak waktu bagi petani.", 
-            sl: "Membangun sistem otomasi penyiraman nutrisi cair berbasis IoT (ESP32) yang dapat dikontrol dari jarak jauh.", 
-            mf: "Pertumbuhan tanaman lebih stabil, menghemat penggunaan pupuk, serta mengurangi beban kerja fisik petani." 
-        },
-        absensi: { 
-            t: "Absensi Digital Cloud", 
-            lb: "Metode absensi manual menggunakan kertas sering menyebabkan data hilang, rusak, atau mudah dimanipulasi.", 
-            sl: "Mengembangkan aplikasi absensi digital berbasis Cloud yang dilengkapi verifikasi identitas real-time.", 
-            mf: "Data kehadiran tersimpan aman, akurasi data meningkat 100%, dan pembuatan laporan bulanan menjadi otomatis." 
-        },
-        kasir: { 
-            t: "Sistem Kasir (POS)", 
-            lb: "Banyak UMKM kesulitan memantau stok barang yang tersisa dan mencatat omzet harian secara tepat.", 
-            sl: "Software manajemen Point of Sale (POS) sederhana yang mengintegrasikan penjualan dengan database inventaris.", 
-            mf: "Pemilik toko bisa melihat sisa stok secara real-time dan mengetahui laba bersih harian tanpa hitung manual." 
-        },
-        perpus: { 
-            t: "E-Perpustakaan", 
-            lb: "Proses peminjaman buku sering kacau karena tidak adanya catatan sirkulasi yang jelas, menyebabkan banyak buku hilang.", 
-            sl: "Sistem informasi manajemen perpustakaan digital untuk mendata buku masuk, keluar, dan tenggat waktu pengembalian.", 
-            mf: "Administrasi perpustakaan menjadi sangat tertib, pencarian judul buku lebih cepat, dan kehilangan buku terminimalisir." 
-        }
+        tani: { t: "Sistem Tani Cerdas", lb: "Pemberian nutrisi tanaman manual tidak terukur.", sl: "Otomasi nutrisi cair berbasis IoT (ESP32).", mf: "Hasil panen stabil dan efisien tenaga." },
+        absensi: { t: "Absensi Digital", lb: "Pencatatan manual rawan manipulasi data.", sl: "Sistem Cloud dengan verifikasi digital.", mf: "Data aman dan laporan otomatis rapi." },
+        kasir: { t: "Sistem Kasir", lb: "Kesulitan memantau stok dan laba harian.", sl: "Software POS manajemen inventaris.", mf: "Laporan keuangan akurat & real-time." },
+        perpus: { t: "E-Perpus", lb: "Sirkulasi buku tidak tercatat dengan baik.", sl: "Sistem peminjaman buku digital.", mf: "Administrasi tertib & meminimalisir kehilangan." }
     };
 
     function openModal(id){
         const d = projectData[id];
         document.getElementById("modalContent").innerHTML = `
             <h3>${d.t}</h3>
-            <span class="section-title">Latar Belakang</span>
-            <p>${d.lb}</p>
-            <span class="section-title">Solusi Sistem</span>
-            <p>${d.sl}</p>
-            <span class="section-title">Manfaat Sistem</span>
-            <p>${d.mf}</p>
+            <span class="section-title">Latar Belakang</span><p>${d.lb}</p>
+            <span class="section-title">Solusi</span><p>${d.sl}</p>
+            <span class="section-title">Manfaat</span><p>${d.mf}</p>
         `;
         document.getElementById("projectModal").classList.add("show");
     }
-    
     function closeModal(){ document.getElementById("projectModal").classList.remove("show"); }
 
     document.addEventListener("DOMContentLoaded", type);
