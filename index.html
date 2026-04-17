@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Muhammad Iqbal Ramadhani | Portfolio</title>
+    <title>Muhammad Iqbal Ramadhani | Ultimate Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -22,102 +22,114 @@
     <nav>
         <div class="container nav-content">
             <a href="#" class="logo hover-target">IQBAL<span>.RAMADHANI</span></a>
-            <a href="https://wa.me/628816627097" target="_blank" class="btn btn-white hover-target">Kontak</a>
+            <a href="https://wa.me/628816627097" target="_blank" class="btn btn-white hover-target" style="padding: 10px 22px; font-size: 0.8rem;">Chat Saya</a>
         </div>
     </nav>
 
     <main class="container">
         <section class="hero">
             <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title" data-aos="fade-right">
+                <div class="hero-content" data-aos="fade-right">
+                    <h1 class="hero-title">
                         <span class="gradient-text typing-text" id="typewriter"></span>
                     </h1>
-                    <p data-aos="fade-up" data-aos-delay="500" class="hero-desc">
-                        Mahasiswa Sistem Informasi Univ. Komputama Cilacap. Berdedikasi menciptakan solusi digital cerdas dan efisien untuk masa depan.
+                    <p class="hero-desc">
+                        Mahasiswa Sistem Informasi Univ. Komputama Cilacap yang berdedikasi menciptakan solusi digital cerdas. Menggabungkan logika teknologi untuk efisiensi di berbagai sektor masa depan.
                     </p>
-                    
-                    <div class="stats-grid" data-aos="fade-up" data-aos-delay="700">
-                        <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Total Proyek</div></div>
-                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Selesai</div></div>
-                        <div class="stat-item"><div class="stat-number">5+</div><div class="stat-label">Klien Puas</div></div>
-                    </div>
-
-                    <div data-aos="fade-up" data-aos-delay="900">
-                        <a href="#about" class="btn btn-white hover-target">Kenali Saya <i class="fas fa-arrow-down"></i></a>
-                    </div>
+                    <a href="#about" class="btn btn-white hover-target">Kenali Saya <i class="fas fa-arrow-down"></i></a>
                 </div>
-                
-                <div class="hero-image-area" data-aos="zoom-in" data-aos-delay="300">
+                <div class="hero-image-area" data-aos="zoom-in">
                     <div class="photo-frame">
-                        <img src="138134.jpg" alt="Muhammad Iqbal Ramadhani">
+                        <img src="138134.jpg" alt="Muhammad Iqbal Ramadhani" onerror="this.src='https://via.placeholder.com/400x500/0f172a/ffffff?text=IQBAL'">
                     </div>
+                    <h3 class="hero-name">Muhammad Iqbal Ramadhani</h3>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section-padding">
-            <div class="grid-2">
-                <div class="card" data-aos="fade-right">
-                    <h3 class="card-title">Tentang Saya</h3>
-                    <p class="card-text">Saya fokus pada integrasi IT untuk sektor riil, seperti Agri-Tech. Saya percaya data adalah kunci kemajuan berkelanjutan.</p>
-                    <div class="skills-box">
-                        <span class="skill-tag">Analisis Sistem</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Database</span>
-                    </div>
+        <section id="about" class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="card js-tilt">
+                <p class="about-text">
+                    Saya adalah mahasiswa Sistem Informasi yang memiliki minat besar dalam integrasi teknologi. Target utama saya adalah menerapkan ilmu IT untuk modernisasi sektor riil, seperti menciptakan sistem manajemen budidaya yang terukur dan efisien. Saya percaya bahwa data dan sistem informasi adalah kunci untuk kemajuan berkelanjutan.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Keahlian Utama</h2>
+            <div class="card skill-container">
+                <div class="skill-tag hover-target">Analisis Sistem</div>
+                <div class="skill-tag hover-target">Logic Programming (C++)</div>
+                <div class="skill-tag hover-target">Database Management</div>
+                <div class="skill-tag hover-target">Web Development</div>
+                <div class="skill-tag hover-target">Agri-Tech Solutions</div>
+                <div class="skill-tag hover-target">Pemecahan Masalah</div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <h2 class="section-title">Daftar Proyek Sistem</h2>
+            <div class="grid-3">
+                <div class="card js-tilt" data-aos="flip-left" data-aos-delay="0">
+                    <i class="fas fa-seedling proj-icon"></i>
+                    <h4 class="proj-title">Smart Farming 300+</h4>
+                    <p class="proj-desc">Digitalisasi manajemen budidaya untuk pengelolaan 300+ unit secara presisi.</p>
                 </div>
-                <div class="card" data-aos="fade-left">
-                    <h3 class="card-title">Pendidikan</h3>
-                    <div class="edu-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>S1 Sistem Informasi</h4>
-                            <p>Univ. Komputama Cilacap</p>
-                        </div>
-                    </div>
-                    <div class="edu-item" style="margin-top: 15px;">
-                        <i class="fas fa-school"></i>
-                        <div>
-                            <h4>SMK Teknik</h4>
-                            <p>SMK Ma'arif NU 01 Sumpiuh</p>
-                        </div>
-                    </div>
+                <div class="card js-tilt" data-aos="flip-left" data-aos-delay="150">
+                    <i class="fas fa-book proj-icon"></i>
+                    <h4 class="proj-title">E-Library System</h4>
+                    <p class="proj-desc">Sistem manajemen sirkulasi buku untuk efisiensi literasi asrama.</p>
+                </div>
+                <div class="card js-tilt" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-user-check proj-icon"></i>
+                    <h4 class="proj-title">Digital Attendance</h4>
+                    <p class="proj-desc">Absensi digital untuk akurasi pendataan kehadiran operasional harian.</p>
                 </div>
             </div>
         </section>
 
         <section class="section-padding">
-            <h2 class="section-title" data-aos="fade-up">Proyek Pilihan</h2>
-            <div class="grid-3">
-                <div class="card" data-aos="fade-up">
-                    <i class="fas fa-seedling icon-proj"></i>
-                    <h4>Smart Farming</h4>
-                    <p>Monitoring digital untuk 300+ unit budidaya.</p>
+            <div class="grid-2">
+                <div data-aos="fade-right">
+                    <h2 class="section-title sub-title">Pendidikan</h2>
+                    <div class="card">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div><h4>S1 Sistem Informasi</h4><p>Univ. Komputama Cilacap (Aktif)</p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon dim-icon"><i class="fas fa-school"></i></div>
+                            <div><h4>SMK Ma'arif NU 01 Sumpiuh</h4><p>Lulusan Bidang Teknik</p></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-book icon-proj"></i>
-                    <h4>E-Library</h4>
-                    <p>Sistem manajemen literasi asrama terintegrasi.</p>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-user-check icon-proj"></i>
-                    <h4>Digital Absensi</h4>
-                    <p>Sistem pendataan kehadiran operasional harian.</p>
+                <div data-aos="fade-left">
+                    <h2 class="section-title sub-title">Hobi & Pribadi</h2>
+                    <div class="card">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-running"></i></div>
+                            <div><h4>Olahraga Lari</h4><p>Melatih disiplin, ketahanan, fisik harian.</p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon dim-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div><h4>Eksplorasi Logika</h4><p>Memecahkan masalah sistematis algoritma.</p></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section-padding" style="padding-bottom: 120px;">
             <div class="card contact-card" data-aos="zoom-in">
-                <h2>Mari Berkolaborasi</h2>
-                <p>Terbuka untuk diskusi proyek IT dan Agri-Tech.</p>
-                <div class="contact-links">
+                <h2 style="margin-bottom: 15px;">Mari Berkolaborasi</h2>
+                <p style="margin-bottom: 40px; color: var(--text-dim); font-size: 1.1rem;">Terbuka untuk diskusi mengenai inovasi Agri-Tech atau proyek pengembangan sistem informasi lainnya.</p>
+                <div class="contact-btns">
                     <a href="https://wa.me/628816627097" target="_blank" class="btn btn-wa hover-target">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
+                        <i class="fab fa-whatsapp"></i> Chat WhatsApp
                     </a>
                     <a href="mailto:miqbalr21@gmail.com" class="btn btn-email hover-target">
-                        <i class="fas fa-envelope"></i> Email
+                        <i class="fas fa-envelope"></i> Hubungi via Email
                     </a>
                 </div>
             </div>
@@ -128,4 +140,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
