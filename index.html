@@ -62,6 +62,17 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; }
 
+        /* STATS COUNTER */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 5px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.03); padding: 15px 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-number { display: block; font-size: 1.4rem; font-weight: 800; color: #00ff88; }
+        .stat-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+
+        .info-block { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+        .info-block:last-child { border-bottom: none; margin-bottom: 0; }
+        .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
+
         .timeline { border-left: 3px solid rgba(0, 255, 136, 0.3); padding-left: 20px; margin-left: 5px; }
         .timeline-item { position: relative; margin-bottom: 25px; }
         .timeline-item::before { 
@@ -78,11 +89,6 @@
         }
         .p-card:active { transform: scale(0.92); background: rgba(0, 242, 255, 0.1); }
         .p-card i { font-size: 2rem; color: #00ff88; margin-bottom: 12px; display: block; }
-
-        .info-block { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
-        .info-block:last-child { border-bottom: none; margin-bottom: 0; }
-        .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
 
         .modal { 
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
@@ -122,22 +128,19 @@
     <section class="card reveal">
         <div class="info-block">
             <h3><i class="fas fa-user-circle"></i> Tentang Saya</h3>
-            <p>Mahasiswa Sistem Informasi di Universitas Komputama Cilacap. Saya berfokus pada pengembangan solusi digital untuk efisiensi operasional di berbagai bidang.</p>
+            <p>Mahasiswa Sistem Informasi Universitas Komputama Cilacap dengan latar belakang Teknik Kendaraan Ringan. Berfokus mengembangkan otomasi sistem untuk memajukan sektor pertanian.</p>
         </div>
-
         <div class="info-block">
             <h3><i class="fas fa-eye"></i> Visi</h3>
-            <p>Menjadi ahli sistem informasi yang mampu menjembatani kebutuhan dunia pertanian dengan kemajuan teknologi digital terkini.</p>
+            <p>Menjadi jembatan antara teknologi digital dan kebutuhan agrikultur modern.</p>
         </div>
-
         <div class="info-block">
             <h3><i class="fas fa-bullseye"></i> Misi</h3>
-            <p>Menyusun sistem otomasi dan manajemen data yang praktis untuk mendukung kemajuan agrikultur dan pelaku bisnis lokal.</p>
+            <p>Menyusun sistem manajemen data dan otomasi praktis untuk UMKM dan pertanian.</p>
         </div>
-
-        <div class="info-block" style="border-bottom:none; margin-bottom: 0;">
+        <div class="info-block">
             <h3><i class="fas fa-quote-left"></i> Moto Hidup</h3>
-            <p style="color: #00ff88; font-style: italic; font-weight: 600;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
+            <p style="color: #00ff88; font-style: italic;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
         </div>
     </section>
 
@@ -166,10 +169,21 @@
     </section>
 
     <section class="card reveal">
-        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-running"></i> Hobi & Aktivitas</h2>
-        <p style="font-size:0.95rem; line-height:1.6; color:#cbd5e1;">
-            Seorang pelari marathon (5K Runner) dan aktif mengelola pertanian cabai rawit organik dengan sistem nutrisi mandiri.
-        </p>
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-chart-line"></i> Statistik Kerja</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Total Proyek</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Selesai</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Puas</span>
+            </div>
+        </div>
     </section>
 
     <section class="card reveal">
@@ -185,7 +199,7 @@
     </section>
 
     <footer class="card reveal" style="text-align: center;">
-        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
+        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Hubungi WhatsApp</a>
     </footer>
 </div>
 
@@ -197,7 +211,7 @@
 </div>
 
 <script>
-    const words = ["Information Systems Student", "Young Agripreneur", "Developer", "Runner"];
+    const words = ["SI Student", "Young Agripreneur", "Developer", "Runner"];
     let i=0, j=0, isDel=false;
     function type(){
         let cur=words[i], disp=isDel?cur.substring(0,j--):cur.substring(0,j++);
@@ -218,48 +232,19 @@
     window.addEventListener("scroll", reveal);
 
     const projectData = {
-        tani: { 
-            t: "Smart Tani System", 
-            lb: "Manajemen pemupukan tanaman yang tidak teratur menurunkan kualitas panen.", 
-            sl: "Sistem otomasi jadwal nutrisi cair berbasis pemrograman digital.", 
-            mf: "Pertumbuhan tanaman lebih stabil dan mengefisiensi waktu pengerjaan." 
-        },
-        absensi: { 
-            t: "Sistem Absensi Cloud", 
-            lb: "Absensi manual sering mengalami kehilangan data dan manipulasi.", 
-            sl: "Sistem pendataan kehadiran digital dengan database terpusat.", 
-            mf: "Data akurat 100% dan mempermudah pemantauan kedisiplinan." 
-        },
-        kasir: { 
-            t: "Sistem Kasir (POS)", 
-            lb: "Sulitnya sinkronisasi antara stok fisik dan laporan penjualan harian.", 
-            sl: "Software manajemen stok barang dan transaksi otomatis.", 
-            mf: "Keuangan terpantau rapi dan meminimalisir kesalahan manusia." 
-        },
-        perpus: { 
-            t: "E-Perpus Digital", 
-            lb: "Peminjaman buku yang tidak terorganisir menyebabkan aset sulit dilacak.", 
-            sl: "Sistem inventarisasi dan manajemen sirkulasi buku digital.", 
-            mf: "Aset perpustakaan terjaga dan proses administrasi lebih tertib." 
-        }
+        tani: { t: "Smart Tani", lb: "Manajemen nutrisi tanaman manual tidak presisi.", sl: "Sistem otomasi jadwal nutrisi cair digital.", mf: "Tanaman subur & waktu lebih efisien." },
+        absensi: { t: "Sistem Absensi", lb: "Absensi fisik rawan hilang dan manipulasi.", sl: "Sistem pendataan digital berbasis web cloud.", mf: "Data akurat & rekap selesai seketika." },
+        kasir: { t: "Sistem Kasir", lb: "Stok fisik dan laporan penjualan sering selisih.", sl: "Software manajemen stok & transaksi otomatis.", mf: "Keuangan rapi & minim kesalahan stok." },
+        perpus: { t: "E-Perpus", lb: "Buku sering hilang karena pinjaman tidak terdata.", sl: "Database inventaris & sirkulasi buku digital.", mf: "Aset terjaga & administrasi lebih tertib." }
     };
 
     function openModal(id){
         const d = projectData[id];
         document.getElementById("modalContent").innerHTML = `
             <h3 style="color:#00f2ff; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">${d.t}</h3>
-            <div style="margin-bottom:15px;">
-                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">LATAR BELAKANG:</strong>
-                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.lb}</p>
-            </div>
-            <div style="margin-bottom:15px;">
-                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">SOLUSI SISTEM:</strong>
-                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.sl}</p>
-            </div>
-            <div>
-                <strong style="color:#00ff88; font-size:0.8rem; display:block; margin-bottom:4px;">MANFAAT:</strong>
-                <p style="font-size:0.85rem; color:#ccc; line-height:1.4;">${d.mf}</p>
-            </div>
+            <div style="margin-bottom:12px;"><strong>LATAR BELAKANG:</strong><p style="font-size:0.85rem; color:#ccc;">${d.lb}</p></div>
+            <div style="margin-bottom:12px;"><strong>SOLUSI:</strong><p style="font-size:0.85rem; color:#ccc;">${d.sl}</p></div>
+            <div><strong>MANFAAT:</strong><p style="font-size:0.85rem; color:#ccc;">${d.mf}</p></div>
         `;
         const m = document.getElementById("projectModal");
         m.style.display = "flex";
