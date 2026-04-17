@@ -81,8 +81,9 @@
         .vm-list li::before { content: '→'; position: absolute; left: 0; color: #00ff88; }
 
         /* --- TIMELINE PENDIDIKAN --- */
-        .timeline-item { border-left: 2px solid #00ff88; padding-left: 20px; margin-bottom: 20px; position: relative; }
+        .timeline-item { border-left: 2px solid #00ff88; padding-left: 20px; margin-bottom: 25px; position: relative; }
         .timeline-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: #00ff88; border-radius: 50%; }
+        .timeline-date { font-size: 0.75rem; color: #00ff88; font-weight: bold; margin-bottom: 5px; display: block; }
 
         /* --- PROYEK --- */
         .proyek-item {
@@ -92,13 +93,11 @@
         }
         .proyek-item:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); }
         
-        .ulasan-box { font-style: italic; background: rgba(0,242,255,0.05); padding: 20px; border-radius: 20px; margin-top: 15px; border-left: 4px solid #00f2ff; }
-        
         .hobi-tag { display: inline-block; background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 50px; margin: 5px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1); }
 
         /* --- MODAL --- */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(10px); }
-        .modal-content { background: #0f172a; border: 1px solid #1e293b; margin: 10% auto; padding: 30px; border-radius: 25px; width: 90%; max-width: 500px; position: relative; animation: popIn 0.3s; }
+        .modal-content { background: #0f172a; border: 1px solid #1e293b; margin: 5% auto; padding: 30px; border-radius: 25px; width: 90%; max-width: 500px; position: relative; animation: popIn 0.3s; }
         @keyframes popIn { from { transform: scale(0.8); opacity: 0; } }
         .close { position: absolute; right: 20px; top: 10px; color: #ff4444; font-size: 35px; cursor: pointer; }
 
@@ -115,88 +114,73 @@
         <div class="typing-container">I am a <span id="typing" class="typing-text"></span></div>
         
         <div class="stats-grid">
-            <div class="stat-box">
-                <span class="stat-number">5+</span>
-                <span class="stat-label">Project IT</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">Digital</span>
-                <span class="stat-label">Farming</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Commitment</span>
-            </div>
+            <div class="stat-box"><span class="stat-number">7+</span><span class="stat-label">Project IT</span></div>
+            <div class="stat-box"><span class="stat-number">Digital</span><span class="stat-label">Farming</span></div>
+            <div class="stat-box"><span class="stat-number">100%</span><span class="stat-label">Commitment</span></div>
         </div>
     </header>
 
-    <section class="card">
-        <h2><i class="fas fa-user-astronaut" style="color: #00ff88;"></i> Tentang Saya</h2>
-        <p style="color: #cbd5e1; line-height: 1.8; margin-top: 15px; font-size: 0.95rem;">
-            Saya adalah mahasiswa <b>Sistem Informasi di Universitas Komputama</b> yang berdedikasi untuk menciptakan solusi digital bagi tantangan dunia nyata. Saya menggabungkan keahlian teknis dalam pemrograman dengan pemahaman mendalam tentang manajemen sistem.
-        </p>
+    <section class="card motto-card">
+        <i class="fas fa-quote-left" style="color: #00f2ff; font-size: 1.2rem; margin-bottom: 15px; display: block;"></i>
+        <h3 style="font-style: italic; color: #ffffff; letter-spacing: 0.5px; line-height: 1.6; font-size: 1.05rem;">
+            "Carilah uang sebanyak mungkin seakan-akan engkau hidup 100 tahun, tetapi berbuatlah baik seakan-akan engkau besok akan mati."
+        </h3>
     </section>
 
     <section class="card">
         <div class="vm-grid">
             <div>
                 <h3 class="vm-title"><i class="fas fa-eye"></i> Visi</h3>
-                <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">
-                    Menjadi ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna demi kemandirian bangsa.
-                </p>
+                <p style="font-size: 0.85rem; color: #cbd5e1;">Menjadi ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna demi kemandirian bangsa.</p>
             </div>
             <div>
                 <h3 class="vm-title"><i class="fas fa-bullseye"></i> Misi</h3>
                 <ul class="vm-list">
-                    <li>Mengembangkan otomasi sistem ritel & produksi.</li>
-                    <li>Mendigitalisasi manajemen pertanian modern.</li>
-                    <li>Membangun solusi IT yang solutif & efisien.</li>
+                    <li>Otomasi sistem administrasi & produksi.</li>
+                    <li>Digitalisasi manajemen pertanian modern.</li>
+                    <li>Solusi IT yang solutif & efisien.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section class="card motto-card">
-        <i class="fas fa-quote-left" style="color: #00f2ff; font-size: 1.2rem; margin-bottom: 15px; display: block;"></i>
-        <h3 style="font-style: italic; color: #ffffff; letter-spacing: 0.5px; line-height: 1.6; font-size: 1.05rem; padding: 0 10px;">
-            "Carilah uang sebanyak mungkin seakan-akan engkau hidup 100 tahun, tetapi berbuatlah baik seakan-akan engkau besok akan mati."
-        </h3>
-        <p style="font-size: 0.65rem; color: #00ff88; margin-top: 15px; text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">— My Life Motto</p>
-    </section>
-
     <section class="card">
-        <h2><i class="fas fa-graduation-cap" style="color: #00ff88;"></i> Pendidikan</h2>
+        <h2><i class="fas fa-graduation-cap" style="color: #00ff88;"></i> Riwayat Pendidikan</h2>
         <div style="margin-top: 20px;">
             <div class="timeline-item">
-                <h4 style="color: #00f2ff;">S1 Sistem Informasi</h4>
-                <p style="font-size: 0.85rem; color: #94a3b8;">Universitas Komputama (Aktif)</p>
-                <p style="font-size: 0.8rem; margin-top: 5px; color: #cbd5e1;">Fokus pada pengembangan aplikasi, manajemen database, dan analisis kebutuhan sistem.</p>
+                <span class="timeline-date">Pendidikan Tinggi</span>
+                <h4 style="color: #00f2ff;">Universitas Komputama Cilacap</h4>
+                <p style="font-size: 0.85rem; color: #94a3b8;">S1 Sistem Informasi — <b>Sedang Berjalan</b></p>
             </div>
             <div class="timeline-item">
-                <h4 style="color: #00f2ff;">Pengalaman Teknis Lapangan</h4>
-                <p style="font-size: 0.85rem; color: #94a3b8;">Bidang Mekanik & Teknik</p>
-                <p style="font-size: 0.8rem; margin-top: 5px; color: #cbd5e1;">Membangun kedisiplinan dan logika pemecahan masalah teknis yang sistematis.</p>
+                <span class="timeline-date">Pendidikan Menengah Kejuruan</span>
+                <h4 style="color: #00f2ff;">SMK Ma'arif NU 01 Sumpiuh</h4>
+                <p style="font-size: 0.85rem; color: #94a3b8;">Lulusan Teknik</p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Pendidikan Menengah Pertama</span>
+                <h4 style="color: #00f2ff;">MTs Miftahul Huda Rawalo</h4>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Pendidikan Dasar</span>
+                <h4 style="color: #00f2ff;">MI Ma'arif NU 1 Kaliwedi</h4>
             </div>
         </div>
     </section>
 
     <section class="card">
         <h2><i class="fas fa-code-branch" style="color: #00f2ff;"></i> Proyek Utama</h2>
+        <div class="proyek-item" onclick="openModal('absensi')">
+            <h4 style="color:#00f2ff;"><i class="fas fa-user-check"></i> Sistem Absensi Pondok Pesantren</h4>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top:5px;">Otomasi pencatatan kehadiran santri untuk efisiensi administrasi.</p>
+        </div>
+        <div class="proyek-item" onclick="openModal('perpus')">
+            <h4 style="color:#00f2ff;"><i class="fas fa-book"></i> Sistem Peminjaman Perpustakaan</h4>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top:5px;">Digitalisasi manajemen buku, peminjaman, dan pengembalian.</p>
+        </div>
         <div class="proyek-item" onclick="openModal('smartfarm')">
             <h4 style="color:#00f2ff;"><i class="fas fa-seedling"></i> Sistem Manajemen Pertanian</h4>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top:5px;">Digitalisasi pencatatan nutrisi dan perkembangan budidaya tanaman secara terukur.</p>
-        </div>
-        <div class="proyek-item" onclick="openModal('kasir')">
-            <h4 style="color:#00f2ff;"><i class="fas fa-cash-register"></i> Sistem Kasir Ritel</h4>
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top:5px;">Otomasi stok barang dan integrasi laporan keuangan secara real-time.</p>
-        </div>
-    </section>
-
-    <section class="card">
-        <h2><i class="fas fa-comment-dots" style="color: #00ff88;"></i> Ulasan Klien</h2>
-        <div class="ulasan-box">
-            <p>"Sistem kasir buatan Iqbal sangat membantu saya memantau stok barang tanpa perlu hitung manual setiap hari. Sangat akurat dan mudah digunakan!"</p>
-            <p style="margin-top: 10px; font-weight: bold; color: #00f2ff; font-style: normal; font-size: 0.85rem;">— Pemilik Toko (Klien Ritel)</p>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top:5px;">Pencatatan perkembangan budidaya tanaman secara terukur.</p>
         </div>
     </section>
 
@@ -204,13 +188,12 @@
         <h2><i class="fas fa-heart" style="color: #00f2ff;"></i> Hobi & Karakter</h2>
         <div style="margin-top: 15px;">
             <div class="hobi-tag"><i class="fas fa-running"></i> Lari (Peminat 5K & Marathon)</div>
-            <div class="hobi-tag"><i class="fas fa-fish"></i> Budidaya Perikanan</div>
             <div class="hobi-tag"><i class="fas fa-code"></i> Belajar C++ & UI Design</div>
+            <div class="hobi-tag"><i class="fas fa-laptop-code"></i> Eksplorasi Sistem Informasi</div>
         </div>
     </section>
 
     <footer class="card hero">
-        <h2 style="margin-bottom: 15px;">Siap Berkolaborasi?</h2>
         <a href="https://wa.me/628816627097" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Hubungi Iqbal Sekarang</a>
     </footer>
 </div>
@@ -241,10 +224,10 @@
     }
     type();
 
-    /* --- MODAL LOGIC --- */
     const dataProyek = {
-        smartfarm: { title: "Sistem Manajemen Pertanian", masalah: "Manajemen nutrisi dan pemantauan perkembangan tanaman yang masih manual.", solusi: "Sistem digital terpusat untuk memantau data budidaya secara berkala.", hasil: "Optimalisasi perawatan melalui data yang lebih terorganisir." },
-        kasir: { title: "Sistem Kasir Ritel", masalah: "Selisih stok barang dan laporan laba yang sulit dihitung manual.", solusi: "Aplikasi kasir berbasis database untuk update stok real-time.", hasil: "Laporan keuangan 100% akurat dan stok barang terkontrol otomatis." }
+        absensi: { title: "Sistem Absensi Pesantren", masalah: "Pencatatan manual yang lamban.", solusi: "Database terintegrasi.", hasil: "Laporan kehadiran otomatis." },
+        perpus: { title: "Sistem Perpustakaan", masalah: "Pelacakan buku sulit.", solusi: "Aplikasi manajemen database digital.", hasil: "Peminjaman lebih tertib." },
+        smartfarm: { title: "Sistem Pertanian Modern", masalah: "Data budidaya tidak teratur.", solusi: "Pencatatan digital riwayat tanaman.", hasil: "Evaluasi panen lebih akurat." }
     };
     function openModal(id) {
         const p = dataProyek[id];
@@ -252,7 +235,6 @@
         document.getElementById("projectModal").style.display = "block";
     }
     function closeModal() { document.getElementById("projectModal").style.display = "none"; }
-    window.onclick = function(e) { if(e.target == document.getElementById("projectModal")) closeModal(); }
 </script>
 
 </body>
