@@ -8,7 +8,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-// Mencari semua elemen card untuk diberi animasi
 document.querySelectorAll('.card').forEach((el) => {
     observer.observe(el);
 });
