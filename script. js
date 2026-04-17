@@ -1,13 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const text = "Mahasiswa Sistem Informasi";
-    const typewriter = document.getElementById('typewriter');
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            typewriter.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, 100);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+        } else {
+            entry.target.classList.remove('reveal');
         }
-    }
-    type();
-});
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach((el) => observer.observe(el));
