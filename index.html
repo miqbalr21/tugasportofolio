@@ -3,122 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio M. Iqbal Ramadhani</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Portfolio | M. Iqbal Ramadhani</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <div class="container">
-    <header class="card hero reveal">
-        <div class="profile-circle"><img src="profil.jpg" alt="Iqbal"></div>
+    <header class="card hero-section">
+        <div class="profile-frame">
+            <img src="profil.jpg" alt="M. Iqbal Ramadhani">
+        </div>
         <h1>M. Iqbal Ramadhani</h1>
-        <div class="typing-container">I am a <span id="typing" class="typing-text"></span></div>
+        <div class="typing-box">
+            I am a <span id="typing" class="typing-text"></span>
+        </div>
         
-        <div class="stats-grid">
-            <div class="stat-box"><span class="stat-number">7+</span><span class="stat-label">Project IT</span></div>
-            <div class="stat-box"><span class="stat-number">Digital</span><span class="stat-label">Farming</span></div>
-            <div class="stat-box"><span class="stat-number">100%</span><span class="stat-label">Commitment</span></div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-num">7+</span>
+                <span class="stat-label">Project IT</span>
+            </div>
+            <div class="divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">Smart</span>
+                <span class="stat-label">Farming</span>
+            </div>
+            <div class="divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">SI</span>
+                <span class="stat-label">Student</span>
+            </div>
         </div>
     </header>
 
-    <section class="card reveal">
-        <h2><i class="fas fa-user-astronaut" style="color: #00ff88;"></i> Tentang Saya</h2>
-        <p class="text-content">
-            Saya adalah mahasiswa <b>Sistem Informasi di Universitas Komputama Cilacap</b> yang berdedikasi menciptakan solusi digital. Saya menggabungkan logika pemrograman dengan manajemen sistem untuk membantu efisiensi di berbagai sektor.
+    <section class="card">
+        <h2 class="title-icon"><i class="fas fa-user-circle"></i> Tentang Saya</h2>
+        <p class="description">
+            Saya adalah mahasiswa <b>Sistem Informasi di Universitas Komputama Cilacap</b> yang berfokus pada integrasi teknologi digital di sektor agrikultur. Saya berdedikasi untuk menciptakan sistem yang efisien, mulai dari otomasi administrasi hingga solusi <i>Smart Farming</i>.
         </p>
     </section>
 
-    <section class="card motto-card reveal">
-        <i class="fas fa-quote-left" style="color: #00f2ff; font-size: 1.2rem; margin-bottom: 15px; display: block;"></i>
-        <h3 class="motto-text">
+    <section class="card motto-box">
+        <i class="fas fa-quote-left icon-quote"></i>
+        <blockquote class="main-motto">
             "Carilah uang sebanyak mungkin seakan-akan engkau hidup 100 tahun, tetapi berbuatlah baik seakan-akan engkau besok akan mati."
-        </h3>
+        </blockquote>
     </section>
 
-    <section class="card reveal">
-        <div class="vm-grid">
-            <div>
-                <h3 class="vm-title"><i class="fas fa-eye"></i> Visi</h3>
-                <p class="text-small">Menjadi ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna demi kemandirian bangsa.</p>
+    <section class="card">
+        <div class="grid-split">
+            <div class="split-box">
+                <h3 class="sub-title"><i class="fas fa-eye"></i> Visi</h3>
+                <p class="small-text">Menjadi tenaga ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna.</p>
             </div>
-            <div>
-                <h3 class="vm-title"><i class="fas fa-bullseye"></i> Misi</h3>
-                <ul class="vm-list">
-                    <li>Otomasi sistem administrasi & produksi.</li>
-                    <li>Digitalisasi manajemen pertanian modern.</li>
+            <div class="split-box">
+                <h3 class="sub-title"><i class="fas fa-bullseye"></i> Misi</h3>
+                <ul class="list-styled">
+                    <li>Otomasi sistem administrasi digital.</li>
+                    <li>Digitalisasi manajemen pertanian.</li>
                     <li>Solusi IT yang solutif & efisien.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section class="card reveal">
-        <h2><i class="fas fa-graduation-cap" style="color: #00ff88;"></i> Riwayat Pendidikan</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="timeline-date">Pendidikan Tinggi</span>
-                <h4>Universitas Komputama Cilacap</h4>
-                <p>S1 Sistem Informasi — <b>Sedang Berjalan</b></p>
+    <section class="card">
+        <h2 class="title-icon"><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h2>
+        <div class="timeline-wrapper">
+            <div class="timeline-node">
+                <span class="node-year">Sekarang</span>
+                <div class="node-content"><h4>Universitas Komputama Cilacap</h4><p>S1 - Sistem Informasi</p></div>
             </div>
-            <div class="timeline-item">
-                <span class="timeline-date">Pendidikan Menengah Kejuruan</span>
-                <h4>SMK Ma'arif NU 01 Sumpiuh</h4>
+            <div class="timeline-node">
+                <span class="node-year">SMK</span>
+                <div class="node-content"><h4>SMK Ma'arif NU 01 Sumpiuh</h4></div>
             </div>
-            <div class="timeline-item">
-                <span class="timeline-date">Pendidikan Menengah Pertama</span>
-                <h4>MTs Miftahul Huda Rawalo</h4>
+            <div class="timeline-node">
+                <span class="node-year">MTs</span>
+                <div class="node-content"><h4>MTs Miftahul Huda Rawalo</h4></div>
             </div>
-            <div class="timeline-item">
-                <span class="timeline-date">Pendidikan Dasar</span>
-                <h4>MI Ma'arif NU 1 Kaliwedi</h4>
+            <div class="timeline-node">
+                <span class="node-year">MI</span>
+                <div class="node-content"><h4>MI Ma'arif NU 1 Kaliwedi</h4></div>
             </div>
         </div>
     </section>
 
-    <section class="card reveal">
-        <h2><i class="fas fa-code-branch" style="color: #00f2ff;"></i> Proyek Utama</h2>
-        <div class="proyek-item" onclick="openModal('absensi')">
-            <h4><i class="fas fa-user-check"></i> Sistem Absensi Pondok Pesantren</h4>
-            <p class="text-small">Otomasi pencatatan kehadiran santri untuk efisiensi administrasi.</p>
-        </div>
-        <div class="proyek-item" onclick="openModal('perpus')">
-            <h4><i class="fas fa-book"></i> Sistem Peminjaman Perpustakaan</h4>
-            <p class="text-small">Digitalisasi manajemen buku, peminjaman, dan pengembalian.</p>
-        </div>
-        <div class="proyek-item" onclick="openModal('smartfarm')">
-            <h4><i class="fas fa-seedling"></i> Sistem Manajemen Pertanian</h4>
-            <p class="text-small">Pencatatan perkembangan budidaya tanaman secara terukur.</p>
+    <section class="card">
+        <h2 class="title-icon"><i class="fas fa-heart"></i> Hobi & Karakter</h2>
+        <div class="tags-container">
+            <span class="badge">Running (5K & Marathon)</span>
+            <span class="badge">C++ & HTML Enthusiast</span>
+            <span class="badge">UI Design (Figma)</span>
+            <span class="badge">Integrated Farming</span>
         </div>
     </section>
 
-    <section class="card reveal">
-        <h2><i class="fas fa-heart" style="color: #00f2ff;"></i> Hobi & Karakter</h2>
-        <div class="hobi-container">
-            <div class="hobi-tag"><i class="fas fa-running"></i> Lari (Peminat 5K & Marathon)</div>
-            <div class="hobi-tag"><i class="fas fa-code"></i> Belajar C++ & UI Design</div>
-            <div class="hobi-tag"><i class="fas fa-laptop-code"></i> Eksplorasi Sistem Informasi</div>
+    <footer class="card footer-section">
+        <div class="action-buttons">
+            <a href="https://wa.me/628816627097" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:miqbalr25@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Saya</a>
         </div>
-    </section>
-
-    <footer class="card hero reveal">
-        <h2>Mari Ngobrol Lebih Jauh!</h2>
-        <p class="text-small">Punya ide proyek menarik atau ingin berkolaborasi?</p>
-        <div class="contact-buttons">
-            <a href="https://wa.me/628816627097" target="_blank" class="btn-action btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:miqbalr25@gmail.com" class="btn-action btn-email"><i class="fas fa-envelope"></i> miqbalr25@gmail.com</a>
-        </div>
+        <p class="copyright">&copy; 2026 M. Iqbal Ramadhani</p>
     </footer>
-</div>
-
-<div id="projectModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modalBody"></div>
-    </div>
 </div>
 
 <script src="script.js"></script>
