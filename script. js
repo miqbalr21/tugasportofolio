@@ -8,15 +8,11 @@ const spotlight = document.getElementById('spotlight');
 const hoverTargets = document.querySelectorAll('.hover-target, .js-tilt, nav a, .btn, .skill-tag');
 
 document.addEventListener('mousemove', (e) => {
-    // Posisi kursor utama dan pengikut
     cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
     follower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-    
-    // Update posisi cahaya latar belakang
     spotlight.style.background = `radial-gradient(circle 200px at ${e.clientX}px ${e.clientY}px, rgba(0, 210, 255, 0.07), transparent 80%)`;
 });
 
-// Efek hover pada elemen tertentu
 hoverTargets.forEach(target => {
     target.addEventListener('mouseenter', () => {
         follower.style.transform += ' scale(1.5)';
@@ -30,7 +26,7 @@ hoverTargets.forEach(target => {
     });
 });
 
-// 3. Animasi Typewriter (Efek Mengetik)
+// 3. Animasi Typewriter
 const txtElement = document.getElementById("typewriter");
 const words = [
     "Muhammad Iqbal Ramadhani.", 
@@ -55,7 +51,7 @@ function typeLoop() {
     let typeSpeed = isDeleting ? 40 : 100;
 
     if (!isDeleting && charIndex === currentWord.length) {
-        typeSpeed = 2500; // Jeda saat kata sudah lengkap
+        typeSpeed = 2500;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
@@ -66,7 +62,7 @@ function typeLoop() {
 }
 window.onload = typeLoop;
 
-// 4. Background Particles (Animasi titik-titik melayang)
+// 4. Background Particles
 const canvas = document.getElementById('canvas-bg');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -93,7 +89,7 @@ function initPart() { particles = []; for (let i = 0; i < 70; i++) particles.pus
 function animatePart() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animatePart); }
 initPart(); animatePart();
 
-// 5. Animasi Kartu 3D (Hanya untuk Desktop)
+// 5. Animasi Kartu 3D
 const tiltCards = document.querySelectorAll('.js-tilt');
 if (window.innerWidth > 992) {
     tiltCards.forEach(card => {
