@@ -11,10 +11,22 @@ body {
 
 .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
-/* Animasi hanya untuk bagian profil (Hero) agar tetap terlihat hidup */
+/* Animasi Muncul dari Bawah */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi Floating untuk Foto */
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-15px); }
 }
 
 .card {
@@ -24,14 +36,19 @@ body {
     border-radius: 25px;
     padding: 30px;
     margin-bottom: 25px;
-    /* Dibuat langsung muncul (Opacity 1) */
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 0.8s ease-out forwards; /* Efek muncul halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek saat kartu disentuh/hover */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+    border: 1px solid rgba(0, 242, 255, 0.3);
 }
 
 .hero { 
     text-align: center; 
-    animation: floating 4s ease-in-out infinite;
 }
 
 .profile-circle {
@@ -40,7 +57,8 @@ body {
     border-radius: 50%;
     border: 4px solid #00f2ff;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
+    animation: floating 4s ease-in-out infinite; /* Foto bergerak naik turun */
 }
 
 .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
@@ -52,6 +70,12 @@ h2 { color: #00ff88; margin-bottom: 15px; font-size: 1.2rem; display: flex; alig
 .proyek-item {
     background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px;
     border-left: 4px solid #00f2ff;
+    transition: 0.3s;
+}
+
+.proyek-item:hover {
+    background: rgba(0, 242, 255, 0.1);
+    transform: scale(1.03);
 }
 
 .btn-group { display: flex; flex-direction: column; gap: 12px; align-items: center; }
@@ -59,8 +83,15 @@ h2 { color: #00ff88; margin-bottom: 15px; font-size: 1.2rem; display: flex; alig
     width: 100%; max-width: 350px;
     padding: 14px; border-radius: 50px; text-decoration: none; color: white;
     font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: 0.3s;
 }
-.wa { background: #25d366; }
-.email { background: #4285f4; }
+
+.btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.wa { background: #25d366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+.email { background: #4285f4; box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3); }
 
 @media (max-width: 600px) { .proyek-grid { grid-template-columns: 1fr; } }
