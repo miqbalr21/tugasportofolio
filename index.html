@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* SEMUA DESAIN CSS DISATUKAN DI SINI */
+        /* ==============================
+           1. CORE STYLES
+           ============================== */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body { 
@@ -25,13 +27,15 @@
 
         .container { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
+        /* ==============================
+           2. ANIMASI REVEAL
+           ============================== */
         .reveal { 
             opacity: 0; 
             transform: translate3d(0, 50px, -100px) rotateX(-15deg) scale(0.9); 
             transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: transform, opacity;
             transform-style: preserve-3d;
-            backface-visibility: hidden;
         }
 
         .reveal.active { 
@@ -39,6 +43,9 @@
             transform: translate3d(0, 0, 0) rotateX(0deg) scale(1); 
         }
 
+        /* ==============================
+           3. UI COMPONENTS
+           ============================== */
         .card { 
             background: rgba(255, 255, 255, 0.04); 
             backdrop-filter: blur(15px);
@@ -47,7 +54,6 @@
             border-radius: 30px; padding: 28px; 
             margin-bottom: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            transition: border-color 0.3s ease;
         }
 
         .hero-section { text-align: center; }
@@ -65,18 +71,37 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; }
 
+        /* TIMELINE PENDIDIKAN */
+        .timeline { border-left: 3px solid rgba(0, 255, 136, 0.3); padding-left: 20px; margin-left: 5px; }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { 
+            content: ""; position: absolute; left: -29.5px; top: 6px; 
+            width: 15px; height: 15px; background: #00ff88; 
+            border-radius: 50%; border: 3px solid #010409;
+        }
+
+        /* PROYEK GRID */
         .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
         .p-card { 
             background: rgba(255,255,255,0.02); padding: 25px 15px; border-radius: 24px; 
             text-align: center; border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
+            transition: 0.3s; cursor: pointer;
         }
         .p-card:active { transform: scale(0.92); background: rgba(0, 242, 255, 0.1); }
         .p-card i { font-size: 2rem; color: #00ff88; margin-bottom: 12px; display: block; }
+        .p-card span { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; }
 
+        /* TESTIMONI */
+        .testi-item { 
+            background: rgba(0,0,0,0.3); padding: 18px; 
+            border-radius: 20px; margin-bottom: 15px; 
+            border-left: 4px solid #00f2ff; 
+        }
+
+        /* MODAL */
         .modal { 
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
-            width: 100%; height: 100%; background: rgba(1, 4, 9, 0.9); 
+            width: 100%; height: 100%; background: rgba(1, 4, 9, 0.95); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             align-items: center; justify-content: center; opacity: 0; transition: 0.4s;
         }
@@ -89,30 +114,46 @@
         }
         .modal.show .modal-box { transform: translate3d(0, 0, 0) scale(1); }
         .close-btn { position: absolute; right: 20px; top: 15px; cursor: pointer; color: #ff4444; font-size: 30px; }
-        
-        .btn { 
-            flex: 1; padding: 16px; border-radius: 18px; text-decoration: none; 
-            font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; 
-            justify-content: center; gap: 10px; color: #fff !important; background: #16a34a;
-        }
 
-        .staggered { opacity: 0; transform: translateY(20px); transition: 0.4s; }
+        /* BUTTON */
+        .btn { 
+            display: flex; padding: 16px; border-radius: 18px; text-decoration: none; 
+            font-weight: 800; font-size: 0.95rem; align-items: center; 
+            justify-content: center; gap: 10px; color: #fff; background: #16a34a;
+            box-shadow: 0 5px 15px rgba(22,163,74,0.3);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header class="card hero-section reveal active">
-        <div class="profile-frame"><img src="IMG-20251117-WA0082.jpg" alt="M. Iqbal"></div>
+        <div class="profile-frame">
+            <img src="IMG-20251117-WA0082.jpg" alt="M. Iqbal Ramadhani">
+        </div>
         <h1 style="color: #00f2ff;">M. Iqbal Ramadhani</h1>
-        <div style="font-size: 1rem; color: #94a3b8; margin-bottom: 15px;">I am a <span id="typing" class="typing-text"></span></div>
+        <div style="font-size: 1rem; color: #94a3b8; margin-top: 10px;">I am a <span id="typing" class="typing-text"></span></div>
     </header>
 
     <section class="card reveal">
         <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-user-circle"></i> Tentang Saya</h2>
         <p style="font-size:0.95rem; line-height:1.6; color:#cbd5e1;">
-            Mahasiswa Sistem Informasi di Universitas Komputama Cilacap. Fokus pada pengembangan solusi digital cerdas untuk otomasi bisnis dan agrikultur modern.
+            Mahasiswa Sistem Informasi di Universitas Komputama Cilacap. Saya fokus pada pengembangan solusi digital cerdas untuk otomasi bisnis dan agrikultur modern.
         </p>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4 style="font-size:1rem; font-weight: 700;">Universitas Komputama Cilacap</h4>
+                <p style="font-size:0.85rem; color:#94a3b8;">S1 Sistem Informasi (Aktif)</p>
+            </div>
+            <div class="timeline-item">
+                <h4 style="font-size:1rem; font-weight: 700;">SMK Ma'arif NU 01 Sumpiuh</h4>
+                <p style="font-size:0.85rem; color:#94a3b8;">Teknik & Bisnis Sepeda Motor</p>
+            </div>
+        </div>
     </section>
 
     <section class="card reveal">
@@ -125,9 +166,28 @@
         </div>
     </section>
 
-    <footer class="card reveal" style="text-align: center; margin-bottom: 40px;">
-        <h2 style="color:#00f2ff; margin-bottom: 15px;">Mari Berkolaborasi!</h2>
-        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-running"></i> Hobi & Aktivitas</h2>
+        <p style="font-size:0.95rem; line-height:1.6; color:#cbd5e1;">
+            Pelari marathon (5K Runner) dan aktif mengelola budidaya cabai rawit organik di polibag dengan sistem nutrisi mandiri.
+        </p>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;"><i class="fas fa-star"></i> Apa Kata Mereka?</h2>
+        <div class="testi-item">
+            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Sistem kasirnya sangat membantu toko saya, stok jadi terpantau otomatis dan akurat."</p>
+            <p style="font-size:0.85rem; font-weight:700; color:#00ff88; margin-top:8px;">- Toko Jaya</p>
+        </div>
+        <div class="testi-item">
+            <p style="font-size:0.9rem; color:#cbd5e1; font-style: italic;">"Rekap absensi jadi jauh lebih cepat dan transparan."</p>
+            <p style="font-size:0.85rem; font-weight:700; color:#00ff88; margin-top:8px;">- Pesantren Rawalo</p>
+        </div>
+    </section>
+
+    <footer class="card reveal" style="text-align: center;">
+        <h2 style="color:#00f2ff; margin-bottom: 15px; font-size: 1.2rem;">Mari Berkolaborasi!</h2>
+        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
     </footer>
 </div>
 
@@ -139,10 +199,8 @@
 </div>
 
 <script>
-    /* SEMUA LOGIKA JAVASCRIPT DISATUKAN DI SINI */
-
-    // 1. ANIMASI KETIK
-    const words = ["Information Systems Student", "Young Agripreneur", "System Developer", "Runner"];
+    // 1. TYPING ANIMATION
+    const words = ["SI Student", "Developer", "Agripreneur", "Runner"];
     let i=0, j=0, isDel=false;
     function type(){
         let cur=words[i], disp=isDel?cur.substring(0,j--):cur.substring(0,j++);
@@ -152,7 +210,7 @@
         else setTimeout(type,isDel?60:130);
     }
 
-    // 2. SCROLL REVEAL (MUNCUL SAAT DI-SCROLL)
+    // 2. SCROLL REVEAL
     function reveal(){
         document.querySelectorAll(".reveal:not(.active)").forEach(r => {
             if(r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active");
@@ -160,36 +218,31 @@
     }
     window.addEventListener("scroll", reveal);
 
-    // 3. DATA MODAL PROYEK
+    // 3. PROJECT DATA
     const projectData = {
-        tani: { t: "Smart Tani", lb: "Kesulitan jadwal siram cabai.", sl: "Otomasi ESP32 via smartphone.", mf: "Hasil panen naik 30%." },
-        absensi: { t: "Sistem Absensi", lb: "Absensi kertas rawan hilang.", sl: "Aplikasi web real-time cloud.", mf: "Data aman & rekap instan." },
-        kasir: { t: "Sistem Kasir", lb: "Stok barang sering selisih.", sl: "Software POS otomatis.", mf: "Keuangan terpantau rapi." },
-        perpus: { t: "E-Perpus", lb: "Buku sering telat kembali.", sl: "Database inventaris digital.", mf: "Manajemen buku lebih efisien." }
+        tani: { t: "Smart Tani", lb: "Petani sering kesulitan mengatur jadwal pemupukan.", sl: "Sistem otomasi nutrisi cair via smartphone.", mf: "Produktivitas naik & risiko gagal panen berkurang." },
+        absensi: { t: "Sistem Absensi", lb: "Pencatatan manual kertas rawan manipulasi.", sl: "Aplikasi cloud untuk pencatatan real-time.", mf: "Data akurat 100% & rekap instan." },
+        kasir: { t: "Sistem Kasir", lb: "UMKM sering mengalami selisih stok.", sl: "Software POS otomatis stok & laporan.", mf: "Manajemen rapi & audit lebih mudah." },
+        perpus: { t: "E-Perpus", lb: "Buku sering hilang & telat kembali.", sl: "Database inventaris digital.", mf: "Aset terjaga & manajemen efisien." }
     };
 
     function openModal(id){
         const d = projectData[id];
         document.getElementById("modalContent").innerHTML = `
             <h3 style="color:#00f2ff; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">${d.t}</h3>
-            <div class="staggered" style="margin-bottom:10px;"><strong>Latar Belakang:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.lb}</p></div>
-            <div class="staggered" style="margin-bottom:10px;"><strong>Solusi:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.sl}</p></div>
-            <div class="staggered"><strong>Manfaat:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.mf}</p></div>
+            <div style="margin-bottom:12px;"><strong>Latar Belakang:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.lb}</p></div>
+            <div style="margin-bottom:12px;"><strong>Solusi:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.sl}</p></div>
+            <div><strong>Manfaat:</strong> <p style="font-size:0.85rem; color:#ccc;">${d.mf}</p></div>
         `;
         const m = document.getElementById("projectModal");
         m.style.display = "flex";
-        setTimeout(() => {
-            m.classList.add('show');
-            m.querySelectorAll('.staggered').forEach((el, idx) => {
-                setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, idx * 100);
-            });
-        }, 10);
+        setTimeout(() => m.classList.add('show'), 10);
     }
 
     function closeModal(){
         const m = document.getElementById("projectModal");
         m.classList.remove('show');
-        setTimeout(() => { m.style.display = "none"; }, 400);
+        setTimeout(() => m.style.display = "none", 400);
     }
 
     window.onclick = (e) => { if (e.target == document.getElementById("projectModal")) closeModal(); }
