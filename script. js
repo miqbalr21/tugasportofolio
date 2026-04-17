@@ -1,8 +1,8 @@
-// Memastikan semua kartu terlihat saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
+    
+    cards.forEach((card, index) => {
+        // Memberikan delay muncul yang berbeda untuk setiap kartu
+        card.style.animationDelay = `${index * 0.2}s`;
     });
 });
