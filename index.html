@@ -1,98 +1,89 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Muhammad Iqbal Ramadhani | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio M. Iqbal Ramadhani</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
-    <div id="spotlight"></div>
-    <canvas id="canvas-bg"></canvas>
-    <div class="bg-gradient"></div>
-
-    <nav>
-        <div class="container nav-content">
-            <a href="#" class="logo">IQBAL<span>.RAMADHANI</span></a>
-            <a href="https://wa.me/628816627097" target="_blank" class="btn btn-white" style="padding: 10px 22px; font-size: 0.8rem;">Chat Saya</a>
+<div class="container">
+    <header class="card hero reveal">
+        <div class="profile-circle">
+            <img src="https://via.placeholder.com/150" alt="Iqbal">
         </div>
-    </nav>
+        <h1>M. Iqbal Ramadhani</h1>
+        <p style="color: #94a3b8; margin-top: 5px;">Sistem Informasi | Universitas Komputama</p>
+    </header>
 
-    <main class="container">
-        <section class="hero">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span class="gradient-text typing-text" id="typewriter"></span>
-                    </h1>
-                    <p class="hero-desc">
-                        Mahasiswa Sistem Informasi Univ. Komputama Cilacap yang berdedikasi menciptakan solusi digital cerdas.
-                    </p>
-                    <a href="#about" class="btn btn-white">Kenali Saya <i class="fas fa-arrow-down"></i></a>
-                </div>
-                <div class="hero-image-area">
-                    <div class="photo-frame">
-                        <img src="IMG-20251117-WA0082.jpg" alt="Muhammad Iqbal Ramadhani" onerror="this.src='https://via.placeholder.com/400x500/0f172a/ffffff?text=IQBAL'">
-                    </div>
-                    <h3 class="hero-name">Muhammad Iqbal Ramadhani</h3>
-                </div>
+    <section class="card">
+        <h2><i class="fas fa-user"></i> Tentang Saya</h2>
+        <p style="color: #cbd5e1; line-height: 1.6;">
+            Saya adalah mahasiswa Sistem Informasi yang memiliki semangat tinggi dalam merintis bisnis di bidang teknologi dan pertanian. Fokus saya adalah menciptakan lapangan kerja melalui inovasi digital.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        <div style="margin-bottom: 12px;">
+            <p><strong>Universitas Komputama Cilacap</strong></p>
+            <p style="font-size: 0.85rem; color: #00f2ff;">S1 Sistem Informasi — Aktif</p>
+        </div>
+        <div>
+            <p><strong>SMK Ma'arif NU 1 Sumpiuh</strong></p>
+            <p style="font-size: 0.85rem; color: #94a3b8;">Alumni Pendidikan Menengah</p>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2><i class="fas fa-project-diagram"></i> Proyek</h2>
+        <div class="proyek-grid">
+            <div class="proyek-item">
+                <h4>Smart Farming</h4>
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Tempat penyimpanan catatan harian budidaya dan perkembangan tanaman.</p>
             </div>
-        </section>
-
-        <section id="about" class="section-padding">
-            <h2 class="section-title">Tentang Saya</h2>
-            <div class="card">
-                <p class="about-text">
-                    Saya adalah mahasiswa Sistem Informasi yang memiliki minat besar dalam integrasi teknologi, khususnya di bidang Agri-Tech dan sistem informasi berkelanjutan.
-                </p>
+            <div class="proyek-item">
+                <h4>Kasir Digital</h4>
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Manajemen transaksi retail agar stok terpantau rapi.</p>
             </div>
-        </section>
-
-        <section class="section-padding">
-            <h2 class="section-title">Keahlian Utama</h2>
-            <div class="card skill-container">
-                <div class="skill-tag">Analisis Sistem</div>
-                <div class="skill-tag">Logic Programming (C++)</div>
-                <div class="skill-tag">Web Development</div>
-                <div class="skill-tag">Agri-Tech Solutions</div>
+            <div class="proyek-item">
+                <h4>Absensi Pondok</h4>
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Rekap kehadiran digital berbasis web untuk pengurus.</p>
             </div>
-        </section>
-
-        <section id="projects" class="section-padding">
-            <h2 class="section-title">Daftar Proyek</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <i class="fas fa-seedling proj-icon"></i>
-                    <h4 class="proj-title">Smart Farming 300+</h4>
-                    <p class="proj-desc">Digitalisasi manajemen budidaya tanaman secara presisi.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-book proj-icon"></i>
-                    <h4 class="proj-title">E-Library System</h4>
-                    <p class="proj-desc">Sistem manajemen sirkulasi buku digital.</p>
-                </div>
+            <div class="proyek-item">
+                <h4>Sistem Perpus</h4>
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 5px;">Database efisien untuk manajemen peminjaman buku.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section-padding" style="padding-bottom: 120px;">
-            <div class="card contact-card">
-                <h2 style="margin-bottom: 15px;">Mari Berkolaborasi</h2>
-                <div class="contact-btns">
-                    <a href="https://wa.me/628816627097" target="_blank" class="btn btn-wa">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="card">
+        <h2><i class="fas fa-star"></i> Ulasan Klien</h2>
+        <div class="review-item">
+            <p style="font-style: italic; font-size: 0.85rem;">"Sistem kasirnya sangat membantu pencatatan keuangan toko saya jadi rapi."</p>
+            <p style="color: #00f2ff; font-weight: bold; font-size: 0.75rem; margin-top: 5px;">— Ibu Sri (Toko Jaya)</p>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <footer class="card" style="text-align: center;">
+        <h2>Mari Terhubung</h2>
+        <div class="btn-group">
+            <a href="https://wa.me/628816627097" target="_blank" class="btn wa">
+                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+            </a>
+            <a href="mailto:miqbalr25@gmail.com" class="btn email">
+                <i class="fas fa-envelope"></i> Kirim Email
+            </a>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
