@@ -23,6 +23,7 @@
 
         .container { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
+        /* Animasi Reveal Berulang (Scroll-driven) */
         .reveal { 
             opacity: 0; 
             transform: translateY(50px) scale(0.9);
@@ -45,6 +46,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
+        /* Hero & Profil */
         .hero-section { text-align: center; }
         .profile-frame { 
             width: 105px; height: 105px; margin: 0 auto 18px; 
@@ -60,30 +62,47 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; min-height: 1.2em; }
 
+        /* Info Blocks */
         .info-block { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
         .info-block:last-child { border-bottom: none; }
         .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
 
+        /* Timeline Pendidikan */
         .timeline { border-left: 3px solid #00ff88; padding-left: 20px; }
         .timeline-item { position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: ""; position: absolute; left: -29.5px; top: 6px; width: 15px; height: 15px; background: #00ff88; border-radius: 50%; border: 3px solid #010409; }
 
+        /* Project Grid & Ikon Daun Khusus */
         .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .p-card { background: rgba(255,255,255,0.02); padding: 20px 10px; border-radius: 24px; text-align: center; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: 0.3s; }
-        .p-card:active { transform: scale(0.9); background: rgba(0,242,255,0.1); }
+        .p-card:active { transform: scale(0.9); background: rgba(0,242,255,0.15); }
         .p-card i { font-size: 1.8rem; color: #00ff88; margin-bottom: 10px; display: block; }
+        
+        /* Efek Pulse buat Ikon Daun */
+        .p-card i.fa-leaf { 
+            filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4)); 
+            animation: leafPulse 3s ease-in-out infinite; 
+        }
+        @keyframes leafPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
+        /* Statistik */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.03); padding: 15px 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-number { display: block; font-size: 1.4rem; font-weight: 800; color: #00ff88; }
+        .stat-label { font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+
+        /* Modal */
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(1, 4, 9, 0.95); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
         .modal.show { display: flex; }
         .modal-box { background: #0d1117; padding: 30px; border-radius: 30px; width: 100%; max-width: 400px; border: 1px solid #00f2ff; position: relative; animation: modalIn 0.4s ease; }
-        @keyframes modalIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .close-btn { position: absolute; right: 20px; top: 15px; cursor: pointer; color: #ff4444; font-size: 28px; font-weight: bold; }
         .modal-body h3 { color: #00f2ff; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
         .modal-body .section-title { color: #00ff88; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; margin-top: 15px; display: block; }
         .modal-body p { font-size: 0.9rem; margin-top: 5px; color: #cbd5e1; line-height: 1.4; }
 
-        .btn { display: flex; padding: 16px; border-radius: 18px; text-decoration: none; font-weight: 800; justify-content: center; gap: 10px; color: #fff; background: #16a34a; }
+        /* Tombol WA */
+        .btn { display: flex; padding: 16px; border-radius: 18px; text-decoration: none; font-weight: 800; justify-content: center; gap: 10px; color: #fff; background: #16a34a; box-shadow: 0 5px 15px rgba(22,163,74,0.3); }
     </style>
 </head>
 <body>
@@ -98,7 +117,7 @@
     <section class="card reveal">
         <div class="info-block">
             <h3><i class="fas fa-user-circle"></i> Tentang Saya</h3>
-            <p>Mahasiswa SI UNIKMA dengan dasar TKR. Berfokus pada integrasi TI untuk modernisasi sektor pertanian lokal.</p>
+            <p>Mahasiswa SI UNIKMA dengan dasar TKR. Berfokus pada pengembangan sistem manajemen data untuk sektor pertanian lokal.</p>
         </div>
         <div class="info-block">
             <h3><i class="fas fa-quote-left"></i> Moto Hidup</h3>
@@ -124,11 +143,11 @@
         <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:15px;"><i class="fas fa-star"></i> Hobi & Aktivitas</h2>
         <div class="info-block">
             <h3><i class="fas fa-leaf"></i> Budidaya Cabai Organik</h3>
-            <p>Penanaman cabai rawit sistem polybag dengan pupuk organik (Maggot BSF & pupuk kandang).</p>
+            <p>Fokus pada penanaman cabai rawit sistem polybag menggunakan pupuk organik (Maggot BSF & pupuk kandang).</p>
         </div>
         <div class="info-block">
             <h3><i class="fas fa-running"></i> Olahraga Lari</h3>
-            <p>Aktif lari rutin (5K) dan memantau progres melalui aplikasi Strava.</p>
+            <p>Aktif lari rutin (5K) dan memantau perkembangan fisik melalui aplikasi Strava.</p>
         </div>
     </section>
 
@@ -143,6 +162,15 @@
     </section>
 
     <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-chart-bar"></i> Statistik Kerja</h2>
+        <div class="stats-grid">
+            <div class="stat-item"><span class="stat-number">12+</span><span class="stat-label">Total Proyek</span></div>
+            <div class="stat-item"><span class="stat-number">9</span><span class="stat-label">Selesai</span></div>
+            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Kepuasan</span></div>
+        </div>
+    </section>
+
+    <section class="card reveal">
         <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;"><i class="fas fa-comment-dots"></i> Ulasan</h2>
         <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; border-left: 3px solid #00ff88;">
             <p style="font-size:0.85rem; font-style: italic;">"Sistem kasirnya sangat akurat, stok barang jadi mudah dipantau."</p>
@@ -151,7 +179,7 @@
     </section>
 
     <footer class="card reveal" style="text-align: center;">
-        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Saya</a>
+        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Hubungi WhatsApp</a>
     </footer>
 </div>
 
@@ -163,7 +191,8 @@
 </div>
 
 <script>
-    const words = ["Mahasiswa SI", "Fokus Teknologi & Pertanian", "Pelari"];
+    // 1. Efek Mengetik
+    const words = ["Mahasiswa SI", "Fokus Manajemen Pertanian", "Pelari"];
     let i=0, j=0, isDel=false;
     function type(){
         let cur=words[i], disp=isDel?cur.substring(0,j--):cur.substring(0,j++);
@@ -173,23 +202,30 @@
         else setTimeout(type,isDel?50:100);
     }
 
+    // 2. Scroll Reveal Berulang (Loop)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             } else {
-                entry.target.classList.remove('active');
+                entry.target.classList.remove('active'); // Biar animasinya muncul terus saat scroll naik-turun
             }
         });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // 3. Data Proyek (Tani Cerdas fokus Manajemen Data)
     const projectData = {
-        tani: { t: "Sistem Tani Cerdas", lb: "Pemberian nutrisi tanaman manual tidak terukur.", sl: "Otomasi nutrisi cair berbasis IoT (ESP32).", mf: "Hasil panen stabil dan efisien tenaga." },
-        absensi: { t: "Absensi Digital", lb: "Pencatatan manual rawan manipulasi data.", sl: "Sistem Cloud dengan verifikasi digital.", mf: "Data aman dan laporan otomatis rapi." },
-        kasir: { t: "Sistem Kasir", lb: "Kesulitan memantau stok dan laba harian.", sl: "Software POS manajemen inventaris.", mf: "Laporan keuangan akurat & real-time." },
-        perpus: { t: "E-Perpus", lb: "Sirkulasi buku tidak tercatat dengan baik.", sl: "Sistem peminjaman buku digital.", mf: "Administrasi tertib & meminimalisir kehilangan." }
+        tani: { 
+            t: "Sistem Tani Cerdas", 
+            lb: "Pencatatan fase tumbuh tanaman dan jadwal nutrisi manual menyulitkan evaluasi keberhasilan panen.", 
+            sl: "Aplikasi manajemen database pertanian untuk monitoring perkembangan harian dan stok sarana produksi kebun.", 
+            mf: "Data kebun terdokumentasi akurat, memudahkan analisa untuk hasil panen yang lebih maksimal." 
+        },
+        absensi: { t: "Absensi Digital", lb: "Pencatatan manual rawan manipulasi.", sl: "Sistem absensi Cloud dengan verifikasi digital.", mf: "Data kehadiran aman dan laporan otomatis rapi." },
+        kasir: { t: "Sistem Kasir", lb: "UMKM kesulitan pantau stok dan laba harian.", sl: "Software Point of Sale (POS) manajemen inventaris.", mf: "Laporan keuangan akurat & real-time." },
+        perpus: { t: "E-Perpus", lb: "Sirkulasi buku manual sulit dilacak.", sl: "Sistem manajemen peminjaman buku digital.", mf: "Administrasi tertib & meminimalisir kehilangan buku." }
     };
 
     function openModal(id){
@@ -197,11 +233,12 @@
         document.getElementById("modalContent").innerHTML = `
             <h3>${d.t}</h3>
             <span class="section-title">Latar Belakang</span><p>${d.lb}</p>
-            <span class="section-title">Solusi</span><p>${d.sl}</p>
-            <span class="section-title">Manfaat</span><p>${d.mf}</p>
+            <span class="section-title">Solusi Sistem</span><p>${d.sl}</p>
+            <span class="section-title">Manfaat Sistem</span><p>${d.mf}</p>
         `;
         document.getElementById("projectModal").classList.add("show");
     }
+    
     function closeModal(){ document.getElementById("projectModal").classList.remove("show"); }
 
     document.addEventListener("DOMContentLoaded", type);
