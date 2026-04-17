@@ -3,78 +3,79 @@
 body {
     background: #020617;
     color: #fff;
-    background: radial-gradient(circle at top right, #064e3b, #020617 80%);
+    background: radial-gradient(circle at top right, #064e3b, #020617 70%);
     background-attachment: fixed;
     padding: 20px;
-    line-height: 1.6;
 }
 
 .container { max-width: 500px; margin: 0 auto; }
 
+/* Estetika Kartu Transparan (Glassmorphism) */
 .card {
     background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    border-radius: 20px;
     padding: 25px;
     margin-bottom: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 /* Header & Profile */
 .hero-section { text-align: center; }
-.profile-frame { 
-    width: 110px; height: 110px; margin: 0 auto 15px; 
-    border-radius: 50%; border: 3px solid #00f2ff; 
-    padding: 5px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-}
-.profile-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.profile-frame { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 2px solid #00f2ff; box-shadow: 0 0 15px rgba(0,242,255,0.4); overflow: hidden; }
+.profile-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-h1 { font-size: 1.8rem; letter-spacing: -1px; background: linear-gradient(to right, #00f2ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.typing-box { font-size: 0.9rem; color: #94a3b8; margin-top: 5px; min-height: 20px; }
+h1 { font-size: 1.8rem; margin-bottom: 5px; color: #00f2ff; background: linear-gradient(to right, #00f2ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.typing-box { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; min-height: 20px; }
 
-/* Stats Grid */
-.stats-container { display: flex; justify-content: space-around; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 20px; margin-top: 20px; }
+/* Stats - Dibikin Menyamping & Rapi */
+.stats-container { display: flex; justify-content: space-around; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px; margin-top: 20px; }
 .stat-item { text-align: center; }
-.stat-num { display: block; font-weight: 800; color: #00f2ff; font-size: 1.2rem; }
-.stat-label { font-size: 0.65rem; color: #64748b; text-transform: uppercase; font-weight: 700; }
+.stat-num { display: block; font-weight: 800; color: #00f2ff; font-size: 1.1rem; }
+.stat-label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; font-weight: 700; }
 
-/* Visi Misi */
-.vm-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-.vm-title { color: #00ff88; font-size: 1.1rem; margin-bottom: 8px; }
-.list-styled { list-style: none; font-size: 0.85rem; }
-.list-styled li::before { content: "▹"; color: #00ff88; margin-right: 8px; }
+/* Typography & Icons */
+.title-icon { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #00ff88; }
+.description { font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; }
 
-/* Timeline Pendidikan */
-.tl-node { border-left: 2px solid #00f2ff; padding-left: 15px; margin-bottom: 15px; position: relative; }
-.tl-node::before { content: ""; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: #00f2ff; border-radius: 50%; }
-.tl-tag { font-size: 0.65rem; background: #00f2ff; color: #020617; padding: 2px 8px; border-radius: 5px; font-weight: 800; }
+.motto-box { text-align: center; border-left: 4px solid #00f2ff; }
+.icon-quote { color: #00f2ff; font-size: 1.5rem; margin-bottom: 10px; }
+.main-motto { font-style: italic; font-size: 1rem; color: #cbd5e1; font-weight: 400; }
 
-/* Proyek Cards */
-.project-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-.project-card { 
-    background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; 
-    border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.3s;
-}
-.project-card:hover { border-color: #00f2ff; transform: scale(1.02); }
-.project-card h4 { color: #00f2ff; margin-bottom: 5px; }
-.project-card span { font-size: 0.75rem; color: #64748b; }
+/* Visi & Misi Grid */
+.grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.split-box { padding: 10px; }
+.sub-title { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; }
+.small-text { font-size: 0.8rem; color: #cbd5e1; line-height: 1.6; }
+.list-minimal { list-style: none; font-size: 0.8rem; }
+.list-minimal li::before { content: "•"; color: #00ff88; margin-right: 8px; }
 
-/* Badges Hobi */
-.tags-container { display: flex; flex-wrap: wrap; gap: 8px; }
+/* PENDIDIKAN (Sangat Terstruktur) */
+.timeline-wrapper { border-left: 2px solid #00f2ff; padding-left: 15px; }
+.timeline-node { position: relative; margin-bottom: 15px; }
+.timeline-node::before { content: ""; position: absolute; left: -21px; top: 0; width: 10px; height: 10px; background: #00f2ff; border-radius: 50%; }
+.tl-year { font-size: 0.7rem; color: #020617; background: #00f2ff; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+.tl-content { padding-top: 5px; }
+.tl-content h4 { font-size: 0.9rem; color: #f8fafc; }
+.tl-content p { font-size: 0.75rem; color: #94a3b8; }
+
+/* Project Grid & Buttons */
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.project-card { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+.project-card h4 { color: #00f2ff; font-size: 0.9rem; margin-bottom: 2px; }
+.project-card p { font-size: 0.7rem; color: #94a3b8; }
+
+.badges-container { display: flex; flex-wrap: wrap; gap: 8px; }
 .badge { background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.2); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; color: #00f2ff; }
 
-/* Buttons */
 .action-buttons { display: flex; gap: 10px; }
-.btn { flex: 1; padding: 14px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 800; font-size: 0.9rem; transition: 0.3s; }
-.btn-wa { background: #25d366; color: #fff; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-.btn-mail { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+.btn { flex: 1; padding: 12px; border-radius: 12px; text-decoration: none; text-align: center; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+.btn-wa { background: #25d366; color: #fff; }
+.btn-mail { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
 
 /* Modal */
-.modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
-.modal-content { background: #0f172a; margin: 20% auto; padding: 25px; border-radius: 20px; width: 85%; max-width: 400px; border: 1px solid #00f2ff; }
-.close-btn { float: right; font-size: 24px; cursor: pointer; color: #ff4444; }
-
-.motto-box { text-align: center; background: linear-gradient(135deg, rgba(0,242,255,0.05), rgba(0,255,136,0.05)); }
-.icon-quote { color: #00f2ff; font-size: 1.5rem; margin-bottom: 10px; }
-.main-motto { font-style: italic; font-size: 1rem; color: #cbd5e1; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+.modal-box { background: #0f172a; margin: 20% auto; padding: 25px; border-radius: 15px; width: 85%; max-width: 400px; }
+.close-btn { float: right; font-size: 24px; cursor: pointer; color: red; }
