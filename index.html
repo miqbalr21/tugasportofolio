@@ -23,7 +23,6 @@
 
         .container { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
-        /* Animasi Muncul Saat Scroll */
         .reveal { 
             opacity: 0; 
             transform: translateY(30px); 
@@ -46,11 +45,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Animasi Hover pada Kartu */
         .card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(0, 242, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 255, 0.4);
         }
 
         .hero-section { text-align: center; }
@@ -68,22 +65,12 @@
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
         .typing-text { color: #00ff88; font-weight: 700; border-right: 2px solid #00ff88; }
 
-        /* Animasi khusus list di dalam kartu */
+        /* Animasi Isi Kartu */
         .info-block { 
-            margin-bottom: 25px; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            padding-bottom: 15px;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.5s ease;
+            margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding-bottom: 15px; opacity: 0; transform: translateX(-20px); transition: 0.5s ease forwards;
         }
-
-        .reveal.active .info-block {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Delay animasi tiap poin agar muncul bergantian */
+        .reveal.active .info-block { opacity: 1; transform: translateX(0); }
         .reveal.active .info-block:nth-child(1) { transition-delay: 0.2s; }
         .reveal.active .info-block:nth-child(2) { transition-delay: 0.4s; }
         .reveal.active .info-block:nth-child(3) { transition-delay: 0.6s; }
@@ -93,14 +80,29 @@
         .info-block h3 { color: #00f2ff; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .info-block p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
 
-        .btn { 
-            display: flex; padding: 16px; border-radius: 18px; text-decoration: none; 
-            font-weight: 800; font-size: 0.95rem; align-items: center; 
-            justify-content: center; gap: 10px; color: #fff; background: #16a34a;
-            box-shadow: 0 5px 15px rgba(22,163,74,0.3);
-            transition: 0.3s;
-        }
-        .btn:hover { transform: scale(1.05); background: #15803d; }
+        /* Statistik */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 5px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.03); padding: 15px 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-number { display: block; font-size: 1.4rem; font-weight: 800; color: #00ff88; }
+        .stat-label { font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+
+        /* Timeline & Proyek */
+        .timeline { border-left: 3px solid rgba(0, 255, 136, 0.3); padding-left: 20px; }
+        .timeline-item { position: relative; margin-bottom: 20px; }
+        .timeline-item::before { content: ""; position: absolute; left: -29.5px; top: 6px; width: 15px; height: 15px; background: #00ff88; border-radius: 50%; border: 3px solid #010409; }
+        
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .p-card { background: rgba(255,255,255,0.02); padding: 20px 10px; border-radius: 24px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; }
+        .p-card:active { transform: scale(0.95); }
+        .p-card i { font-size: 1.8rem; color: #00ff88; margin-bottom: 10px; display: block; }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(1, 4, 9, 0.95); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
+        .modal.show { display: flex; }
+        .modal-box { background: #0d1117; padding: 30px; border-radius: 30px; width: 90%; max-width: 400px; border: 1px solid #00f2ff; position: relative; }
+        .close-btn { position: absolute; right: 20px; top: 15px; cursor: pointer; color: #ff4444; font-size: 25px; }
+
+        .btn { display: flex; padding: 16px; border-radius: 18px; text-decoration: none; font-weight: 800; font-size: 0.95rem; align-items: center; justify-content: center; gap: 10px; color: #fff; background: #16a34a; box-shadow: 0 5px 15px rgba(22,163,74,0.3); }
     </style>
 </head>
 <body>
@@ -108,7 +110,7 @@
 <div class="container">
     <header class="card hero-section reveal active">
         <div class="profile-frame">
-            <img src="IMG-20251117-WA0082.jpg" alt="Muhammad Ngadifudin">
+            <img src="IMG-20251117-WA0082.jpg" alt="M. Iqbal Ramadhani">
         </div>
         <h1 style="color: #00f2ff;">M. Iqbal Ramadhani</h1>
         <div style="font-size: 1rem; color: #94a3b8; margin-top: 10px;">Saya adalah seorang <span id="typing" class="typing-text"></span></div>
@@ -117,32 +119,83 @@
     <section class="card reveal">
         <div class="info-block">
             <h3><i class="fas fa-user-circle"></i> Tentang Saya</h3>
-            <p>Mahasiswa Sistem Informasi di Universitas Komputama Cilacap yang memadukan logika teknik otomotif dengan inovasi digital untuk mengembangkan ekosistem <strong>Smart Farming</strong>.</p>
+            <p>Mahasiswa Sistem Informasi di UNIKMA yang menggabungkan dasar teknis otomotif (TKR) dengan solusi digital untuk membangun ekosistem <strong>Pertanian Cerdas</strong>.</p>
         </div>
-
         <div class="info-block">
             <h3><i class="fas fa-eye"></i> Visi</h3>
-            <p>Menjadi ahli sistem informasi yang berdedikasi dalam memajukan sektor pertanian melalui implementasi solusi <strong>Smart Farming</strong> yang inovatif dan efisien.</p>
+            <p>Menjadi ahli sistem informasi yang berdedikasi memajukan sektor tani melalui inovasi <strong>Smart Farming</strong>.</p>
         </div>
-
         <div class="info-block">
             <h3><i class="fas fa-bullseye"></i> Misi</h3>
-            <p>Membangun otomasi sistem manajemen data yang praktis guna mendukung kemajuan ekonomi petani lokal dan efisiensi pengelolaan peternakan.</p>
+            <p>Mengembangkan otomasi sistem yang praktis untuk efisiensi ekonomi petani dan pengelolaan peternakan.</p>
         </div>
-
         <div class="info-block">
             <h3><i class="fas fa-quote-left"></i> Moto Hidup</h3>
-            <p style="color: #00ff88; font-style: italic; font-weight: 600;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
+            <p style="color: #00ff88; font-style: italic;">"Carilah uang seakan hidup 100 tahun, berbuat baiklah seakan besok engkau mati."</p>
+        </div>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-chart-line"></i> Statistik Kerja</h2>
+        <div class="stats-grid">
+            <div class="stat-item"><span class="stat-number">12+</span><span class="stat-label">Proyek</span></div>
+            <div class="stat-item"><span class="stat-number">9</span><span class="stat-label">Selesai</span></div>
+            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Puas</span></div>
+        </div>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4 style="font-size:1rem;">Universitas Komputama Cilacap</h4>
+                <p style="font-size:0.85rem; color:#94a3b8;">S1 Sistem Informasi (Aktif)</p>
+            </div>
+            <div class="timeline-item">
+                <h4 style="font-size:1rem;">SMK Ma'arif NU 01 Sumpiuh</h4>
+                <p style="font-size:0.85rem; color:#94a3b8;">Teknik Kendaraan Ringan (TKR)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:20px;"><i class="fas fa-code"></i> Proyek Unggulan</h2>
+        <div class="project-grid">
+            <div class="p-card" onclick="openModal('tani')"><i class="fas fa-leaf"></i><span>Tani Cerdas</span></div>
+            <div class="p-card" onclick="openModal('absensi')"><i class="fas fa-fingerprint"></i><span>Absensi</span></div>
+            <div class="p-card" onclick="openModal('kasir')"><i class="fas fa-wallet"></i><span>Sistem Kasir</span></div>
+            <div class="p-card" onclick="openModal('perpus')"><i class="fas fa-book-open"></i><span>E-Perpus</span></div>
+        </div>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:12px;"><i class="fas fa-running"></i> Hobi & Aktivitas</h2>
+        <p style="font-size:0.9rem; color:#cbd5e1; line-height:1.6;">
+            Pelari 5K dan aktif dalam budidaya cabai rawit organik dengan sistem nutrisi mandiri serta manajemen ternak.
+        </p>
+    </section>
+
+    <section class="card reveal">
+        <h2 style="color:#00f2ff; font-size:1.1rem; margin-bottom:18px;"><i class="fas fa-star"></i> Ulasan</h2>
+        <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 3px solid #00f2ff;">
+            <p style="font-size:0.85rem; font-style: italic;">"Sistem kasirnya akurat, stok barang jadi gampang dipantau."</p>
+            <p style="font-size:0.8rem; color:#00ff88; margin-top:5px;">- Toko Jaya</p>
         </div>
     </section>
 
     <footer class="card reveal" style="text-align: center;">
-        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Hubungi via WhatsApp</a>
+        <a href="https://wa.me/628816627097" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Hubungi WhatsApp</a>
     </footer>
 </div>
 
+<div id="projectModal" class="modal">
+    <div class="modal-box">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
 <script>
-    // Animasi Ketik
     const words = ["Mahasiswa SI", "Smart Farmer", "Pengembang Sistem", "Pelari"];
     let i=0, j=0, isDel=false;
     function type(){
@@ -153,18 +206,32 @@
         else setTimeout(type,isDel?60:130);
     }
 
-    // Fungsi Muncul Saat Scroll
     function reveal(){
         document.querySelectorAll(".reveal").forEach(r => {
-            let windowHeight = window.innerHeight;
-            let elementTop = r.getBoundingClientRect().top;
-            if(elementTop < windowHeight - 100) { r.classList.add("active"); }
+            if(r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active");
         });
     }
 
+    const projectData = {
+        tani: { t: "Sistem Tani Cerdas", lb: "Manajemen nutrisi tanaman manual tidak teratur.", sl: "Otomasi nutrisi cair digital.", mf: "Tanaman subur & hemat waktu." },
+        absensi: { t: "Absensi Cloud", lb: "Data absensi fisik rawan hilang.", sl: "Sistem kehadiran digital berbasis cloud.", mf: "Rekap data instan & akurat." },
+        kasir: { t: "Sistem Kasir", lb: "Stok barang sering selisih.", sl: "Software manajemen stok & transaksi.", mf: "Laporan keuangan rapi & terkontrol." },
+        perpus: { t: "E-Perpus", lb: "Sirkulasi buku sulit dilacak.", sl: "Sistem inventaris buku digital.", mf: "Administrasi tertib & aset aman." }
+    };
+
+    function openModal(id){
+        const d = projectData[id];
+        document.getElementById("modalContent").innerHTML = `
+            <h3 style="color:#00f2ff; margin-bottom:10px;">${d.t}</h3>
+            <p style="font-size:0.85rem; margin-bottom:10px;"><strong>Latar Belakang:</strong> ${d.lb}</p>
+            <p style="font-size:0.85rem; margin-bottom:10px;"><strong>Solusi:</strong> ${d.sl}</p>
+            <p style="font-size:0.85rem;"><strong>Manfaat:</strong> ${d.mf}</p>`;
+        document.getElementById("projectModal").classList.add("show");
+    }
+    function closeModal(){ document.getElementById("projectModal").classList.remove("show"); }
+    
     window.addEventListener("scroll", reveal);
     document.addEventListener("DOMContentLoaded", () => { type(); reveal(); });
 </script>
-
 </body>
 </html>
