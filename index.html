@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | M. Iqbal Ramadhani</title>
+    
     <link rel="stylesheet" href="styles.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,12 +27,10 @@
                 <span class="stat-num">7+</span>
                 <span class="stat-label">Project IT</span>
             </div>
-            <div class="divider"></div>
             <div class="stat-item">
                 <span class="stat-num">Smart</span>
                 <span class="stat-label">Farming</span>
             </div>
-            <div class="divider"></div>
             <div class="stat-item">
                 <span class="stat-num">SI</span>
                 <span class="stat-label">Student</span>
@@ -53,15 +53,15 @@
     </section>
 
     <section class="card">
-        <div class="grid-split">
-            <div class="split-box">
-                <h3 class="sub-title"><i class="fas fa-eye"></i> Visi</h3>
-                <p class="small-text">Menjadi tenaga ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna.</p>
+        <div class="vm-grid">
+            <div class="vm-box">
+                <h3 class="title-icon small"><i class="fas fa-eye"></i> Visi</h3>
+                <p class="small-text">Menjadi tenaga ahli Sistem Informasi yang mampu memodernisasi sektor konvensional melalui teknologi tepat guna demi kemandirian bangsa.</p>
             </div>
-            <div class="split-box">
-                <h3 class="sub-title"><i class="fas fa-bullseye"></i> Misi</h3>
-                <ul class="list-styled">
-                    <li>Otomasi sistem administrasi digital.</li>
+            <div class="vm-box">
+                <h3 class="title-icon small"><i class="fas fa-bullseye"></i> Misi</h3>
+                <ul class="list-minimal">
+                    <li>Otomasi sistem administrasi.</li>
                     <li>Digitalisasi manajemen pertanian.</li>
                     <li>Solusi IT yang solutif & efisien.</li>
                 </ul>
@@ -70,44 +70,59 @@
     </section>
 
     <section class="card">
-        <h2 class="title-icon"><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h2>
-        <div class="timeline-wrapper">
-            <div class="timeline-node">
-                <span class="node-year">Sekarang</span>
-                <div class="node-content"><h4>Universitas Komputama Cilacap</h4><p>S1 - Sistem Informasi</p></div>
+        <h2 class="title-icon"><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        <div class="timeline">
+            <div class="tl-item">
+                <span class="tl-tag">Universitas</span>
+                <p>S1 Sistem Informasi - Univ. Komputama Cilacap</p>
             </div>
-            <div class="timeline-node">
-                <span class="node-year">SMK</span>
-                <div class="node-content"><h4>SMK Ma'arif NU 01 Sumpiuh</h4></div>
+            <div class="tl-item">
+                <span class="tl-tag">SMK</span>
+                <p>SMK Ma'arif NU 01 Sumpiuh</p>
             </div>
-            <div class="timeline-node">
-                <span class="node-year">MTs</span>
-                <div class="node-content"><h4>MTs Miftahul Huda Rawalo</h4></div>
+            <div class="tl-item">
+                <span class="tl-tag">MTs</span>
+                <p>MTs Miftahul Huda Rawalo</p>
             </div>
-            <div class="timeline-node">
-                <span class="node-year">MI</span>
-                <div class="node-content"><h4>MI Ma'arif NU 1 Kaliwedi</h4></div>
+            <div class="tl-item">
+                <span class="tl-tag">MI</span>
+                <p>MI Ma'arif NU 1 Kaliwedi</p>
             </div>
         </div>
     </section>
 
     <section class="card">
-        <h2 class="title-icon"><i class="fas fa-heart"></i> Hobi & Karakter</h2>
-        <div class="tags-container">
+        <h2 class="title-icon"><i class="fas fa-code-branch"></i> Proyek</h2>
+        <div class="project-links">
+            <div class="p-item" onclick="openModal('absensi')">Sistem Absensi Pesantren <i class="fas fa-chevron-right"></i></div>
+            <div class="p-item" onclick="openModal('perpus')">Sistem Perpustakaan Digital <i class="fas fa-chevron-right"></i></div>
+            <div class="p-item" onclick="openModal('smartfarm')">Smart Farming IoT <i class="fas fa-chevron-right"></i></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 class="title-icon"><i class="fas fa-heart"></i> Hobi</h2>
+        <div class="hobi-tags">
             <span class="badge">Running (5K & Marathon)</span>
-            <span class="badge">C++ & HTML Enthusiast</span>
-            <span class="badge">UI Design (Figma)</span>
-            <span class="badge">Integrated Farming</span>
+            <span class="badge">C++ & HTML</span>
+            <span class="badge">Smart Farming</span>
         </div>
     </section>
 
     <footer class="card footer-section">
         <div class="action-buttons">
             <a href="https://wa.me/628816627097" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:miqbalr25@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Saya</a>
+            <a href="mailto:miqbalr25@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email</a>
         </div>
-        <p class="copyright">&copy; 2026 M. Iqbal Ramadhani</p>
+        <p class="copy">&copy; 2026 M. Iqbal Ramadhani</p>
     </footer>
+</div>
+
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
 </div>
 
 <script src="script.js"></script>
