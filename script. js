@@ -1,77 +1,64 @@
-// Inisialisasi: tema, navigasi, form, tahun otomatis
-document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle with localStorage
-  const themeToggle = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-  const current = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  setTheme(current);
+// Inisialisasi AOS (Animasi Muncul)
+AOS.init({ duration: 1000, once: true });
 
-  themeToggle.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-  });
+// --- KURSOR CUSTOM ---
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+const spotlight = document.getElementById('spotlight');
 
-  function setTheme(name){
-    if(name === 'dark'){
-      root.setAttribute('data-theme','dark');
-      themeToggle.textContent = '☀️';
-    } else {
-      root.removeAttribute('data-theme');
-      themeToggle.textContent = '🌙';
-    }
-    localStorage.setItem('theme', name);
-  }
-
-  // Mobile nav toggle
-  const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('nav');
-  navToggle && navToggle.addEventListener('click', () => {
-    nav.style.display = nav.style.display === 'flex' ? '' : 'flex';
-  });
-
-  // Smooth internal links
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id = a.getAttribute('href');
-      if(id.length > 1){
-        e.preventDefault();
-        const el = document.querySelector(id);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    });
-  });
-
-  // Form handling (sederhana, tidak mengirim email — gunakan backend atau Formspree untuk produksi)
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    status.textContent = '';
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if(!name || !email || !message){
-      status.textContent = 'Mohon lengkapi semua field.';
-      return;
-    }
-    if(!validateEmail(email)){
-      status.textContent = 'Format email tidak valid.';
-      return;
-    }
-
-    // Simulasi kirim
-    status.textContent = 'Mengirim...';
-    setTimeout(()=>{
-      status.textContent = 'Terima kasih! Pesan Anda telah diterima (ini simulasi).';
-      form.reset();
-    }, 900);
-  });
-
-  function validateEmail(email){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  // Set current year
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+    follower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+    spotlight.style.background = `radial-gradient(circle 200px at ${e.clientX}px ${e.clientY}px, rgba(0, 210, 255, 0.07), transparent 80%)`;
 });
+
+// --- TYPEWRITER ANIMATION ---
+const txtElement = document.getElementById("typewriter");
+const words = ["Muhammad Iqbal Ramadhani.", "System Information Student.", "Agri-Tech Pioneer."];
+let wordIndex = 0; let charIndex = 0; let isDeleting = false;
+
+function typeLoop() {
+    const currentWord = words[wordIndex];
+    txtElement.textContent = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
+    charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+    
+    let typeSpeed = isDeleting ? 50 : 100;
+    if (!isDeleting && charIndex === currentWord.length) { typeSpeed = 2000; isDeleting = true; }
+    else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; typeSpeed = 500; }
+    
+    setTimeout(typeLoop, typeSpeed);
+}
+typeLoop();
+
+// --- BACKGROUND PARTICLES ---
+const canvas = document.getElementById('canvas-bg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+let particles = [];
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.5;
+        this.speedX = Math.random() * 0.2 - 0.1;
+        this.speedY = Math.random() * 0.2 - 0.1;
+    }
+    update() {
+        this.x += this.speedX; this.y += this.speedY;
+        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(0, 210, 255, 0.3)';
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+    }
+}
+
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+animate();
