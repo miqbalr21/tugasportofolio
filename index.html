@@ -101,8 +101,13 @@
         @keyframes popIn { from { transform: scale(0.8); opacity: 0; } }
         .close { position: absolute; right: 20px; top: 10px; color: #ff4444; font-size: 35px; cursor: pointer; }
 
-        .btn-wa { display: block; width: 100%; background: #25d366; color: white; text-align: center; padding: 16px; border-radius: 50px; text-decoration: none; font-weight: 800; margin-top: 10px; transition: 0.3s; }
+        /* --- BUTTONS --- */
+        .contact-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .btn-action { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; border-radius: 50px; text-decoration: none; font-weight: 800; transition: 0.3s; }
+        .btn-wa { background: #25d366; color: white; }
         .btn-wa:hover { background: #1eb956; transform: scale(1.02); }
+        .btn-email { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .btn-email:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.02); }
     </style>
 </head>
 <body>
@@ -155,7 +160,6 @@
             <div class="timeline-item">
                 <span class="timeline-date">Pendidikan Menengah Kejuruan</span>
                 <h4 style="color: #00f2ff;">SMK Ma'arif NU 01 Sumpiuh</h4>
-                <p style="font-size: 0.85rem; color: #94a3b8;">Lulusan Teknik</p>
             </div>
             <div class="timeline-item">
                 <span class="timeline-date">Pendidikan Menengah Pertama</span>
@@ -194,7 +198,19 @@
     </section>
 
     <footer class="card hero">
-        <a href="https://wa.me/628816627097" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Hubungi Iqbal Sekarang</a>
+        <h2 style="margin-bottom: 10px;">Mari Ngobrol Lebih Jauh!</h2>
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Punya ide proyek menarik atau ingin berkolaborasi? <br> Saya selalu terbuka untuk diskusi baru.</p>
+        
+        <div class="contact-buttons">
+            <a href="https://wa.me/628816627097" target="_blank" class="btn-action btn-wa">
+                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+            </a>
+            <a href="mailto:miqbalr25@gmail.com" class="btn-action btn-email">
+                <i class="fas fa-envelope"></i> miqbalr25@gmail.com
+            </a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.7rem; color: #475569;">© 2024 M. Iqbal Ramadhani. All Rights Reserved.</p>
     </footer>
 </div>
 
