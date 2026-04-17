@@ -11,7 +11,6 @@ body {
 
 .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
-/* Animasi Floating */
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -24,22 +23,17 @@ body {
     border-radius: 25px;
     padding: 30px;
     margin-bottom: 25px;
-    /* Kondisi awal untuk scroll */
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease-out;
 }
 
-/* Muncul saat di-scroll */
-.card.reveal {
-    opacity: 1;
-    transform: translateY(0);
-}
+.card.reveal { opacity: 1; transform: translateY(0); }
 
 .hero { 
     text-align: center; 
     animation: floating 4s ease-in-out infinite;
-    opacity: 1; /* Hero langsung muncul */
+    opacity: 1; 
     transform: none;
 }
 
@@ -61,11 +55,6 @@ h2 { color: #00ff88; margin-bottom: 15px; font-size: 1.2rem; display: flex; alig
 .proyek-item {
     background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px;
     border-left: 4px solid #00f2ff;
-}
-
-.review-item {
-    border-left: 3px solid #00ff88; padding-left: 15px;
-    background: rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 0 15px 15px 0;
 }
 
 .btn-group { display: flex; flex-direction: column; gap: 12px; align-items: center; }
