@@ -3,402 +3,885 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Portfolio | Fitria Oktafiani</title>
+<title>Portfolio · Muhammad Iqbal Ramadhani</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+:root{
+  --c1:#0f1a2e; --c2:#1a2d1a; --c3:#2d1a0f;
+  --gold:#d4a843; --gold2:#f0c866; --cream:#f5f0e8;
+  --green:#5a9e6a; --green2:#7dc48a; --blue:#4a7ab0;
+  --blue2:#6a9fd4; --rose:#c47a6a; --muted:rgba(245,240,232,.45);
+  --bdr:rgba(255,255,255,.1); --bdr2:rgba(255,255,255,.16);
+  --card:rgba(255,255,255,.06);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;background:#0f1a2e}
 
-  *{margin:0;padding:0;box-sizing:border-box;}
+/* ═══ CURSOR ═══ */
+#cur{position:fixed;width:9px;height:9px;background:var(--gold2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 18px rgba(240,200,102,.9),0 0 40px rgba(240,200,102,.3)}
+#cur-r{position:fixed;width:36px;height:36px;border:1.5px solid rgba(240,200,102,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
 
-  body{
-    background:#000;
-    color:#fff;
-    font-family:'Rajdhani',sans-serif;
-    overflow-x:hidden;
-    min-height:100vh;
-  }
+/* ═══ ANIMATED BG CANVAS ═══ */
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-  #stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+/* ═══ ICON NAV ═══ */
+.icon-nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;padding:13px 20px 11px;
+  background:rgba(10,16,28,.78);
+  backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-logo{position:absolute;left:22px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;font-style:italic;color:var(--gold);letter-spacing:2px}
 
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    z-index:1;
-    overflow:hidden;
-  }
+.inav-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:none;background:none;border:none;padding:0;transition:transform .25s}
+.inav-btn:hover{transform:translateY(-4px)}
 
-  .circuit-bg{
-    position:absolute;inset:0;
-    background-image:
-      linear-gradient(rgba(150,0,255,.08) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(150,0,255,.08) 1px,transparent 1px);
-    background-size:60px 60px;
-    z-index:0;
-  }
+.inav-oval{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:21px;transition:all .25s;position:relative;overflow:hidden;
+}
+.inav-oval::after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 38% 33%,rgba(255,255,255,.1),transparent 65%)}
+.inav-btn:hover .inav-oval,.inav-btn.active .inav-oval{
+  background:rgba(212,168,67,.2);border-color:rgba(212,168,67,.6);
+  box-shadow:0 0 22px rgba(212,168,67,.3),inset 0 1px 0 rgba(212,168,67,.2);
+}
+.inav-lbl{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:1.5px;color:rgba(245,240,232,.32);text-transform:uppercase;transition:color .25s}
+.inav-btn:hover .inav-lbl,.inav-btn.active .inav-lbl{color:var(--gold)}
 
-  .watermark{
-    position:absolute;
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(40px,12vw,110px);
-    font-weight:900;
-    color:rgba(255,255,255,.04);
-    text-align:center;
-    line-height:1.1;
-    pointer-events:none;
-    user-select:none;
-    top:50%;transform:translateY(-50%);
-    width:100%;
-  }
+/* icon animations - each unique */
+@keyframes ia0{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ia1{0%,100%{transform:translateX(0) rotate(-3deg)}50%{transform:translateX(5px) rotate(3deg)}}
+@keyframes ia2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.1)}}
+@keyframes ia3{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-4px)}}
+@keyframes ia4{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px) translateY(-4px)}}
+@keyframes ia5{0%,100%{transform:scale(1) rotate(2deg)}50%{transform:scale(1.12) rotate(-2deg)}}
 
-  .planet{
-    width:clamp(140px,35vw,220px);
-    height:clamp(140px,35vw,220px);
-    border-radius:50%;
-    /* INTEGRASI FOTO DISINI */
-    background: url('IMG_20260408_085919.jpg') no-repeat center;
-    background-size: cover;
-    border: 4px solid rgba(180, 0, 255, 0.4);
-    /* -------------------- */
-    box-shadow:0 0 60px 30px rgba(255,80,130,.45),0 0 120px 60px rgba(200,0,100,.2);
-    position:relative;
-    z-index:2;
-    animation:float 6s ease-in-out infinite;
-    flex-shrink:0;
-  }
-  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+.inav-btn:nth-child(2) .inav-oval{animation:ia0 4.2s ease-in-out infinite}
+.inav-btn:nth-child(3) .inav-oval{animation:ia1 5.0s ease-in-out infinite .4s}
+.inav-btn:nth-child(4) .inav-oval{animation:ia2 4.6s ease-in-out infinite .8s}
+.inav-btn:nth-child(5) .inav-oval{animation:ia3 3.9s ease-in-out infinite 1.1s}
+.inav-btn:nth-child(6) .inav-oval{animation:ia4 4.8s ease-in-out infinite .6s}
+.inav-btn:nth-child(7) .inav-oval{animation:ia5 4.3s ease-in-out infinite 1.0s}
 
-  .orbit-wrapper{
-    position:relative;
-    display:flex;align-items:center;justify-content:center;
-    width:clamp(320px,85vw,500px);
-    height:clamp(320px,85vw,500px);
-    margin:0 auto;
-    z-index:2;
-  }
+/* ═══ HERO ═══ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:110px 24px 80px;z-index:10;text-align:center;
+}
 
-  .orbit-ring{
-    position:absolute;inset:0;
-    border-radius:50%;
-    border:1px dashed rgba(180,0,255,.3);
-    animation:spin 18s linear infinite;
-  }
-  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+/* avatar */
+.av-wrap{position:relative;width:clamp(100px,22vw,145px);height:clamp(100px,22vw,145px);margin-bottom:30px}
+.av-ring{position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--gold),var(--green2),var(--blue2),var(--rose),var(--gold2),var(--gold));animation:avSpin 8s linear infinite;filter:blur(1px)}
+@keyframes avSpin{to{transform:rotate(360deg)}}
+.av-inner{position:absolute;inset:3px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#1e3028,#0f1a2e);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:clamp(24px,6vw,40px);font-weight:900;font-style:italic;color:var(--gold2);overflow:hidden;animation:avFloat 6s ease-in-out infinite}
+.av-inner img{width:100%;height:100%;object-fit:cover}
+@keyframes avFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.av-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(125,196,138,.14),transparent 65%);animation:avFloat 6s ease-in-out infinite}
 
-  .orbit-icon{
-    position:absolute;
-    width:56px;height:56px;
-    background:rgba(20,0,40,.85);
-    border:1px solid rgba(180,0,255,.5);
-    border-radius:50%;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    cursor:pointer;
-    font-size:10px;
-    color:#d9b3ff;
-    gap:3px;
-    backdrop-filter:blur(6px);
-    transition:box-shadow .2s;
-    border:none;
-  }
-  .orbit-icon:hover{box-shadow:0 0 18px rgba(200,0,255,.7);}
-  .orbit-icon svg{width:22px;height:22px;fill:none;stroke:#d9b3ff;stroke-width:1.8;}
-  .orbit-icon span{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:9px;letter-spacing:.5px;color:#d9b3ff;}
+/* hero text — scroll-in animations */
+.hero-kicker{font-family:'Space Mono',monospace;font-size:clamp(9px,2vw,11px);letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:13px;opacity:0;animation:fadeUp .8s .1s both}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(38px,10vw,90px);font-weight:900;line-height:.92;margin-bottom:16px;background:linear-gradient(155deg,var(--cream) 0%,var(--gold2) 45%,var(--green2) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;animation:fadeUp .8s .2s both}
+.hero-tagline{font-size:clamp(13px,3vw,17px);color:var(--muted);line-height:1.65;max-width:420px;margin-bottom:22px;opacity:0;animation:fadeUp .8s .38s both}
+.hero-div{display:flex;align-items:center;gap:13px;margin-bottom:20px;opacity:0;animation:fadeUp .8s .52s both}
+.hero-div span{width:36px;height:1px;background:var(--bdr2)}
+.hero-div p{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(212,168,67,.42);text-transform:uppercase;white-space:nowrap}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(90,158,106,.14);border:1px solid rgba(125,196,138,.28);border-radius:50px;padding:8px 20px;font-size:11px;letter-spacing:2px;color:var(--green2);font-family:'Space Mono',monospace;text-transform:uppercase;opacity:0;animation:fadeUp .8s .68s both}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px var(--green2);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
 
-  .name-block{text-align:center;z-index:2;margin-top:12px;}
-  .name-block h1{
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(22px,6vw,48px);
-    font-weight:900;
-    letter-spacing:3px;
-    background:linear-gradient(135deg,#fff 30%,#ff80b0);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .name-block p{
-    font-size:clamp(11px,3vw,16px);
-    letter-spacing:4px;
-    color:#c084fc;
-    margin-top:4px;
-    text-transform:uppercase;
-  }
+/* scroll prompt */
+.scroll-prompt{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;animation:spFade 3s infinite}
+.scroll-prompt span{font-size:8px;letter-spacing:4px;color:rgba(212,168,67,.38);font-family:'Space Mono',monospace}
+.scroll-mouse{width:20px;height:32px;border:1.5px solid rgba(212,168,67,.3);border-radius:12px;display:flex;justify-content:center;padding-top:5px}
+.scroll-wheel{width:3px;height:6px;background:var(--gold);border-radius:2px;animation:wheelDrop 2s ease-in-out infinite}
+@keyframes wheelDrop{0%{transform:translateY(0);opacity:1}60%{transform:translateY(8px);opacity:0}61%{transform:translateY(0);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes spFade{0%,100%{opacity:.25}50%{opacity:.75}}
 
-  .scroll-hint{
-    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-    font-size:11px;color:rgba(180,0,255,.6);letter-spacing:2px;
-    animation:blink 2s infinite;
-  }
-  @keyframes blink{0%,100%{opacity:.4;}50%{opacity:1;}}
+/* ═══ TICKER ═══ */
+.ticker{position:relative;z-index:10;overflow:hidden;padding:11px 0;background:rgba(8,14,24,.9);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.ticker-t{display:inline-block;white-space:nowrap;animation:tickA 42s linear infinite}
+.ticker-t span{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:3px;color:rgba(212,168,67,.42);padding:0 6px}
+.ticker-t .sep{color:rgba(255,255,255,.12)}
+@keyframes tickA{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* MODAL */
-  .modal-overlay{
-    display:none;
-    position:fixed;inset:0;
-    background:rgba(0,0,0,.75);
-    z-index:100;
-    align-items:center;justify-content:center;
-    padding:16px;
-    backdrop-filter:blur(4px);
-  }
-  .modal-overlay.active{display:flex;}
-  .modal{
-    background:linear-gradient(135deg,#0d001a,#1a0030);
-    border:1px solid rgba(200,0,255,.4);
-    border-radius:16px;
-    padding:28px 24px;
-    max-width:520px;width:100%;
-    max-height:88vh;overflow-y:auto;
-    position:relative;
-    box-shadow:0 0 40px rgba(150,0,255,.3);
-    animation:pop .3s ease;
-  }
-  @keyframes pop{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
-  .modal h2{font-family:'Orbitron',sans-serif;font-size:18px;color:#ff80b0;margin-bottom:16px;letter-spacing:2px;}
-  .modal .close{position:absolute;top:14px;right:16px;background:none;border:none;color:#c084fc;font-size:22px;cursor:pointer;}
-  .modal p,.modal li{font-size:14px;line-height:1.8;color:#e2d4f0;margin-bottom:8px;}
-  .modal ul{padding-left:18px;}
-  .modal ul li{list-style:disc;}
-  .section-label{font-family:'Orbitron',sans-serif;font-size:11px;color:#c084fc;letter-spacing:2px;margin:14px 0 6px;border-bottom:1px solid rgba(200,0,255,.2);padding-bottom:4px;}
-  .badge{display:inline-block;background:rgba(200,0,255,.15);border:1px solid rgba(200,0,255,.3);border-radius:20px;padding:3px 10px;font-size:12px;color:#d9b3ff;margin:3px;}
-  .project-card{background:rgba(255,255,255,.04);border:1px solid rgba(200,0,255,.2);border-radius:10px;padding:12px;margin-bottom:10px;}
-  .project-card h3{color:#ff80b0;font-size:14px;margin-bottom:4px;}
-  .project-card p{font-size:13px;color:#c9b8de;margin:0;}
-  .edu-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
-  .edu-dot{width:10px;height:10px;border-radius:50%;background:#ff80b0;flex-shrink:0;margin-top:5px;box-shadow:0 0 8px #ff80b0;}
-  .edu-item p{margin:0;font-size:13px;color:#e2d4f0;}
-  .edu-item small{color:#a78bca;font-size:11px;}
+/* ═══ STATS BAR ═══ */
+.stats-bar{position:relative;z-index:10;display:flex;justify-content:center;gap:clamp(20px,7vw,100px);padding:30px 24px;background:rgba(8,14,24,.85);border-bottom:1px solid var(--bdr)}
+.st{text-align:center}
+.st-n{font-family:'Playfair Display',serif;font-size:clamp(30px,8vw,54px);font-weight:900;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.st-l{font-size:8.5px;letter-spacing:3px;color:rgba(245,240,232,.25);text-transform:uppercase;margin-top:5px;font-family:'Space Mono',monospace}
 
-  .stats-bar{position:relative;z-index:1;background:linear-gradient(135deg,rgba(10,0,25,.9),rgba(30,0,50,.9));border-top:1px solid rgba(200,0,255,.2);padding:20px 16px;text-align:center;}
-  .stats-bar .pct{font-family:'Orbitron',sans-serif;font-size:clamp(36px,10vw,72px);font-weight:900;background:linear-gradient(135deg,#c084fc,#ff80b0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .stats-bar p{color:#a78bca;font-size:13px;letter-spacing:2px;}
+/* ═══ SECTIONS ═══ */
+.sec{position:relative;z-index:10;max-width:920px;margin:0 auto;padding:72px 24px}
+.sec-hd{margin-bottom:38px}
+.sec-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;color:rgba(212,168,67,.5);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.sec-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(var(--bdr2),transparent)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,5.5vw,44px);font-weight:900;font-style:italic;background:linear-gradient(135deg,var(--cream) 20%,var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.05}
+.sec-sub{font-size:12px;color:rgba(245,240,232,.28);letter-spacing:3px;text-transform:uppercase;font-family:'Space Mono',monospace;margin-top:5px}
+.divl{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);position:relative;z-index:10}
 
-  ::-webkit-scrollbar{width:4px;}
-  ::-webkit-scrollbar-track{background:transparent;}
-  ::-webkit-scrollbar-thumb{background:rgba(200,0,255,.4);border-radius:2px;}
+/* ═══ SCROLL-REVEAL (JS adds .in) ═══ */
+.sr{opacity:0;transform:translateY(36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.sr.in{opacity:1;transform:none}
+.sr-left{opacity:0;transform:translateX(-36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.sr-left.in{opacity:1;transform:none}
+.sr-right{opacity:0;transform:translateX(36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.sr-right.in{opacity:1;transform:none}
+.sr-scale{opacity:0;transform:scale(.88);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.sr-scale.in{opacity:1;transform:none}
+/* stagger delays */
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+/* ═══ CARDS ═══ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.card{padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--bdr);position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;backdrop-filter:blur(6px)}
+.card:hover{transform:translateY(-6px);border-color:rgba(212,168,67,.3);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.35),transparent);opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+.card.full{grid-column:1/-1}
+.card-ico{font-size:26px;margin-bottom:11px;display:inline-block;animation:icoBob 4s ease-in-out infinite}
+@keyframes icoBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.card:nth-child(2) .card-ico{animation-duration:4.7s;animation-delay:.3s}
+.card:nth-child(3) .card-ico{animation-duration:5.1s;animation-delay:.7s}
+.card:nth-child(4) .card-ico{animation-duration:4.3s;animation-delay:1.1s}
+.card-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:3px;color:rgba(212,168,67,.55);text-transform:uppercase;margin-bottom:10px}
+.card-body{font-size:13px;line-height:1.9;color:rgba(245,240,232,.6)}
+.card-body strong{color:var(--cream);font-weight:500}
+.card-body em{color:var(--gold);font-style:italic}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pill{background:rgba(255,255,255,.07);border:1px solid var(--bdr2);border-radius:50px;padding:4px 13px;font-size:11px;color:rgba(245,240,232,.75);transition:all .2s}
+.pill:hover{background:rgba(212,168,67,.15);border-color:rgba(212,168,67,.4);color:var(--gold2)}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+@media(max-width:440px){.vm-grid{grid-template-columns:1fr}}
+.vm{padding:13px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--bdr)}
+.vm h4{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2.5px;color:var(--gold);margin-bottom:7px}
+.vm p{font-size:12px;line-height:1.75;color:rgba(245,240,232,.52)}
+.motto{margin-top:13px;padding:13px 17px;border-left:2.5px solid rgba(212,168,67,.45);background:rgba(212,168,67,.05);border-radius:0 10px 10px 0}
+.motto p{font-family:'Playfair Display',serif;font-style:italic;font-size:13.5px;color:var(--gold2);line-height:1.7}
+.hobi-row{display:flex;align-items:center;gap:14px;padding:12px 15px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid var(--bdr);margin-bottom:8px;transition:all .2s}
+.hobi-row:hover{background:rgba(212,168,67,.06);border-color:rgba(212,168,67,.2)}
+.hobi-row .h-ico{font-size:20px}
+.hobi-row strong{display:block;font-size:13px;color:var(--cream);font-weight:500}
+.hobi-row small{font-size:11.5px;color:rgba(245,240,232,.35);font-style:italic}
+.hbadge{margin-left:auto;font-size:9px;letter-spacing:1px;padding:3px 10px;border-radius:50px}
+.hbadge.on{background:rgba(90,158,106,.14);color:var(--green2);border:1px solid rgba(125,196,138,.25)}
+.hbadge.off{background:rgba(212,168,67,.07);color:rgba(212,168,67,.5);border:1px solid rgba(212,168,67,.15)}
+
+/* ═══ EDU TIMELINE ═══ */
+.edu-tl{position:relative}
+.edu-tl::before{content:'';position:absolute;left:21px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--bdr2),rgba(212,168,67,.04))}
+.edu-item{display:flex;gap:20px;padding-bottom:28px}
+.edu-dot{width:43px;height:43px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,rgba(212,168,67,.18),rgba(15,26,46,.8));border:1px solid rgba(212,168,67,.25);display:flex;align-items:center;justify-content:center;font-size:18px;z-index:1;position:relative;box-shadow:0 0 16px rgba(212,168,67,.12)}
+.edu-body{flex:1;padding:15px 17px;background:var(--card);border:1px solid var(--bdr);border-radius:14px;position:relative;overflow:hidden;transition:border-color .25s;backdrop-filter:blur(6px)}
+.edu-body:hover{border-color:rgba(212,168,67,.25)}
+.edu-body::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--green2))}
+.edu-body h3{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--cream);margin-bottom:2px}
+.edu-type{font-family:'Space Mono',monospace;font-size:9px;color:rgba(212,168,67,.55);letter-spacing:2px;display:block;margin-bottom:7px}
+.edu-body p{font-size:12.5px;color:rgba(245,240,232,.5);line-height:1.8}
+
+/* ═══ PROJECTS ═══ */
+.pc{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--bdr);position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;backdrop-filter:blur(6px)}
+.pc:hover{transform:translateY(-7px);border-color:rgba(212,168,67,.3);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);opacity:0;transition:opacity .3s}
+.pc:hover::after{opacity:1}
+.pc-ico{font-size:28px;margin-bottom:11px;display:inline-block;animation:icoBob 4.5s ease-in-out infinite}
+.pc:nth-child(2) .pc-ico{animation-duration:5.1s;animation-delay:.4s}
+.pc:nth-child(3) .pc-ico{animation-duration:4.2s;animation-delay:.8s}
+.pc:nth-child(4) .pc-ico{animation-duration:5.5s;animation-delay:1.2s}
+.pc:nth-child(5) .pc-ico{animation-duration:4.8s;animation-delay:.6s}
+.pc:nth-child(6) .pc-ico{animation-duration:4.0s;animation-delay:1.0s}
+.pc-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:6px}
+.pc-desc{font-size:12px;color:rgba(245,240,232,.48);line-height:1.8;margin-bottom:12px}
+.pc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.pct{background:rgba(255,255,255,.06);border:1px solid var(--bdr);border-radius:50px;padding:3px 10px;font-size:9.5px;color:rgba(245,240,232,.62)}
+.pc-status{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;letter-spacing:1px;font-family:'Space Mono',monospace}
+.pc-status.done{color:var(--green2)}
+.pc-status.done::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green2)}
+.pc-status.wip{color:var(--gold)}
+.pc-status.wip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.5s infinite}
+.future-card{margin-top:24px;padding:28px;border-radius:20px;background:linear-gradient(135deg,rgba(212,168,67,.08),rgba(15,26,46,.6));border:1px solid rgba(212,168,67,.2);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
+.future-card::before{content:'COMING SOON';position:absolute;top:18px;right:18px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:3px;color:rgba(212,168,67,.38);padding:4px 12px;border:1px solid rgba(212,168,67,.18);border-radius:50px}
+.future-ico{font-size:33px;margin-bottom:12px;display:inline-block;animation:icoBob 5s ease-in-out infinite}
+.future-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;font-style:italic;color:var(--gold2);margin-bottom:7px}
+.future-card p{font-size:13px;color:rgba(245,240,232,.56);line-height:1.85;max-width:640px}
+.ff-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.ff{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.16);border-radius:50px;padding:5px 13px;font-size:10.5px;color:rgba(232,200,110,.72)}
+
+/* ═══ METRICS ═══ */
+.met-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}
+.met{padding:20px 16px;border-radius:14px;background:var(--card);border:1px solid var(--bdr);text-align:center;transition:all .25s;backdrop-filter:blur(6px)}
+.met:hover{background:rgba(212,168,67,.07);border-color:rgba(212,168,67,.22)}
+.m-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.m-l{font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,.28);text-transform:uppercase;margin-top:5px;font-family:'Space Mono',monospace}
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px;margin-top:17px}
+.rv{padding:19px;border-radius:14px;background:var(--card);border:1px solid var(--bdr);position:relative;backdrop-filter:blur(6px)}
+.rv::before{content:'❝';position:absolute;top:12px;right:14px;font-size:22px;color:rgba(212,168,67,.16);font-family:serif}
+.stars{color:var(--gold);font-size:12px;letter-spacing:1.5px;margin-bottom:7px}
+.rv-text{font-family:'Playfair Display',serif;font-style:italic;font-size:12.5px;color:rgba(245,240,232,.58);line-height:1.75;margin-bottom:8px}
+.rv-by{font-size:9.5px;color:rgba(212,168,67,.52);font-family:'Space Mono',monospace;letter-spacing:1px}
+
+/* ═══ GALLERY ═══ */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gs{
+  aspect-ratio:1;border-radius:14px;
+  border:1.5px dashed rgba(212,168,67,.2);
+  background:rgba(255,255,255,.03);
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;overflow:hidden;transition:all .28s;
+  backdrop-filter:blur(4px);position:relative;
+}
+.gs:hover{border-color:rgba(212,168,67,.45);background:rgba(212,168,67,.06);transform:scale(1.03)}
+.gs .gs-ico{font-size:26px;animation:icoBob 4s ease-in-out infinite;transition:opacity .25s}
+.gs img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+
+/* ═══ KONTAK ═══ */
+.kontak-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.kontak-grid{grid-template-columns:1fr}}
+.kc{display:flex;align-items:center;gap:15px;padding:17px 19px;border-radius:14px;background:var(--card);border:1px solid var(--bdr);text-decoration:none;transition:all .25s;position:relative;overflow:hidden;backdrop-filter:blur(6px)}
+.kc:hover{background:rgba(212,168,67,.07);border-color:rgba(212,168,67,.3);transform:translateY(-4px)}
+.kc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2.5px;background:linear-gradient(var(--gold),var(--green2));opacity:0;transition:opacity .25s}
+.kc:hover::before{opacity:1}
+.k-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid var(--bdr)}
+.k-info strong{display:block;font-size:13px;color:var(--cream);font-weight:500;margin-bottom:2px}
+.k-info span{font-size:11px;color:rgba(245,240,232,.36)}
+.k-arr{margin-left:auto;width:15px;height:15px;stroke:rgba(212,168,67,.35);fill:none;stroke-width:2;flex-shrink:0}
+
+/* ═══ FOOTER ═══ */
+footer{position:relative;z-index:10;text-align:center;padding:50px 24px 34px;background:rgba(6,10,18,.92);border-top:1px solid var(--bdr);backdrop-filter:blur(12px)}
+.f-logo{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;font-style:italic;color:var(--gold);margin-bottom:7px}
+.f-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(212,168,67,.4);margin-bottom:16px}
+footer blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,3vw,17px);color:rgba(212,168,67,.65);max-width:520px;margin:0 auto 8px;line-height:1.65}
+footer cite{font-size:8.5px;letter-spacing:4px;color:rgba(245,240,232,.18);font-style:normal;font-family:'Space Mono',monospace}
+
+/* ═══ MODAL ═══ */
+.mw{display:none;position:fixed;inset:0;background:rgba(4,8,16,.88);z-index:500;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(18px)}
+.mw.open{display:flex}
+.md{background:linear-gradient(145deg,rgba(15,26,46,.95),rgba(20,30,20,.9));border:1px solid rgba(212,168,67,.18);border-radius:22px;padding:30px 24px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 36px 100px rgba(0,0,0,.7),0 0 60px rgba(212,168,67,.05);animation:mIn .32s cubic-bezier(.34,1.56,.64,1)}
+@keyframes mIn{from{transform:scale(.8) translateY(22px);opacity:0}to{transform:none;opacity:1}}
+.md::before{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.6),transparent)}
+.mcl{position:absolute;top:13px;right:15px;background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);color:rgba(212,168,67,.55);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:none;transition:all .2s}
+.mcl:hover{background:rgba(212,168,67,.18);color:var(--gold)}
+.md h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;font-style:italic;color:var(--gold2);margin-bottom:17px;display:flex;align-items:center;gap:9px}
+.md p,.md li{font-size:13px;line-height:1.9;color:rgba(245,240,232,.65);margin-bottom:7px}
+.md ul{padding-left:0;list-style:none}
+.md ul li{padding-left:17px;position:relative;margin-bottom:6px}
+.md ul li::before{content:'—';position:absolute;left:0;color:rgba(212,168,67,.4)}
+.ml{font-size:8px;letter-spacing:3px;color:rgba(212,168,67,.5);text-transform:uppercase;font-weight:600;margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--bdr)}
+.mbdg{display:inline-block;background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);border-radius:20px;padding:3px 12px;font-size:10.5px;color:rgba(232,200,110,.8);margin:3px}
+.mec{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;padding:13px;background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:11px;position:relative;overflow:hidden}
+.mec::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--green2))}
+.mec .mi{font-size:18px;flex-shrink:0}
+.mec strong{color:var(--cream);font-size:13px;display:block;margin-bottom:1px;font-weight:500}
+.mec small{color:rgba(212,168,67,.42);font-size:9.5px;display:block;margin-bottom:5px;font-family:'Space Mono',monospace;letter-spacing:1px}
+.mec p{margin:0;font-size:12.5px;color:rgba(245,240,232,.48)}
+.mcard{border:1px solid var(--bdr);border-radius:11px;padding:12px;margin-bottom:8px;background:rgba(255,255,255,.025);transition:border-color .2s}
+.mcard:hover{border-color:rgba(212,168,67,.22)}
+.mcard h3{font-family:'Playfair Display',serif;font-size:13.5px;font-weight:700;color:var(--gold2);margin-bottom:4px}
+.mcard p{font-size:12px;color:rgba(245,240,232,.48);margin:0}
+.mkr{display:flex;align-items:center;gap:13px;padding:13px 15px;margin-bottom:9px;background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:11px;text-decoration:none;transition:all .22s}
+.mkr:hover{background:rgba(212,168,67,.07);border-color:rgba(212,168,67,.28);transform:translateX(4px)}
+.mkri{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;background:rgba(255,255,255,.04);border:1px solid var(--bdr)}
+
+/* ═══ HOME SECTION (shown when home icon clicked) ═══ */
+#home-panel{position:relative;z-index:10;max-width:920px;margin:0 auto;padding:72px 24px}
+#home-panel .welcome-card{padding:30px;border-radius:20px;background:var(--card);border:1px solid var(--bdr);backdrop-filter:blur(8px);text-align:center;margin-bottom:20px}
+#home-panel .welcome-card h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;font-style:italic;background:linear-gradient(135deg,var(--cream),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+#home-panel .welcome-card p{font-size:13.5px;color:rgba(245,240,232,.55);line-height:1.85;max-width:520px;margin:0 auto}
+.quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:500px){.quick-links{grid-template-columns:1fr 1fr}}
+.ql-card{padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--bdr);text-align:center;cursor:none;transition:all .25s;backdrop-filter:blur(6px)}
+.ql-card:hover{transform:translateY(-5px);border-color:rgba(212,168,67,.28);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.ql-ico{font-size:26px;display:block;margin-bottom:9px;animation:icoBob 4s ease-in-out infinite}
+.ql-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(212,168,67,.55);text-transform:uppercase}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(212,168,67,.25);border-radius:2px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+@media(max-width:520px){
+  .icon-nav{gap:7px;padding:11px 8px 9px}
+  .inav-oval{width:44px;height:44px;font-size:17px}
+  .inav-lbl{font-size:6px}
+  .nav-logo{display:none}
+  .quick-links{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
 
-<canvas id="stars-canvas"></canvas>
+<div id="cur"></div>
+<div id="cur-r"></div>
+<canvas id="cv"></canvas>
 
-<section class="hero">
-  <div class="circuit-bg"></div>
-  <div class="watermark">SISTEM<br>INFORMASI<br>UNIKMA</div>
+<!-- ════════ ICON NAV ════════ -->
+<nav class="icon-nav">
+  <div class="nav-logo">MIR.</div>
 
-  <div class="orbit-wrapper">
-    <div class="planet"></div>
-    <div class="orbit-ring" id="orbitRing"></div>
+  <button class="inav-btn active" id="btn-home" onclick="showHome()">
+    <div class="inav-oval">🏠</div>
+    <span class="inav-lbl">Beranda</span>
+  </button>
+  <button class="inav-btn" onclick="openM('about');setActive(this)">
+    <div class="inav-oval">👤</div>
+    <span class="inav-lbl">Tentang</span>
+  </button>
+  <button class="inav-btn" onclick="openM('edu');setActive(this)">
+    <div class="inav-oval">🎓</div>
+    <span class="inav-lbl">Pendidikan</span>
+  </button>
+  <button class="inav-btn" onclick="openM('proyek');setActive(this)">
+    <div class="inav-oval">💼</div>
+    <span class="inav-lbl">Proyek</span>
+  </button>
+  <button class="inav-btn" onclick="openM('galeri');setActive(this)">
+    <div class="inav-oval">📷</div>
+    <span class="inav-lbl">Galeri</span>
+  </button>
+  <button class="inav-btn" onclick="openM('kontak');setActive(this)">
+    <div class="inav-oval">✉️</div>
+    <span class="inav-lbl">Kontak</span>
+  </button>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="hero-section">
+  <div class="av-wrap">
+    <div class="av-ring"></div>
+    <div class="av-inner">
+      <img src="IMG-20260430-WA0030.jpg" alt="Muhammad Iqbal Ramadhani">
+    </div>
+    <div class="av-glow"></div>
   </div>
 
-  <div class="name-block">
-    <h1>FITRIA OKTAFIANI</h1>
-    <p>Sistem Informasi &mdash; UNIKMA</p>
+  <div class="hero-kicker">PORTFOLIO</div>
+  <h1 class="hero-name">Muhammad<br>Iqbal<br>Ramadhani</h1>
+  <p class="hero-tagline">Menggabungkan Dunia Teknologi &amp; Pertanian 🌾💻</p>
+  <div class="hero-div">
+    <span></span>
+    <p>Universitas Komputasi Cilacap · Sistem Informasi</p>
+    <span></span>
   </div>
+  <div class="hero-pill">Tersedia untuk Kolaborasi</div>
 
-  <div class="scroll-hint">&#9660; SCROLL DOWN &#9660;</div>
+  <div class="scroll-prompt">
+    <span>SCROLL</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
 </section>
 
+<!-- ════════ HOME PANEL (quick links) ════════ -->
+<div id="home-panel" style="display:none">
+  <div class="welcome-card sr">
+    <h2>Selamat Datang di Portfolio Saya 👋</h2>
+    <p>Saya Muhammad Iqbal Ramadhani — mahasiswa Sistem Informasi yang bersemangat membangun solusi teknologi nyata. Gunakan ikon di atas atau pilih kategori di bawah untuk menjelajahi portfolio ini.</p>
+  </div>
+  <div class="quick-links">
+    <div class="ql-card sr d1" onclick="openM('about');setActiveById('btn-home')"><span class="ql-ico">👤</span><div class="ql-label">Tentang Saya</div></div>
+    <div class="ql-card sr d2" onclick="openM('edu');setActiveById('btn-home')"><span class="ql-ico">🎓</span><div class="ql-label">Pendidikan</div></div>
+    <div class="ql-card sr d3" onclick="openM('proyek');setActiveById('btn-home')"><span class="ql-ico">💼</span><div class="ql-label">Proyek</div></div>
+    <div class="ql-card sr d4" onclick="openM('galeri');setActiveById('btn-home')"><span class="ql-ico">📷</span><div class="ql-label">Galeri</div></div>
+    <div class="ql-card sr d5" onclick="openM('kontak');setActiveById('btn-home')"><span class="ql-ico">✉️</span><div class="ql-label">Kontak</div></div>
+  </div>
+</div>
+
+<!-- ════════ TICKER ════════ -->
+<div class="ticker">
+  <div class="ticker-t">
+    <span>✦</span><span>UNIVERSITAS KOMPUTASI CILACAP</span><span class="sep">·</span>
+    <span>MUHAMMAD IQBAL RAMADHANI</span><span class="sep">·</span>
+    <span>SISTEM INFORMASI</span><span class="sep">·</span>
+    <span>TEKNOLOGI &amp; PERTANIAN</span><span class="sep">·</span>
+    <span>WEB DEVELOPER</span><span class="sep">·</span>
+    <span>HOBI LARI (TAPI SEKARANG JARANG)</span><span class="sep">·</span>
+    <span>CILACAP</span><span class="sep">·</span>
+    <span>✦</span><span>UNIVERSITAS KOMPUTASI CILACAP</span><span class="sep">·</span>
+    <span>MUHAMMAD IQBAL RAMADHANI</span><span class="sep">·</span>
+    <span>SISTEM INFORMASI</span><span class="sep">·</span>
+    <span>TEKNOLOGI &amp; PERTANIAN</span><span class="sep">·</span>
+    <span>WEB DEVELOPER</span><span class="sep">·</span>
+    <span>HOBI LARI (TAPI SEKARANG JARANG)</span><span class="sep">·</span>
+    <span>CILACAP</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- ════════ STATS ════════ -->
 <div class="stats-bar">
-  <div class="pct">100%</div>
-  <p>SEMANGAT &amp; DEDIKASI</p>
+  <div class="st"><div class="st-n" id="sp">0</div><div class="st-l">Total Proyek</div></div>
+  <div class="st"><div class="st-n" id="ss">0</div><div class="st-l">Selesai</div></div>
+  <div class="st"><div class="st-n" id="su">0</div><div class="st-l">Pengguna</div></div>
+  <div class="st"><div class="st-n">4.8</div><div class="st-l">Rata² Ulasan</div></div>
 </div>
 
-<div class="modal-overlay" id="modal-bio">
-  <div class="modal">
-    <button class="close" onclick="closeModal('bio')">&#10005;</button>
-    <h2>&#128100; BIO</h2>
-    <p>Halo! Nama saya <strong>Fitria Oktafiani</strong>, biasa dipanggil <em>Fitria</em>. Saya adalah mahasiswi aktif Program Studi <strong>Sistem Informasi</strong> di <strong>Universitas Komputama (UNIKMA) Cilacap</strong>. Lahir dengan rasa ingin tahu yang tinggi terhadap dunia teknologi dan informasi, saya percaya bahwa ilmu pengetahuan adalah kunci untuk membuka pintu masa depan yang lebih baik.</p>
-    <p>Sebagai mahasiswi Sistem Informasi, saya mendalami berbagai bidang mulai dari pemrograman, basis data, analisis sistem, hingga pengembangan aplikasi berbasis web dan mobile. Saya selalu bersemangat mengikuti perkembangan teknologi dan berusaha mengaplikasikan ilmu dalam kehidupan nyata.</p>
-    <div class="section-label">&#127919; VISI</div>
-    <p>Menjadi seorang profesional teknologi informasi yang inovatif, berintegritas, dan mampu memberikan kontribusi nyata bagi masyarakat melalui solusi digital yang cerdas dan bermanfaat.</p>
-    <div class="section-label">&#128640; MISI</div>
-    <ul>
-      <li>Terus belajar dan mengembangkan kompetensi di bidang teknologi informasi.</li>
-      <li>Menerapkan ilmu yang diperoleh untuk memecahkan permasalahan nyata di masyarakat.</li>
-      <li>Membangun jaringan kolaborasi yang positif dengan sesama pelaku teknologi.</li>
-      <li>Menjadi inspirasi bagi perempuan muda untuk berani terjun ke dunia teknologi.</li>
-    </ul>
-    <div class="section-label">&#128172; MOTTO HIDUP</div>
-    <p style="font-style:italic;color:#ff80b0;font-size:15px;">"Jangan takut memulai, karena setiap ahli dulunya pernah menjadi pemula."</p>
-    <div class="section-label">&#127859; HOBI - MEMASAK</div>
-    <p>Salah satu hobi yang paling saya cintai adalah <strong>memasak</strong>. Bagi saya, memasak bukan sekadar kegiatan dapur — melainkan sebuah seni dan bentuk ekspresi diri. Saya senang bereksperimen dengan berbagai bahan makanan, mencoba resep baru dari berbagai daerah, dan menyesuaikan cita rasa sesuai selera keluarga maupun teman-teman.</p>
-    <p>Memasak mengajarkan saya tentang kreativitas, kesabaran, dan perhatian terhadap detail — nilai-nilai yang juga sangat berguna dalam dunia teknologi! Dari membuat rendang hingga mencoba kue modern, dapur adalah laboratorium eksperimen saya yang menyenangkan.</p>
-    <div class="section-label">&#127991; SKILL</div>
-    <div>
-      <span class="badge">HTML/CSS</span>
-      <span class="badge">JavaScript</span>
-      <span class="badge">PHP</span>
-      <span class="badge">MySQL</span>
-      <span class="badge">Figma</span>
-      <span class="badge">Python Dasar</span>
-      <span class="badge">Microsoft Office</span>
+<!-- ════════ ABOUT ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-about">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">01 // About</div>
+    <h2 class="sec-title">Tentang Saya</h2>
+    <p class="sec-sub">Who I Am</p>
+  </div>
+  <div class="grid2">
+    <div class="card full sr d1">
+      <span class="card-ico">👋</span>
+      <div class="card-label">Bio</div>
+      <div class="card-body">
+        <p>Halo! Saya <strong>Muhammad Iqbal Ramadhani</strong>, mahasiswa aktif <strong>Sistem Informasi</strong> di <strong>Universitas Komputasi Cilacap</strong>. Saya percaya teknologi bisa menjadi jembatan nyata untuk menyelesaikan masalah kehidupan sehari-hari.</p>
+        <p style="margin-top:9px">Fokus saya adalah membangun aplikasi yang fungsional dan berdampak. Di luar kuliah, saya aktif <strong>bertani</strong> dan sesekali masih menyempatkan diri untuk lari, meski kini sudah jarang.</p>
+      </div>
+    </div>
+    <div class="card sr d2">
+      <span class="card-ico">🎯</span>
+      <div class="card-label">Visi &amp; Misi</div>
+      <div class="vm-grid">
+        <div class="vm"><h4>VISI</h4><p>Menjadi pengembang sistem informasi yang mampu memberikan solusi nyata dan berdampak bagi masyarakat.</p></div>
+        <div class="vm"><h4>MISI</h4><p>Belajar tanpa henti, membangun dengan penuh tanggung jawab, dan memberikan manfaat dari setiap karya.</p></div>
+      </div>
+      <div class="motto"><p>"Bukan seberapa cepat kamu bergerak, tapi seberapa konsisten kamu melangkah."</p></div>
+    </div>
+    <div class="card sr d3">
+      <span class="card-ico">⚡</span>
+      <div class="card-label">Keahlian</div>
+      <div class="card-body"><p>Teknologi yang saya gunakan:</p></div>
+      <div class="pills">
+        <span class="pill">HTML / CSS</span><span class="pill">JavaScript</span><span class="pill">PHP</span>
+        <span class="pill">MySQL</span><span class="pill">Figma</span><span class="pill">Bootstrap</span>
+        <span class="pill">CodeIgniter</span><span class="pill">Analisis Sistem</span><span class="pill">MS Office</span>
+      </div>
+    </div>
+    <div class="card full sr d4">
+      <span class="card-ico">🌿</span>
+      <div class="card-label">Hobi &amp; Kegiatan</div>
+      <div class="hobi-row"><div class="h-ico">🌾</div><div><strong>Bertani</strong><small>Kegiatan utama di luar kampus — sawah dan ladang adalah sekolah kedua saya.</small></div><div class="hbadge on">AKTIF</div></div>
+      <div class="hobi-row"><div class="h-ico">🏃</div><div><strong>Lari</strong><small>Dulu rutin lari pagi, sekarang sudah jarang — tapi semangatnya belum padam!</small></div><div class="hbadge off">JARANG</div></div>
+      <div class="hobi-row"><div class="h-ico">💻</div><div><strong>Coding</strong><small>Membangun aplikasi dan sistem yang bermanfaat nyata bagi pengguna.</small></div><div class="hbadge on">AKTIF</div></div>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-edu">
-  <div class="modal">
-    <button class="close" onclick="closeModal('edu')">&#10005;</button>
-    <h2>&#127891; PENDIDIKAN</h2>
-    <div class="section-label">RIWAYAT PENDIDIKAN</div>
-    <div class="edu-item">
-      <div class="edu-dot"></div>
-      <div>
-        <p><strong>MTs SA Tanwirul Huda</strong></p>
-        <small>Madrasah Tsanawiyah Salafiyah — Pendidikan Menengah Pertama</small>
-        <p style="margin-top:4px;font-size:13px;color:#c9b8de;">Di sinilah fondasi karakter dan semangat belajar saya terbentuk. Lingkungan pesantren mengajarkan nilai kedisiplinan, kemandirian, dan rasa syukur yang saya bawa hingga sekarang.</p>
+<!-- ════════ EDU ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-edu">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">02 // Education</div>
+    <h2 class="sec-title">Pendidikan</h2>
+    <p class="sec-sub">Education Path</p>
+  </div>
+  <div class="edu-tl">
+    <div class="edu-item sr-left d1">
+      <div class="edu-dot">📗</div>
+      <div class="edu-body">
+        <h3>MTs Miftahul Huda Rawalo</h3>
+        <span class="edu-type">// MADRASAH TSANAWIYAH · RAWALO</span>
+        <p>Jenjang yang membentuk karakter saya sejak awal. Di sini saya belajar kedisiplinan, nilai keagamaan, dan kemandirian — fondasi kuat yang terus saya bawa hingga hari ini.</p>
       </div>
     </div>
-    <div class="edu-item">
-      <div class="edu-dot"></div>
-      <div>
-        <p><strong>MA El-Bayan Majenang</strong></p>
-        <small>Madrasah Aliyah — Pendidikan Menengah Atas, Majenang</small>
-        <p style="margin-top:4px;font-size:13px;color:#c9b8de;">Di MA El-Bayan Majenang saya mulai mengenal dunia komputer dan teknologi informasi secara lebih serius. Pengalaman ini mendorong saya untuk melanjutkan studi di bidang Sistem Informasi.</p>
+    <div class="edu-item sr-left d2">
+      <div class="edu-dot">🔧</div>
+      <div class="edu-body">
+        <h3>SMK Ma'arif NU 01 Sumpiuh</h3>
+        <span class="edu-type">// SEKOLAH MENENGAH KEJURUAN · SUMPIUH</span>
+        <p>Kurikulum kejuruan memberi fondasi praktis di bidang teknik dan komputer. Nilai-nilai NU mengajarkan gotong royong dan kerja tim yang kuat hingga kini.</p>
       </div>
     </div>
-    <div class="edu-item">
-      <div class="edu-dot"></div>
-      <div>
-        <p><strong>Universitas Komputama (UNIKMA) Cilacap</strong></p>
-        <small>S1 Sistem Informasi — Mahasiswi Aktif</small>
-        <p style="margin-top:4px;font-size:13px;color:#c9b8de;">Saat ini menempuh pendidikan Sarjana di Prodi Sistem Informasi UNIKMA Cilacap. Mempelajari pemrograman, analisis sistem, basis data, rekayasa perangkat lunak, dan kecerdasan buatan.</p>
+    <div class="edu-item sr-left d3">
+      <div class="edu-dot">💻</div>
+      <div class="edu-body">
+        <h3>Universitas Komputasi Cilacap</h3>
+        <span class="edu-type">// S1 SISTEM INFORMASI · MAHASISWA AKTIF</span>
+        <p>Mendalami pemrograman web, basis data, analisis sistem, rekayasa perangkat lunak, serta desain UI/UX. Tempat saya mewujudkan ide menjadi karya nyata.</p>
       </div>
-    </div>
-    <div class="section-label">&#128218; MATA KULIAH FAVORIT</div>
-    <div>
-      <span class="badge">Basis Data</span>
-      <span class="badge">Pemrograman Web</span>
-      <span class="badge">Analisis Sistem</span>
-      <span class="badge">Kecerdasan Buatan</span>
-      <span class="badge">UI/UX Design</span>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-proyek">
-  <div class="modal">
-    <button class="close" onclick="closeModal('proyek')">&#10005;</button>
-    <h2>&#128187; PROYEK</h2>
-    <p style="color:#a78bca;font-size:13px;margin-bottom:14px;">Proyek-proyek yang dikerjakan selama studi Sistem Informasi di UNIKMA:</p>
-    <div class="project-card">
-      <h3>&#128230; Sistem Manajemen Inventaris Toko</h3>
-      <p>Aplikasi web untuk mengelola stok barang, transaksi penjualan, dan laporan keuangan menggunakan PHP, MySQL, dan Bootstrap. Dilengkapi notifikasi stok menipis otomatis.</p>
-    </div>
-    <div class="project-card">
-      <h3>&#127973; Sistem Informasi Klinik Sederhana</h3>
-      <p>Aplikasi manajemen pasien, rekam medis, dan jadwal dokter untuk klinik kecil. Dibangun menggunakan CodeIgniter 4 dan MySQL untuk memudahkan administrasi digital.</p>
-    </div>
-    <div class="project-card">
-      <h3>&#128202; Dashboard Visualisasi Data Akademik</h3>
-      <p>Menampilkan data nilai dan kehadiran mahasiswa dalam grafik interaktif menggunakan Chart.js dan PHP. Membantu dosen memantau performa mahasiswa secara real-time.</p>
-    </div>
-    <div class="project-card">
-      <h3>&#127859; Aplikasi Resep Masakan Digital</h3>
-      <p>Aplikasi web mobile-first untuk menyimpan, mencari, dan berbagi resep masakan menggunakan HTML, CSS, JavaScript, dan Firebase. Terinspirasi dari hobi memasak!</p>
-    </div>
-    <div class="project-card">
-      <h3>&#127912; Desain UI/UX Aplikasi E-Learning</h3>
-      <p>Prototype antarmuka aplikasi pembelajaran daring untuk siswa MTs/MA menggunakan Figma, menerapkan prinsip UX Research dan high-fidelity prototype.</p>
-    </div>
-    <div class="section-label">&#128295; TEKNOLOGI</div>
-    <div>
-      <span class="badge">PHP</span>
-      <span class="badge">MySQL</span>
-      <span class="badge">JavaScript</span>
-      <span class="badge">Bootstrap</span>
-      <span class="badge">Figma</span>
-      <span class="badge">Firebase</span>
-      <span class="badge">Chart.js</span>
-      <span class="badge">CodeIgniter</span>
+<!-- ════════ PROYEK ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-proyek">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">03 // Projects</div>
+    <h2 class="sec-title">Proyek</h2>
+    <p class="sec-sub">My Work</p>
+  </div>
+  <div class="grid3">
+    <div class="pc sr d1"><span class="pc-ico">📋</span><div class="pc-title">Catatan Pertanian Digital</div><div class="pc-desc">Aplikasi web pencatat kegiatan pertanian harian: masa tanam, pupuk, estimasi panen, cuaca, dan pengeluaran lahan.</div><div class="pc-tags"><span class="pct">PHP</span><span class="pct">MySQL</span><span class="pct">Bootstrap</span><span class="pct">Chart.js</span></div><div class="pc-status done">Selesai</div></div>
+    <div class="pc sr d2"><span class="pc-ico">✅</span><div class="pc-title">Absensi Digital</div><div class="pc-desc">Sistem absensi QR Code real-time untuk sekolah atau organisasi, lengkap laporan bulanan otomatis.</div><div class="pc-tags"><span class="pct">PHP</span><span class="pct">MySQL</span><span class="pct">QR Code</span><span class="pct">JavaScript</span></div><div class="pc-status done">Selesai</div></div>
+    <div class="pc sr d3"><span class="pc-ico">🛒</span><div class="pc-title">Kasir Sederhana</div><div class="pc-desc">Aplikasi POS ringan untuk UMKM: transaksi, stok, laporan penjualan, dan cetak struk digital.</div><div class="pc-tags"><span class="pct">PHP</span><span class="pct">MySQL</span><span class="pct">Bootstrap</span><span class="pct">Print.js</span></div><div class="pc-status done">Selesai</div></div>
+    <div class="pc sr d4"><span class="pc-ico">📚</span><div class="pc-title">Peminjam Buku Perpustakaan</div><div class="pc-desc">Sistem manajemen perpustakaan digital dengan peminjaman, pengembalian, notifikasi, dan statistik koleksi.</div><div class="pc-tags"><span class="pct">PHP</span><span class="pct">MySQL</span><span class="pct">CodeIgniter</span><span class="pct">Bootstrap</span></div><div class="pc-status done">Selesai</div></div>
+    <div class="pc sr d5"><span class="pc-ico">🎨</span><div class="pc-title">UI/UX Prototype Portal Kampus</div><div class="pc-desc">Desain antarmuka portal mahasiswa di Figma dengan UX Research, persona mapping, dan high-fidelity prototype.</div><div class="pc-tags"><span class="pct">Figma</span><span class="pct">UX Research</span><span class="pct">Prototyping</span></div><div class="pc-status done">Selesai</div></div>
+    <div class="pc sr d6"><span class="pc-ico">📊</span><div class="pc-title">Dashboard Monitoring Panen</div><div class="pc-desc">Visualisasi data hasil panen dalam grafik interaktif — tren per musim, perbandingan lahan, prediksi historis.</div><div class="pc-tags"><span class="pct">Chart.js</span><span class="pct">PHP</span><span class="pct">MySQL</span><span class="pct">Figma</span></div><div class="pc-status wip">Dalam Proses</div></div>
+  </div>
+  <div class="future-card sr">
+    <span class="future-ico">🌱</span>
+    <h3>Platform Integrasi Teknologi &amp; Pertanian</h3>
+    <p>Impian terbesar saya: platform digital yang menggabungkan <strong style="color:var(--gold2)">teknologi informasi dan dunia pertanian</strong> — sistem cerdas yang membantu petani lokal mencatat, menganalisis, dan mengoptimalkan hasil pertanian mereka dengan mudah.</p>
+    <div class="ff-wrap">
+      <span class="ff">📱 Mobile-first</span><span class="ff">📈 Analisis Data Panen</span>
+      <span class="ff">☁️ Info Cuaca Real-time</span><span class="ff">🛒 Koneksi ke Pasar</span>
+      <span class="ff">🤖 Rekomendasi Berbasis Data</span>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-wa">
-  <div class="modal" style="text-align:center;">
-    <button class="close" onclick="closeModal('wa')">&#10005;</button>
-    <h2>&#128172; HUBUNGI SAYA</h2>
-    <p style="margin-bottom:20px;">Ingin berkolaborasi atau sekadar menyapa? Hubungi saya via WhatsApp!</p>
-    <div style="font-size:48px;margin:10px 0;">&#128241;</div>
-    <p style="color:#ff80b0;font-size:18px;font-weight:700;margin:8px 0;">Fitria Oktafiani</p>
-    <p style="color:#a78bca;font-size:13px;margin-bottom:20px;">Mahasiswi Sistem Informasi — UNIKMA Cilacap</p>
-    <a href="https://wa.me/6281234567890" target="_blank"
-       style="display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;box-shadow:0 0 20px rgba(37,211,102,.4);">
-      &#128172; Chat via WhatsApp
-    </a>
-    <p style="color:#6b5a80;font-size:11px;margin-top:16px;">*Ganti nomor WA di kode sebelum digunakan.</p>
+<!-- ════════ METRICS ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-metrics">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">04 // Metrics</div>
+    <h2 class="sec-title">Statistik &amp; Ulasan</h2>
+    <p class="sec-sub">Numbers &amp; Feedback</p>
+  </div>
+  <div class="met-grid">
+    <div class="met sr d1"><div class="m-n">6</div><div class="m-l">Total Proyek</div></div>
+    <div class="met sr d2"><div class="m-n">5</div><div class="m-l">Selesai</div></div>
+    <div class="met sr d3"><div class="m-n">1</div><div class="m-l">Dalam Proses</div></div>
+    <div class="met sr d4"><div class="m-n">30+</div><div class="m-l">Pengguna Aktif</div></div>
+    <div class="met sr d5"><div class="m-n">4.8</div><div class="m-l">Rata² Ulasan</div></div>
+    <div class="met sr d6"><div class="m-n">3</div><div class="m-l">Jenjang Pendidikan</div></div>
+  </div>
+  <div class="reviews">
+    <div class="rv sr d1"><div class="stars">★★★★★</div><div class="rv-text">"Aplikasi kasirnya sangat membantu usaha kami, mudah dipakai dan tidak perlu keahlian teknis sama sekali."</div><div class="rv-by">// Pengguna Kasir Sederhana</div></div>
+    <div class="rv sr d2"><div class="stars">★★★★★</div><div class="rv-text">"Sekarang pencatatan pertanian jauh lebih rapi dan bisa dipantau langsung dari ponsel kapanpun."</div><div class="rv-by">// Pengguna Catatan Pertanian</div></div>
+    <div class="rv sr d3"><div class="stars">★★★★☆</div><div class="rv-text">"Sistem absensi QR-nya praktis sekali, laporan bulanan otomatis terbuat tanpa kerja ekstra admin."</div><div class="rv-by">// Pengguna Absensi Digital</div></div>
+  </div>
+</div>
+
+<!-- ════════ GALERI ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-galeri">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">05 // Gallery</div>
+    <h2 class="sec-title">Galeri Kegiatan</h2>
+    <p class="sec-sub">Life Beyond Campus</p>
+  </div>
+  <div class="gal-grid">
+    <div class="gs sr d1 filled" id="gs-0"><img src="IMG-20251117-WA0058.jpg" alt="foto"></div>
+    <div class="gs sr d2 filled" id="gs-1"><img src="IMG-20251214-WA0030.jpg" alt="foto"></div>
+    <div class="gs sr d3 filled" id="gs-2"><img src="IMG-20260131-WA0023.jpg" alt="foto"></div>
+    <div class="gs sr d4 filled" id="gs-3"><img src="IMG-20260502-WA0004.jpg" alt="foto"></div>
+    <div class="gs sr d5 filled" id="gs-4"><img src="IMG-20260510-WA0007.jpg" alt="foto"></div>
+    <div class="gs sr d6 filled" id="gs-5"><img src="IMG-20260511-WA0001.jpg" alt="foto"></div>
+  </div>
+  <input type="file" id="img-inp" accept="image/*" style="display:none">
+</div>
+
+<!-- ════════ KONTAK ════════ -->
+<div class="divl"></div>
+<div class="sec" id="sec-kontak">
+  <div class="sec-hd sr">
+    <div class="sec-eyebrow">06 // Contact</div>
+    <h2 class="sec-title">Hubungi Saya</h2>
+    <p class="sec-sub">Get In Touch</p>
+  </div>
+  <p class="sr" style="font-size:13.5px;color:rgba(245,240,232,.45);margin-bottom:22px;max-width:460px">Tertarik berkolaborasi atau sekadar berdiskusi? Silakan hubungi saya.</p>
+  <div class="kontak-grid">
+    <a class="kc sr d1" href="https://wa.me/6288816627097" target="_blank"><div class="k-ico">📱</div><div class="k-info"><strong>WhatsApp</strong><span>08816627097</span></div><svg class="k-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a class="kc sr d2" href="mailto:miqbalr25@gmail.com" target="_blank"><div class="k-ico">📧</div><div class="k-info"><strong>Email</strong><span>miqbalr25@gmail.com</span></div><svg class="k-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a class="kc sr d3" href="https://instagram.com/miqbalr25" target="_blank"><div class="k-ico">📸</div><div class="k-info"><strong>Instagram</strong><span>@miqbalr25</span></div><svg class="k-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a class="kc sr d4" href="#"><div class="k-ico">🌐</div><div class="k-info"><strong>Portfolio</strong><span>Universitas Komputasi Cilacap</span></div><svg class="k-arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="f-logo">MIR.</div>
+  <div class="f-sub">MUHAMMAD IQBAL RAMADHANI · SISTEM INFORMASI · UNIVERSITAS KOMPUTASI CILACAP</div>
+  <blockquote>"Bukan seberapa cepat kamu bergerak, tapi seberapa konsisten kamu melangkah."</blockquote>
+  <cite>— MUHAMMAD IQBAL RAMADHANI</cite>
+</footer>
+
+<!-- ════════════════ MODALS ════════════════ -->
+
+<!-- ABOUT -->
+<div class="mw" id="m-about">
+  <div class="md">
+    <button class="mcl" onclick="closeM('about')">✕</button>
+    <h2><span>👤</span> Tentang Saya</h2>
+    <p>Halo! Saya <strong style="color:var(--gold2)">Muhammad Iqbal Ramadhani</strong>, mahasiswa aktif Sistem Informasi di Universitas Komputasi Cilacap. Saya percaya teknologi bisa menjadi jembatan nyata untuk menyelesaikan masalah kehidupan sehari-hari.</p>
+    <p>Di luar kuliah saya aktif bertani, dan dulu hobi lari meski kini sudah jarang. Saya memiliki ketertarikan besar dalam menggabungkan dunia pertanian dan teknologi informasi menjadi solusi yang berdampak.</p>
+    <div class="ml">Visi &amp; Misi</div>
+    <p><strong style="color:var(--gold2)">Visi —</strong> Menjadi pengembang sistem informasi yang mampu memberikan solusi nyata dan berdampak bagi masyarakat.</p>
+    <p><strong style="color:var(--gold2)">Misi —</strong> Belajar tanpa henti, membangun dengan penuh tanggung jawab, dan memberikan manfaat dari setiap karya.</p>
+    <div class="ml">Motto Hidup</div>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--gold2);padding:12px 15px;border-left:2.5px solid rgba(212,168,67,.4);background:rgba(212,168,67,.05);border-radius:0 10px 10px 0;line-height:1.7">"Bukan seberapa cepat kamu bergerak, tapi seberapa konsisten kamu melangkah."</p>
+    <div class="ml">Keahlian</div>
+    <div><span class="mbdg">HTML/CSS</span><span class="mbdg">JavaScript</span><span class="mbdg">PHP</span><span class="mbdg">MySQL</span><span class="mbdg">Figma</span><span class="mbdg">Bootstrap</span><span class="mbdg">CodeIgniter</span><span class="mbdg">Analisis Sistem</span></div>
+  </div>
+</div>
+
+<!-- EDU -->
+<div class="mw" id="m-edu">
+  <div class="md">
+    <button class="mcl" onclick="closeM('edu')">✕</button>
+    <h2><span>🎓</span> Pendidikan</h2>
+    <div class="mec"><div class="mi">📗</div><div><strong>MTs Miftahul Huda Rawalo</strong><small>MADRASAH TSANAWIYAH · RAWALO</small><p>Jenjang yang membentuk karakter, kedisiplinan, nilai keagamaan, dan kemandirian — fondasi kuat yang saya bawa hingga bangku kuliah.</p></div></div>
+    <div class="mec"><div class="mi">🔧</div><div><strong>SMK Ma'arif NU 01 Sumpiuh</strong><small>SEKOLAH MENENGAH KEJURUAN · SUMPIUH</small><p>Fondasi praktis teknik dan komputer. Nilai NU mengajarkan gotong royong dan kerja tim yang terus saya terapkan.</p></div></div>
+    <div class="mec"><div class="mi">💻</div><div><strong>Universitas Komputasi Cilacap</strong><small>S1 SISTEM INFORMASI · MAHASISWA AKTIF</small><p>Mendalami pemrograman web, basis data, analisis sistem, rekayasa perangkat lunak, UI/UX, dan kecerdasan buatan.</p></div></div>
+    <div class="ml">Mata Kuliah Favorit</div>
+    <div><span class="mbdg">Basis Data</span><span class="mbdg">Pemrograman Web</span><span class="mbdg">Analisis Sistem</span><span class="mbdg">Kecerdasan Buatan</span><span class="mbdg">UI/UX Design</span></div>
+  </div>
+</div>
+
+<!-- PROYEK -->
+<div class="mw" id="m-proyek">
+  <div class="md">
+    <button class="mcl" onclick="closeM('proyek')">✕</button>
+    <h2><span>💼</span> Proyek</h2>
+    <div class="mcard"><h3>📋 Catatan Pertanian Digital</h3><p>Aplikasi web pencatat kegiatan pertanian harian. Mudah dipakai tanpa keahlian teknis.</p></div>
+    <div class="mcard"><h3>✅ Absensi Digital</h3><p>Sistem absensi QR Code real-time dengan laporan bulanan otomatis.</p></div>
+    <div class="mcard"><h3>🛒 Kasir Sederhana</h3><p>Aplikasi POS untuk UMKM: transaksi, stok, laporan, dan cetak struk digital.</p></div>
+    <div class="mcard"><h3>📚 Peminjam Buku Perpustakaan</h3><p>Manajemen perpustakaan digital lengkap dengan statistik koleksi.</p></div>
+    <div class="mcard"><h3>🎨 UI/UX Prototype Portal Kampus</h3><p>High-fidelity prototype portal mahasiswa di Figma dengan UX Research.</p></div>
+    <div class="mcard"><h3>🌱 Platform Teknologi &amp; Pertanian (Impian)</h3><p>Platform digital yang menggabungkan teknologi informasi dan pertanian untuk petani lokal.</p></div>
+    <div class="ml">Teknologi yang Digunakan</div>
+    <div><span class="mbdg">PHP</span><span class="mbdg">MySQL</span><span class="mbdg">JavaScript</span><span class="mbdg">Bootstrap</span><span class="mbdg">Figma</span><span class="mbdg">CodeIgniter</span><span class="mbdg">Chart.js</span><span class="mbdg">QR Code API</span></div>
+  </div>
+</div>
+
+<!-- GALERI -->
+<div class="mw" id="m-galeri">
+  <div class="md">
+    <button class="mcl" onclick="closeM('galeri')">✕</button>
+    <h2><span>📷</span> Galeri Kegiatan</h2>
+    <p style="color:rgba(245,240,232,.38);font-size:12.5px;margin-bottom:12px">Klik slot foto di halaman utama untuk mengupload foto kegiatanmu! ✨</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">🌿</div>
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">🌾</div>
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">🏫</div>
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">⚡</div>
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">🏃</div>
+      <div style="aspect-ratio:1;border-radius:10px;border:1.5px dashed rgba(212,168,67,.18);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-size:24px">✨</div>
+    </div>
+    <p style="margin-top:13px;font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:rgba(212,168,67,.42);text-align:center">Upload foto nyata di section Galeri pada halaman utama ✦</p>
+  </div>
+</div>
+
+<!-- KONTAK -->
+<div class="mw" id="m-kontak">
+  <div class="md">
+    <button class="mcl" onclick="closeM('kontak')">✕</button>
+    <h2><span>✉️</span> Hubungi Saya</h2>
+    <p style="color:rgba(245,240,232,.45);font-size:13px;margin-bottom:18px">Ingin berkolaborasi, berdiskusi, atau sekadar menyapa? Jangan ragu!</p>
+    <a class="mkr" href="https://wa.me/6288816627097" target="_blank"><div class="mkri">📱</div><div><strong style="color:var(--cream);font-size:13px;display:block;margin-bottom:1px;font-weight:500">WhatsApp</strong><span style="font-size:11.5px;color:rgba(245,240,232,.38)">08816627097</span></div><svg style="margin-left:auto;width:14px;height:14px;stroke:rgba(212,168,67,.3);fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a class="mkr" href="mailto:miqbalr25@gmail.com" target="_blank"><div class="mkri">📧</div><div><strong style="color:var(--cream);font-size:13px;display:block;margin-bottom:1px;font-weight:500">Email</strong><span style="font-size:11.5px;color:rgba(245,240,232,.38)">miqbalr25@gmail.com</span></div><svg style="margin-left:auto;width:14px;height:14px;stroke:rgba(212,168,67,.3);fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a class="mkr" href="https://instagram.com/miqbalr25" target="_blank"><div class="mkri">📸</div><div><strong style="color:var(--cream);font-size:13px;display:block;margin-bottom:1px;font-weight:500">Instagram</strong><span style="font-size:11.5px;color:rgba(245,240,232,.38)">@miqbalr25</span></div><svg style="margin-left:auto;width:14px;height:14px;stroke:rgba(212,168,67,.3);fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:rgba(212,168,67,.42);font-size:12.5px;margin-top:16px;padding:11px;border:1px solid var(--bdr);border-radius:10px">Muhammad Iqbal Ramadhani · Mahasiswa Sistem Informasi<br><span style="font-size:10px;color:rgba(245,240,232,.2)">Universitas Komputasi Cilacap</span></p>
   </div>
 </div>
 
 <script>
-// STARS
-const canvas=document.getElementById('stars-canvas');
-const ctx=canvas.getContext('2d');
-let stars=[];
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;initStars();}
-function initStars(){
-  stars=[];
-  for(let i=0;i<200;i++){
-    stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+.3,a:Math.random(),da:Math.random()*.005+.002});
+/* ═══ CURSOR ═══ */
+const cd=document.getElementById('cur'),cr=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+document.querySelectorAll('a,button,.gs,.ql-card,.inav-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cr.style.width='50px';cr.style.height='50px';cr.style.borderColor='rgba(240,200,102,.8)'});
+  el.addEventListener('mouseleave',()=>{cr.style.width='36px';cr.style.height='36px';cr.style.borderColor='rgba(240,200,102,.45)'});
+});
+(function tr(){rx+=(mx-rx)*.09;ry+=(my-ry)*.09;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tr)})();
+
+/* ═══ COLORFUL ANIMATED BACKGROUND ═══ */
+(function(){
+  const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+  let W,H,t=0;
+  const res=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};
+  addEventListener('resize',res);res();
+
+  const zones=[
+    {x:.0,  y:.0,  r:.7,  c:[15,35,65],   o:.9},
+    {x:1.0, y:.0,  r:.65, c:[35,20,60],   o:.8},
+    {x:.0,  y:1.0, r:.65, c:[15,40,25],   o:.8},
+    {x:1.0, y:1.0, r:.6,  c:[50,25,15],   o:.75},
+    {x:.5,  y:.5,  r:.55, c:[20,30,50],   o:.6},
+  ];
+
+  const orbs=[
+    {x:.18,y:.22,r:.38,c:[80,100,200],o:.18,vx:.00006,vy:.00004,ph:0,sp:.0008},
+    {x:.78,y:.18,r:.32,c:[140,80,200],o:.16,vx:-.00005,vy:.00006,ph:1.2,sp:.001},
+    {x:.5,y:.55,r:.28,c:[60,160,100],o:.15,vx:.00007,vy:-.00005,ph:2.4,sp:.0009},
+    {x:.12,y:.72,r:.3,c:[200,140,60],o:.14,vx:.00005,vy:-.00007,ph:3.6,sp:.0012},
+    {x:.88,y:.68,r:.35,c:[60,140,180],o:.16,vx:-.00008,vy:.00004,ph:4.8,sp:.0007},
+  ];
+
+  const stars=Array.from({length:260},()=>({
+    x:Math.random(),y:Math.random(),r:Math.random()*.95+.12,
+    a:Math.random()*.55+.08,sp:.004+Math.random()*.018,ph:Math.random()*Math.PI*2,
+    c:Math.random()<.6?[255,248,220]:[180,210,255]
+  }));
+
+  const ribbons=[
+    {y:.08,amp:38,freq:.0012,spd:.00018,ph:0,   c:[100,130,220],o:.055,thick:2.2},
+    {y:.22,amp:28,freq:.002, spd:.0003, ph:2.1, c:[140,80,200], o:.045,thick:1.8},
+    {y:.38,amp:50,freq:.0009,spd:.00014,ph:4.5, c:[60,180,120], o:.04, thick:2.0},
+    {y:.54,amp:32,freq:.0016,spd:.00024,ph:1.3, c:[200,150,60], o:.05, thick:1.6},
+    {y:.68,amp:22,freq:.0022,spd:.00036,ph:3.7, c:[80,160,200], o:.042,thick:1.8},
+  ];
+
+  const G=72;
+
+  function draw(){
+    const bg=cx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,'#0f1a2e');bg.addColorStop(.4,'#12231a');
+    bg.addColorStop(.7,'#1a1428');bg.addColorStop(1,'#1e1208');
+    cx.fillStyle=bg;cx.fillRect(0,0,W,H);
+
+    zones.forEach(z=>{
+      const g=cx.createRadialGradient(z.x*W,z.y*H,0,z.x*W,z.y*H,Math.min(W,H)*z.r);
+      g.addColorStop(0,`rgba(${z.c.join(',')},${z.o*.55})`);
+      g.addColorStop(.5,`rgba(${z.c.join(',')},${z.o*.2})`);
+      g.addColorStop(1,'transparent');
+      cx.fillStyle=g;cx.fillRect(0,0,W,H);
+    });
+
+    orbs.forEach(o=>{
+      o.ph+=o.sp;
+      const px=W*(o.x+.06*Math.sin(t*o.vx*1000));
+      const py=H*(o.y+.05*Math.cos(t*o.vy*1000));
+      const pulse=.85+.15*Math.sin(o.ph);
+      const g=cx.createRadialGradient(px,py,0,px,py,Math.min(W,H)*o.r*pulse);
+      g.addColorStop(0,`rgba(${o.c.join(',')},${o.o})`);
+      g.addColorStop(.5,`rgba(${o.c.join(',')},${o.o*.35})`);
+      g.addColorStop(1,'transparent');
+      cx.fillStyle=g;cx.fillRect(0,0,W,H);
+    });
+
+    const cols=Math.ceil(W/G)+1,rows=Math.ceil(H/G)+1;
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        const pulse=.5+.5*Math.sin(t*.001+(c+r*.7)*.5);
+        cx.beginPath();cx.arc(c*G,r*G,.85,0,Math.PI*2);
+        cx.fillStyle=`rgba(255,230,150,${.04*pulse})`;cx.fill();
+      }
+    }
+
+    stars.forEach(s=>{
+      s.ph+=s.sp;
+      const a=s.a*(.5+.5*Math.sin(s.ph));
+      cx.beginPath();cx.arc(s.x*W,s.y*H,s.r,0,Math.PI*2);
+      cx.fillStyle=`rgba(${s.c.join(',')},${a})`;cx.fill();
+    });
+
+    ribbons.forEach(r=>{
+      const yB=H*r.y;
+      cx.beginPath();
+      for(let x=0;x<=W;x+=3){
+        const y=yB+r.amp*Math.sin(r.freq*x+t*r.spd*1000+r.ph);
+        x===0?cx.moveTo(x,y):cx.lineTo(x,y);
+      }
+      const g=cx.createLinearGradient(0,yB-r.amp,0,yB+r.amp);
+      g.addColorStop(0,`rgba(${r.c.join(',')},0)`);
+      g.addColorStop(.5,`rgba(${r.c.join(',')},${r.o})`);
+      g.addColorStop(1,`rgba(${r.c.join(',')},0)`);
+      cx.strokeStyle=g;cx.lineWidth=r.thick;cx.stroke();
+    });
+
+    if(!draw._d){
+      draw._d=Array.from({length:Math.min(Math.floor(W*H/7500),130)},()=>({
+        x:Math.random()*W,y:Math.random()*H,r:Math.random()*.9+.15,
+        vx:(Math.random()-.5)*.13,vy:-Math.random()*.2-.03,
+        a:Math.random()*.4,da:.002+Math.random()*.004,
+        c:[[212,168,67],[125,196,138],[100,160,220],[180,120,200],[220,160,80]][Math.floor(Math.random()*5)]
+      }));
+    }
+    draw._d.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.a+=p.da;
+      if(p.a>.48||p.a<0)p.da*=-1;
+      if(p.y<-4){p.y=H+4;p.x=Math.random()*W}
+      cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      cx.fillStyle=`rgba(${p.c.join(',')},${p.a})`;cx.fill();
+    });
+
+    const vg=cx.createRadialGradient(W/2,H/2,H*.1,W/2,H/2,H*.95);
+    vg.addColorStop(0,'transparent');vg.addColorStop(1,'rgba(0,0,0,.45)');
+    cx.fillStyle=vg;cx.fillRect(0,0,W,H);
+
+    t++;requestAnimationFrame(draw);
   }
-}
-function drawStars(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  stars.forEach(s=>{
-    s.a+=s.da;if(s.a>1||s.a<0)s.da*=-1;
-    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(255,255,255,'+s.a+')';ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
-}
-window.addEventListener('resize',resizeCanvas);
-resizeCanvas();drawStars();
-
-// ORBIT ICONS
-const icons=[
-  {id:'bio',   label:'BIO',    angle:270, svg:'<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>'},
-  {id:'edu',   label:'EDU',    angle:0,   svg:'<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'},
-  {id:'proyek',label:'PROYEK', angle:90,  svg:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>'},
-  {id:'wa',    label:'CHAT',   angle:180, svg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'},
-];
-
-const ring=document.getElementById('orbitRing');
-const wrapper=ring.parentElement;
-
-function placeIcons(){
-  ring.querySelectorAll('.orbit-icon').forEach(e=>e.remove());
-  icons.forEach(ic=>{
-    const rad=(ic.angle-90)*Math.PI/180;
-    const x=50+50*Math.cos(rad);
-    const y=50+50*Math.sin(rad);
-    const btn=document.createElement('button');
-    btn.className='orbit-icon';
-    btn.style.cssText='left:'+x+'%;top:'+y+'%;position:absolute;transform:translate(-50%,-50%);';
-    btn.innerHTML='<svg viewBox="0 0 24 24">'+ic.svg+'</svg><span>'+ic.label+'</span>';
-    btn.onclick=()=>openModal(ic.id);
-    ring.appendChild(btn);
-  });
-}
-window.addEventListener('resize',placeIcons);
-placeIcons();
-
-// Counter-rotate icons so labels stay upright
-let deg=0;
-(function loop(){
-  deg+=0.3;
-  ring.querySelectorAll('.orbit-icon').forEach(btn=>{
-    const base=btn.style.cssText;
-    btn.style.transform='translate(-50%,-50%) rotate('+(-deg)+'deg)';
-  });
-  requestAnimationFrame(loop);
+  draw();
 })();
 
-// MODAL
-function openModal(id){document.getElementById('modal-'+id).classList.add('active');}
-function closeModal(id){document.getElementById('modal-'+id).classList.remove('active');}
-document.querySelectorAll('.modal-overlay').forEach(o=>{
-  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('active');});
+/* ═══ SCROLL REVEAL ═══ */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:.1});
+document.querySelectorAll('.sr,.sr-left,.sr-right,.sr-scale').forEach(el=>obs.observe(el));
+
+/* ═══ COUNT-UP ═══ */
+function countUp(el,target,dur=1800,suf=''){
+  let v=0,step=target/60;
+  const tm=setInterval(()=>{v=Math.min(v+step,target);el.textContent=Math.floor(v)+suf;if(v>=target)clearInterval(tm)},dur/60);
+}
+const sObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    countUp(document.getElementById('sp'),6);
+    countUp(document.getElementById('ss'),5);
+    countUp(document.getElementById('su'),30,1800,'+');
+    sObs.disconnect();
+  }});
+},{threshold:.3});
+sObs.observe(document.querySelector('.stats-bar'));
+
+/* ═══ ICON NAV ACTIVE ═══ */
+function setActive(btn){
+  document.querySelectorAll('.inav-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function setActiveById(id){
+  document.querySelectorAll('.inav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* ═══ HOME ═══ */
+function showHome(){
+  document.querySelectorAll('.mw.open').forEach(m=>m.classList.remove('open'));
+  document.body.style.overflow='';
+  window.scrollTo({top:0,behavior:'smooth'});
+  setActiveById('btn-home');
+  const hp=document.getElementById('home-panel');
+  hp.style.display='block';
+  hp.querySelectorAll('.sr').forEach(el=>{el.classList.remove('in');setTimeout(()=>el.classList.add('in'),80)});
+}
+
+window.addEventListener('scroll',()=>{
+  const hp=document.getElementById('home-panel');
+  if(hp.style.display==='block' && window.scrollY>300){
+    hp.style.display='none';
+  }
+});
+
+/* ═══ MODAL ═══ */
+function openM(id){document.getElementById('m-'+id).classList.add('open');document.body.style.overflow='hidden'}
+function closeM(id){document.getElementById('m-'+id).classList.remove('open');document.body.style.overflow=''}
+
+/* ═══ GALLERY UPLOAD ═══ */
+let curSlot=null;
+function uploadImg(i){curSlot=i;document.getElementById('img-inp').click()}
+document.getElementById('img-inp').addEventListener('change',function(){
+  const f=this.files[0];if(!f||curSlot===null)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const sl=document.getElementById('gs-'+curSlot);
+    sl.innerHTML=`<img src="${e.target.result}" alt="foto">`;
+    sl.classList.add('filled');sl.onclick=null;
+  };
+  r.readAsDataURL(f);this.value='';
+});
+
+/* ═══ PARALLAX on hero name ═══ */
+document.addEventListener('mousemove',e=>{
+  const heroName=document.querySelector('.hero-name');
+  if(!heroName)return;
+  const dx=(e.clientX/innerWidth-.5)*.012;
+  const dy=(e.clientY/innerHeight-.5)*.008;
+  heroName.style.transform=`translate(${dx*100}px,${dy*100}px)`;
 });
 </script>
 </body>
