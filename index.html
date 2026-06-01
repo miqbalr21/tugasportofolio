@@ -247,7 +247,7 @@ section { position: relative; z-index: 10; max-width: 1000px; margin: 0 auto; pa
 }
 .project-card .proj-link-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(212,168,67,0.15); border: 1px solid var(--gold-dim);
+    background: rgba(212, 168, 67, 0.15); border: 1px solid var(--gold-dim);
     color: var(--gold-bright); font-family: 'Space Mono'; font-size: 10px;
     padding: 5px 12px; border-radius: 40px; letter-spacing: 0.05em;
     transition: background 0.25s;
@@ -255,7 +255,7 @@ section { position: relative; z-index: 10; max-width: 1000px; margin: 0 auto; pa
     margin-top: 4px;
 }
 .project-card:hover .proj-link-badge {
-    background: rgba(212,168,67,0.3);
+    background: rgba(212, 168, 67, 0.3);
 }
 .proj-tech {
     display: flex; flex-wrap: wrap; gap: 6px;
@@ -629,7 +629,8 @@ section { position: relative; z-index: 10; max-width: 1000px; margin: 0 auto; pa
   <section id="proyek">
    <h2 class="sec-title sr">Karya &amp; Portfolio</h2>
    <div class="grid">
-    <a href="https://codepen.io/Iqbal-Ramadhan-the-styleful/full/NPbyxbb" target="_blank" rel="noopener noreferrer" class="project-card sr"> 
+    <!-- LINK PERBAIKAN: Mengarah ke Proyek Catatan Tani yang benar -->
+    <a href="https://codepen.io/Iqbal-Ramadhan-the-styleful/full/KwgRvBL" target="_blank" rel="noopener noreferrer" class="project-card sr"> 
      <h3>🌾 Catatan Tani Digital</h3>
      <p>Aplikasi monitoring lahan yang membantu petani mencatat siklus tanam, penggunaan pupuk, dan estimasi keuntungan secara digital.</p>
      <div class="proj-tech">
@@ -745,9 +746,10 @@ function openModal(section) {
       content: `
         <p>Pilih salah satu live demo sistem yang ingin Anda kunjungi. Setiap aplikasi dirancang secara responsif untuk menyelesaikan masalah nyata:</p>
         <div class="modal-project-grid">
-          <a href="https://codepen.io/Iqbal-Ramadhan-the-styleful/full/NPbyxbb" target="_blank" class="modal-project-item">
+          <!-- LINK PERBAIKAN: Di dalam pop-up modal -->
+          <a href="https://codepen.io/Iqbal-Ramadhan-the-styleful/full/KwgRvBL" target="_blank" class="modal-project-item">
             <h4><span>🌾 Catatan Tani Digital</span> <span style="font-size:12px;">↗</span></h4>
-            <p class="modal-proj-desc">Aplikasi khusus manajemen pertanian modern. Membantu petani lokal mencatat siklus berkala masa tanam, memantau intensitas pemberian pupuk, serta mengalkulasi estimasi laba-rugi penjualan panen secara otomatis terstruktur.</p>
+            <p class="modal-proj-desc">Website khusus manajemen pertanian modern. Membantu petani lokal mencatat siklus berkala masa tanam, memantau intensitas pemberian pupuk, serta mengalkulasi estimasi laba-rugi penjualan panen secara otomatis terstruktur.</p>
             <p class="modal-proj-features">Fitur Utama: Buku Kas Tani, Prediksi Panen, Log Pemupukan</p>
             <div class="modal-badge-container">
               <span class="modal-tag">HTML5</span><span class="modal-tag">CSS Grid</span><span class="modal-tag">Vanilla JS</span><span class="modal-tag">Local Storage</span>
